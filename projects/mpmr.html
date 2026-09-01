@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M.P.M.R — Anmar Momani</title>
+<meta name="description" content="M.P.M.R — one modular 4x4 rover chassis rebuilt across four configurations: greenhouse inspection, autonomous patrol and turret tracking.">
+<meta name="theme-color" content="#06090C">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="M.P.M.R — Anmar Momani">
+<meta property="og:description" content="M.P.M.R — one modular 4x4 rover chassis rebuilt across four configurations: greenhouse inspection, autonomous patrol and turret tracking.">
+<meta property="og:image" content="https://anmar-almomani.dev/assets/mpmr/14-scorp-c.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="scan" aria-hidden="true"></div>
+<div class="vig" aria-hidden="true"></div>
+
+<header id="hdr">
+  <div class="wrap hdr">
+    <a class="brand" href="../index.html">
+      <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="xn">Anmar Momani</span>
+    </a>
+    <nav id="nav">
+      <a href="../index.html#platform">Platform</a>
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#repos">Repos</a>
+      <a href="../index.html#fikrbot">Fikr Bot</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#contact">Contact ↗</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<main>
+  <div class="ticksL"></div>
+  <div class="wrap">
+    <a class="back" href="../index.html#work">← All work</a>
+    <div class="phead">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Flagship platform · Field robotics</span></div>
+      <h1 class="xw rv d1">M.P.M.R</h1>
+      <p class="lede rv d2">Multi-Purpose Mobile Robot — one 4×4 skid-steer chassis, rebuilt across four configurations for agriculture, surveillance and tracking.</p>
+      <div class="pmeta rv d2">
+      <div><div class="mlab">Role</div><div class="mval">Design, build, software</div></div>
+      <div><div class="mlab">Compute</div><div class="mval">Raspberry Pi 5 · ROS 2</div></div>
+      <div><div class="mlab">Configurations</div><div class="mval">Four</div></div>
+      <div><div class="mlab">Status</div><div class="mval">Active development</div></div>
+      </div>
+      <div class="phero rv d2"><img src="../assets/mpmr/14-scorp-c.jpg" alt="M.P.M.R in its SCORP configuration"></div>
+    </div>
+  </div>
+
+  <section class="psec">
+    <div class="wrap">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Overview</span></div>
+      <h2 class="xw rv d1" style="margin-bottom:32px">What it is</h2>
+      <div class="prose rv d2">
+      <p>The M.P.M.R started as a question about reuse. Building a rover for one job means building a new rover for the next one — a new chassis, new drive electronics, new wiring, every time. So the platform was designed around a fixed base: a <strong>4×4 skid-steer chassis</strong> with independent brushless drive, a sealed equipment case, and a payload deck that different sensor and actuator modules bolt onto.</p>
+      <p>Everything above the deck changes with the mission. Everything below it stays the same. That single decision is why the same robot has been a greenhouse inspector, a patrol unit and a tracking testbed without ever being rebuilt from scratch.</p>
+      <p><strong>Stage 1</strong> was the proof: an Xbox Kinect 360 for depth, obstacle avoidance, teleoperation and onboard lighting. Crude, but it established that the drive platform could carry compute and sensors over uneven ground.</p>
+      <p><strong>GHRS</strong>, the greenhouse configuration, added a 6-DOF arm and autonomous navigation between crop rows, with an EfficientNetV2-S classifier running on board for plant disease detection — 85.4% accuracy at a 0.65 confidence threshold, trained on PlantVillage. Diagnosis happens on the robot, not in a datacentre, because greenhouses rarely have reliable connectivity.</p>
+      <p><strong>Crowd Control</strong> moved to LIDAR and SLAM for mapping and localisation, fusing depth, IMU and GPS for autonomous patrol with teleoperation fallback. It carries person detection, fire detection, and a tracked non-lethal water nozzle.</p>
+      <p><strong>SCORP</strong>, the current build, adds a stabilised pan-tilt turret that acquires and follows a moving target using vision — validated with a non-lethal platform so tracking accuracy can be measured safely.</p>
+      <p>The whole platform reports to a browser-based ground control station: live camera feed, LIDAR polar map, heading, pitch and roll, GPS fix and track log, and direct drive control. It has been demonstrated to Jordanian defence and public-security bodies, who showed serious interest. Development is ongoing.</p>
+      </div>
+      <div class="stack rv d2"><span>ROS 2</span><span>Raspberry Pi 5</span><span>LIDAR · SLAM</span><span>EfficientNetV2-S</span><span>Xbox Kinect 360</span><span>BNO08x IMU</span><span>NEO-6M GPS</span><span>6-DOF arm</span><span>Python</span></div>
+      <div class="cta rv">
+        <div><h4>Greenhouse navigation and perception stack</h4><p>The ROS 2 packages behind the GHRS configuration are public.</p></div>
+        <a class="ghbtn" href="https://github.com/Anmartiger/GHRS-ROS2" target="_blank" rel="noopener">View GHRS-ROS2</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="psec">
+    <div class="wrap">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Applications</span></div>
+      <h2 class="xw rv d1">Where it fits</h2>
+      <div class="uses">
+      <div class="use rv"><b>01</b><h4>Protected agriculture</h4><p>Row-by-row inspection in greenhouses and polytunnels, classifying plant disease on board where connectivity is poor or absent.</p></div>
+      <div class="use rv"><b>02</b><h4>Perimeter surveillance</h4><p>Autonomous patrol of a mapped site with person detection and live video, replacing fixed cameras that leave blind spots.</p></div>
+      <div class="use rv"><b>03</b><h4>Early fire response</h4><p>Onboard fire detection with a tracked nozzle for suppression at the source, before a fire reaches a size that needs a crew.</p></div>
+      <div class="use rv"><b>04</b><h4>Crowd management</h4><p>Non-lethal water deployment at standoff distance, keeping personnel out of direct contact.</p></div>
+      <div class="use rv"><b>05</b><h4>Hazardous inspection</h4><p>Sending sensors rather than people into spaces that are confined, contaminated or structurally unsound.</p></div>
+      <div class="use rv"><b>06</b><h4>Research platform</h4><p>A modular base for testing navigation, perception and manipulation without rebuilding a robot for each experiment.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="psec">
+    <div class="wrap">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Footage</span></div>
+      <h2 class="xw rv d1">In motion</h2>
+      <div class="vids">
+      <div class="vid rv"><video controls preload="none" poster="../assets/video/crowd-patrol.jpg"><source src="../assets/video/crowd-patrol.mp4" type="video/mp4"></video><div class="vc">Crowd Control · autonomous patrol</div></div>
+      <div class="vid rv"><video controls preload="none" poster="../assets/video/stage1-drive.jpg"><source src="../assets/video/stage1-drive.mp4" type="video/mp4"></video><div class="vc">Stage 1 · first drive test</div></div>
+      </div>
+    </div>
+  </section>
+  <section class="psec">
+    <div class="wrap">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Gallery</span></div>
+      <h2 class="xw rv d1">16 images</h2>
+      <div class="gal">
+      <figure class="rv"><img src="../assets/mpmr/01-stage1.jpg" loading="lazy" alt="Stage 1 · Kinect depth sensing"><figcaption>Stage 1 · Kinect depth sensing</figcaption></figure>
+      <figure class="rv"><img src="../assets/mpmr/02-ghrs-a.jpg" loading="lazy" alt="GHRS · greenhouse configuration"><figcaption>GHRS · greenhouse configuration</figcaption></figure>
+      <figure class="rv"><img src="../assets/mpmr/03-ghrs-b.jpg" loading="lazy" alt="GHRS · sensor mast"><figcaption>GHRS · sensor mast</figcaption></figure>
+      <figure class="rv"><img src="../assets/mpmr/04-ghrs-c.jpg" loading="lazy" alt="GHRS · field test"><figcaption>GHRS · field test</figcaption></figure>
+      <figure class="rv"><img src="../assets/mpmr/05-ghrs-d.jpg" loading="lazy" alt="GHRS · payload deck"><figcaption>GHRS · payload deck</figcaption></figure>
+      <figure class="rv"><img src="../assets/mpmr/06-ghrs-e.jpg" loading="lazy" alt="GHRS · drive assembly"><figcaption>GHRS · drive assembly</figcaption></figure>
+      <figure class="rv"><img src="../assets/mpmr/07-ghrs-f.jpg" loading="lazy" alt="GHRS · arm detail"><figcaption>GHRS · arm detail</figcaption></figure>
+      <figure class="rv"><img src="../assets/mpmr/08-crowd-a.jpg" loading="lazy" alt="Crowd Control · nozzle mount"><figcaption>Crowd Control · nozzle mount</figcaption></figure>
+      <figure class="rv"><img src="../assets/mpmr/09-crowd-b.jpg" loading="lazy" alt="Crowd Control · rear view"><figcaption>Crowd Control · rear view</figcaption></figure>
+      <figure class="rv"><img src="../assets/mpmr/10-crowd-c.jpg" loading="lazy" alt="Crowd Control · sensor head"><figcaption>Crowd Control · sensor head</figcaption></figure>
+      <figure class="rv"><img src="../assets/mpmr/11-crowd-d.jpg" loading="lazy" alt="Crowd Control · full platform"><figcaption>Crowd Control · full platform</figcaption></figure>
+      <figure class="rv"><img src="../assets/mpmr/12-scorp-a.jpg" loading="lazy" alt="SCORP · turret mounted"><figcaption>SCORP · turret mounted</figcaption></figure>
+      <figure class="rv"><img src="../assets/mpmr/13-scorp-b.jpg" loading="lazy" alt="SCORP · gimbal detail"><figcaption>SCORP · gimbal detail</figcaption></figure>
+      <figure class="rv"><img src="../assets/mpmr/14-scorp-c.jpg" loading="lazy" alt="SCORP · side profile"><figcaption>SCORP · side profile</figcaption></figure>
+      <figure class="rv"><img src="../assets/mpmr/15-dashboard.jpg" loading="lazy" alt="Ground control · live telemetry"><figcaption>Ground control · live telemetry</figcaption></figure>
+      <figure class="rv"><img src="../assets/mpmr/16-firedet.jpg" loading="lazy" alt="Onboard fire detection"><figcaption>Onboard fire detection</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="pnav">
+    <a href="comet.html"><span class="k">← Previous</span><span class="t">Comet</span></a>
+    <a href="waraqvault.html"><span class="k">Next →</span><span class="t">WaraqVault</span></a>
+  </div>
+
+  <div class="wrap">
+    <footer>
+      <span style="color:var(--acc)"><a href="../index.html">anmar-almomani.dev</a></span>
+      <span>Ajloun · Jordan</span>
+      <span>© 2026</span>
+    </footer>
+  </div>
+</main>
+<script src="../assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WaraqVault — Anmar Momani</title>
+<meta name="description" content="WaraqVault — an offline Arabic and English document vault with RTL-aware full-text search, tashkil normalisation and OCR ingest.">
+<meta name="theme-color" content="#06090C">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WaraqVault — Anmar Momani">
+<meta property="og:description" content="WaraqVault — an offline Arabic and English document vault with RTL-aware full-text search, tashkil normalisation and OCR ingest.">
+<meta property="og:image" content="https://anmar-almomani.dev/assets/waraqvault/03-search.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="scan" aria-hidden="true"></div>
+<div class="vig" aria-hidden="true"></div>
+
+<header id="hdr">
+  <div class="wrap hdr">
+    <a class="brand" href="../index.html">
+      <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="xn">Anmar Momani</span>
+    </a>
+    <nav id="nav">
+      <a href="../index.html#platform">Platform</a>
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#repos">Repos</a>
+      <a href="../index.html#fikrbot">Fikr Bot</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#contact">Contact ↗</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<main>
+  <div class="ticksL"></div>
+  <div class="wrap">
+    <a class="back" href="../index.html#work">← All work</a>
+    <div class="phead">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Desktop software · Arabic NLP</span></div>
+      <h1 class="xw rv d1">WaraqVault</h1>
+      <p class="lede rv d2">An offline document vault for Arabic and English, with full-text search that understands how Arabic is actually written.</p>
+      <div class="pmeta rv d2">
+      <div><div class="mlab">Role</div><div class="mval">Design and build</div></div>
+      <div><div class="mlab">Stack</div><div class="mval">Tauri · SQLite FTS5</div></div>
+      <div><div class="mlab">Platforms</div><div class="mval">Windows · Linux</div></div>
+      <div><div class="mlab">Status</div><div class="mval">Shipping</div></div>
+      </div>
+      <div class="phero rv d2"><img src="../assets/waraqvault/03-search.jpg" alt="WaraqVault search interface"></div>
+    </div>
+  </div>
+
+  <section class="psec">
+    <div class="wrap">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Overview</span></div>
+      <h2 class="xw rv d1" style="margin-bottom:32px">What it is</h2>
+      <div class="prose rv d2">
+      <p>Searching Arabic text is harder than searching English, and most tools quietly fail at it. The same word can be written with or without <strong>tashkil</strong> — the diacritical marks that indicate short vowels. Alif appears as أ, إ, ٱ or ا. Taa marbuta and haa get swapped. A reader sees one word; a naive index sees five different strings, and a search for one finds none of the others.</p>
+      <p>WaraqVault normalises all of it before indexing, so a query matches the text however it happens to be vocalised — and highlights the match in the original, unmodified document.</p>
+      <p>The second constraint was privacy. Legal files, medical records, research material and personal archives are exactly the documents people are least willing to upload to someone else&rsquo;s server. So WaraqVault does not have one. It is a <strong>Tauri</strong> desktop application with a SQLite FTS5 index living entirely on your machine, with OCR ingest through EasyOCR for scanned pages and images. No account, no sync, no network.</p>
+      <p>Drop in PDFs, DOCX files, plain text or images; they are read, OCR&rsquo;d where needed, and indexed automatically. Workspaces keep separate collections apart, and search can be scoped to one document or run across everything.</p>
+      <p>It was built for the JOSA Reclaim Hackathon and now ships as Windows and Linux installers from the repository.</p>
+      </div>
+      <div class="stack rv d2"><span>Tauri</span><span>Rust</span><span>TypeScript</span><span>SQLite FTS5</span><span>EasyOCR</span><span>Arabic normalisation</span><span>RTL</span></div>
+      <div class="cta rv">
+        <div><h4>Open source</h4><p>Clone it, build it, or download the installers.</p></div>
+        <a class="ghbtn" href="https://github.com/Anmartiger/Waraq-Vault" target="_blank" rel="noopener">View repository</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="psec">
+    <div class="wrap">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Applications</span></div>
+      <h2 class="xw rv d1">Where it fits</h2>
+      <div class="uses">
+      <div class="use rv"><b>01</b><h4>Legal practice</h4><p>Case files, contracts and filings searchable across years of archives, on a machine that never sends a document anywhere.</p></div>
+      <div class="use rv"><b>02</b><h4>Academic research</h4><p>Arabic primary sources with inconsistent vocalisation, searchable as one corpus rather than manually.</p></div>
+      <div class="use rv"><b>03</b><h4>Newsroom archives</h4><p>Fast retrieval across mixed Arabic and English material under deadline, offline in the field.</p></div>
+      <div class="use rv"><b>04</b><h4>Regulated offices</h4><p>Organisations whose policy forbids cloud document storage but still need real search.</p></div>
+      <div class="use rv"><b>05</b><h4>Scanned collections</h4><p>Paper archives digitised and OCR&rsquo;d into a searchable index without a subscription.</p></div>
+      <div class="use rv"><b>06</b><h4>Personal archive</h4><p>Years of accumulated PDFs and documents turned into something you can actually find things in.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="psec">
+    <div class="wrap">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Gallery</span></div>
+      <h2 class="xw rv d1">3 images</h2>
+      <div class="gal">
+      <figure class="rv"><img src="../assets/waraqvault/01-start.jpg" loading="lazy" alt="Header · workspace controls"><figcaption>Header · workspace controls</figcaption></figure>
+      <figure class="rv"><img src="../assets/waraqvault/02-library.jpg" loading="lazy" alt="Library · indexed documents"><figcaption>Library · indexed documents</figcaption></figure>
+      <figure class="rv"><img src="../assets/waraqvault/03-search.jpg" loading="lazy" alt="Search · Arabic match highlighting"><figcaption>Search · Arabic match highlighting</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="pnav">
+    <a href="mpmr.html"><span class="k">← Previous</span><span class="t">M.P.M.R</span></a>
+    <a href="al-minbar.html"><span class="k">Next →</span><span class="t">Al-Minbar</span></a>
+  </div>
+
+  <div class="wrap">
+    <footer>
+      <span style="color:var(--acc)"><a href="../index.html">anmar-almomani.dev</a></span>
+      <span>Ajloun · Jordan</span>
+      <span>© 2026</span>
+    </footer>
+  </div>
+</main>
+<script src="../assets/site.js"></script>
+</body>
+</html>

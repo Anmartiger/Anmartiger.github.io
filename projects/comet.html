@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comet — Anmar Momani</title>
+<meta name="description" content="Comet — a single-file offline feeding tracker for a common kestrel, built around a deliberate ten-day cycle.">
+<meta name="theme-color" content="#06090C">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Comet — Anmar Momani">
+<meta property="og:description" content="Comet — a single-file offline feeding tracker for a common kestrel, built around a deliberate ten-day cycle.">
+<meta property="og:image" content="https://anmar-almomani.dev/assets/comet/01-kestrel-a.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="scan" aria-hidden="true"></div>
+<div class="vig" aria-hidden="true"></div>
+
+<header id="hdr">
+  <div class="wrap hdr">
+    <a class="brand" href="../index.html">
+      <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="xn">Anmar Momani</span>
+    </a>
+    <nav id="nav">
+      <a href="../index.html#platform">Platform</a>
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#repos">Repos</a>
+      <a href="../index.html#fikrbot">Fikr Bot</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#contact">Contact ↗</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<main>
+  <div class="ticksL"></div>
+  <div class="wrap">
+    <a class="back" href="../index.html#work">← All work</a>
+    <div class="phead">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Single-file app · Falconry</span></div>
+      <h1 class="xw rv d1">Comet</h1>
+      <p class="lede rv d2">A feeding tracker for a common kestrel, built around a ten-day cycle instead of a weekly one — for a reason.</p>
+      <div class="pmeta rv d2">
+      <div><div class="mlab">Role</div><div class="mval">Design and build</div></div>
+      <div><div class="mlab">Stack</div><div class="mval">One HTML file</div></div>
+      <div><div class="mlab">Subject</div><div class="mval">Common kestrel</div></div>
+      <div><div class="mlab">Status</div><div class="mval">Rebuild in progress</div></div>
+      </div>
+      <div class="phero rv d2"><img src="../assets/comet/01-kestrel-a.jpg" alt="Comet, a common kestrel"></div>
+    </div>
+  </div>
+
+  <section class="psec">
+    <div class="wrap">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Overview</span></div>
+      <h2 class="xw rv d1" style="margin-bottom:32px">What it is</h2>
+      <div class="prose rv d2">
+      <p>Comet is a kestrel. This is the application that tracks what he eats.</p>
+      <p>Feeding a bird of prey is not a matter of putting food out. Intake governs weight, weight governs flying condition, and the record has to be exact: what was fed, how much, and when. Chicken heart, liver and breast; day-old chicks; wild sparrows.</p>
+      <p>The part that drove the design is the <strong>ten-day cycle</strong>. A weekly rhythm is the obvious choice and it is the wrong one — it locks the same days into the same role every week, which for wild-caught prey means a predictable, repeating draw on local birds. Stretching the cycle to ten days breaks that alignment and reduces the take. The application is built around that period rather than a calendar week, which is precisely why no off-the-shelf tracker fits.</p>
+      <p>It is <strong>one HTML file</strong>. No dependencies, no build step, no server, no account. It opens from the filesystem on a phone in a garden with no signal, which is where it is actually used. An earlier version was lost before it was ever saved; this is the rebuild.</p>
+      </div>
+      <div class="stack rv d2"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Single file</span><span>Offline</span></div>
+
+    </div>
+  </section>
+
+  <section class="psec">
+    <div class="wrap">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Applications</span></div>
+      <h2 class="xw rv d1">Where it fits</h2>
+      <div class="uses">
+      <div class="use rv"><b>01</b><h4>Raptor keeping</h4><p>Precise intake records where weight management is the whole job.</p></div>
+      <div class="use rv"><b>02</b><h4>Wild-take reduction</h4><p>A cycle deliberately offset from the week to lessen pressure on local prey populations.</p></div>
+      <div class="use rv"><b>03</b><h4>Field use</h4><p>Works from a file on a phone with no connection, which is where feeding happens.</p></div>
+      <div class="use rv"><b>04</b><h4>Long-term records</h4><p>Condition tracked across seasons rather than remembered.</p></div>
+      <div class="use rv"><b>05</b><h4>Zero maintenance</h4><p>Nothing to update, expire or subscribe to — the file just keeps working.</p></div>
+      <div class="use rv"><b>06</b><h4>Adaptable</h4><p>A pattern that suits any regime built on an interval other than a week.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="psec">
+    <div class="wrap">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Gallery</span></div>
+      <h2 class="xw rv d1">6 images</h2>
+      <div class="gal">
+      <figure class="rv"><img src="../assets/comet/01-kestrel-a.jpg" loading="lazy" alt="Comet"><figcaption>Comet</figcaption></figure>
+      <figure class="rv"><img src="../assets/comet/02-kestrel-b.jpg" loading="lazy" alt="Comet · perched"><figcaption>Comet · perched</figcaption></figure>
+      <figure class="rv"><img src="../assets/comet/03-app-a.jpg" loading="lazy" alt="Feed log"><figcaption>Feed log</figcaption></figure>
+      <figure class="rv"><img src="../assets/comet/04-app-b.jpg" loading="lazy" alt="Cycle view"><figcaption>Cycle view</figcaption></figure>
+      <figure class="rv"><img src="../assets/comet/05-app-c.jpg" loading="lazy" alt="Entry detail"><figcaption>Entry detail</figcaption></figure>
+      <figure class="rv"><img src="../assets/comet/06-app-d.jpg" loading="lazy" alt="Food types"><figcaption>Food types</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="pnav">
+    <a href="skywell.html"><span class="k">← Previous</span><span class="t">Skywell</span></a>
+    <a href="fikr-bot.html"><span class="k">Next →</span><span class="t">Fikr Bot</span></a>
+  </div>
+
+  <div class="wrap">
+    <footer>
+      <span style="color:var(--acc)"><a href="../index.html">anmar-almomani.dev</a></span>
+      <span>Ajloun · Jordan</span>
+      <span>© 2026</span>
+    </footer>
+  </div>
+</main>
+<script src="../assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skywell — Anmar Momani</title>
+<meta name="description" content="Skywell — a transportable solar-tracking water purification unit with an independent atmospheric water generator, controlled by ESP32.">
+<meta name="theme-color" content="#06090C">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Skywell — Anmar Momani">
+<meta property="og:description" content="Skywell — a transportable solar-tracking water purification unit with an independent atmospheric water generator, controlled by ESP32.">
+<meta property="og:image" content="https://anmar-almomani.dev/assets/skywell/02-dish.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="scan" aria-hidden="true"></div>
+<div class="vig" aria-hidden="true"></div>
+
+<header id="hdr">
+  <div class="wrap hdr">
+    <a class="brand" href="../index.html">
+      <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="xn">Anmar Momani</span>
+    </a>
+    <nav id="nav">
+      <a href="../index.html#platform">Platform</a>
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#repos">Repos</a>
+      <a href="../index.html#fikrbot">Fikr Bot</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#contact">Contact ↗</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<main>
+  <div class="ticksL"></div>
+  <div class="wrap">
+    <a class="back" href="../index.html#work">← All work</a>
+    <div class="phead">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Hardware · Water systems</span></div>
+      <h1 class="xw rv d1">Skywell</h1>
+      <p class="lede rv d2">A transportable water unit that produces drinking water two ways: solar distillation, and pulling it out of the air.</p>
+      <div class="pmeta rv d2">
+      <div><div class="mlab">Role</div><div class="mval">Design and build</div></div>
+      <div><div class="mlab">Control</div><div class="mval">ESP32</div></div>
+      <div><div class="mlab">Subsystems</div><div class="mval">Two</div></div>
+      <div><div class="mlab">Status</div><div class="mval">In development</div></div>
+      </div>
+      <div class="phero rv d2"><img src="../assets/skywell/02-dish.jpg" alt="Skywell solar tracking dish"></div>
+    </div>
+  </div>
+
+  <section class="psec">
+    <div class="wrap">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Overview</span></div>
+      <h2 class="xw rv d1" style="margin-bottom:32px">What it is</h2>
+      <div class="prose rv d2">
+      <p>Skywell is built around a simple constraint: produce drinkable water where there is no clean supply and no grid, using something one person can move.</p>
+      <p>The first subsystem is a <strong>mirrored parabolic dish that tracks the sun</strong>, concentrating a beam onto a conduit carrying the source water. The water is heated to boiling and the vapour condensed — genuine distillation rather than pasteurisation, so it separates out dissolved salts and contaminants, not only pathogens. Tracking is what makes it work: a fixed dish loses its focus within minutes as the sun moves, so the mount follows it through the day to hold the concentration point on the conduit.</p>
+      <p>The second subsystem is an <strong>atmospheric water generator</strong>, condensing humidity out of the air with an air pump and a propane-driven cycle. It runs independently of the dish, which matters at night and on overcast days when the solar path produces nothing.</p>
+      <p>Both are coordinated by an <strong>ESP32</strong> handling the tracking servos, sensing and the generator cycle. The two paths are deliberately independent — one produces from bad water and sunlight, the other from air and fuel, so the unit is not dependent on either being available.</p>
+      </div>
+      <div class="stack rv d2"><span>ESP32</span><span>Solar tracking</span><span>Distillation</span><span>Atmospheric water generation</span><span>Servo control</span></div>
+
+    </div>
+  </section>
+
+  <section class="psec">
+    <div class="wrap">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Applications</span></div>
+      <h2 class="xw rv d1">Where it fits</h2>
+      <div class="uses">
+      <div class="use rv"><b>01</b><h4>Off-grid supply</h4><p>Drinking water at sites with no mains and no reliable power.</p></div>
+      <div class="use rv"><b>02</b><h4>Remote agriculture</h4><p>Small-scale clean water for farms beyond the distribution network.</p></div>
+      <div class="use rv"><b>03</b><h4>Emergency response</h4><p>A transportable unit for situations where local supply is contaminated or cut.</p></div>
+      <div class="use rv"><b>04</b><h4>Arid regions</h4><p>An atmospheric path for places where there is humidity but no surface water.</p></div>
+      <div class="use rv"><b>05</b><h4>Field camps</h4><p>Survey, research and work camps that would otherwise truck water in.</p></div>
+      <div class="use rv"><b>06</b><h4>Demonstration</h4><p>A working platform for teaching solar concentration and condensation.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="psec">
+    <div class="wrap">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Footage</span></div>
+      <h2 class="xw rv d1">In motion</h2>
+      <div class="vids">
+      <div class="vid rv"><video controls preload="none" poster="../assets/video/skywell-a.jpg"><source src="../assets/video/skywell-a.mp4" type="video/mp4"></video><div class="vc">Solar tracking · dish movement</div></div>
+      <div class="vid rv"><video controls preload="none" poster="../assets/video/skywell-b.jpg"><source src="../assets/video/skywell-b.mp4" type="video/mp4"></video><div class="vc">Condensation test</div></div>
+      </div>
+    </div>
+  </section>
+  <section class="psec">
+    <div class="wrap">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Gallery</span></div>
+      <h2 class="xw rv d1">2 images</h2>
+      <div class="gal">
+      <figure class="rv"><img src="../assets/skywell/01-unit.jpg" loading="lazy" alt="Skywell · assembled unit"><figcaption>Skywell · assembled unit</figcaption></figure>
+      <figure class="rv"><img src="../assets/skywell/02-dish.jpg" loading="lazy" alt="Solar tracking dish"><figcaption>Solar tracking dish</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="pnav">
+    <a href="al-minbar.html"><span class="k">← Previous</span><span class="t">Al-Minbar</span></a>
+    <a href="comet.html"><span class="k">Next →</span><span class="t">Comet</span></a>
+  </div>
+
+  <div class="wrap">
+    <footer>
+      <span style="color:var(--acc)"><a href="../index.html">anmar-almomani.dev</a></span>
+      <span>Ajloun · Jordan</span>
+      <span>© 2026</span>
+    </footer>
+  </div>
+</main>
+<script src="../assets/site.js"></script>
+</body>
+</html>

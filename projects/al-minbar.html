@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Al-Minbar — Anmar Momani</title>
+<meta name="description" content="Al-Minbar — an offline Linux desktop application for prayer times, Quran reading and athkar, built with Tauri and React.">
+<meta name="theme-color" content="#06090C">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Al-Minbar — Anmar Momani">
+<meta property="og:description" content="Al-Minbar — an offline Linux desktop application for prayer times, Quran reading and athkar, built with Tauri and React.">
+<meta property="og:image" content="https://anmar-almomani.dev/assets/alminbar/01-app.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="scan" aria-hidden="true"></div>
+<div class="vig" aria-hidden="true"></div>
+
+<header id="hdr">
+  <div class="wrap hdr">
+    <a class="brand" href="../index.html">
+      <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="xn">Anmar Momani</span>
+    </a>
+    <nav id="nav">
+      <a href="../index.html#platform">Platform</a>
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#repos">Repos</a>
+      <a href="../index.html#fikrbot">Fikr Bot</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#contact">Contact ↗</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<main>
+  <div class="ticksL"></div>
+  <div class="wrap">
+    <a class="back" href="../index.html#work">← All work</a>
+    <div class="phead">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Desktop software · Offline-first</span></div>
+      <h1 class="xw rv d1">Al-Minbar</h1>
+      <p class="lede rv d2">Prayer times, a Quran reader and athkar as a real Linux desktop application — computed locally, bundled, and working with no connection.</p>
+      <div class="pmeta rv d2">
+      <div><div class="mlab">Role</div><div class="mval">Design and build</div></div>
+      <div><div class="mlab">Stack</div><div class="mval">Tauri · React · TypeScript</div></div>
+      <div><div class="mlab">Platform</div><div class="mval">Linux desktop</div></div>
+      <div><div class="mlab">Status</div><div class="mval">In build</div></div>
+      </div>
+      <div class="phero rv d2"><img src="../assets/alminbar/01-app.jpg" alt="Al-Minbar interface"></div>
+    </div>
+  </div>
+
+  <section class="psec">
+    <div class="wrap">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Overview</span></div>
+      <h2 class="xw rv d1" style="margin-bottom:32px">What it is</h2>
+      <div class="prose rv d2">
+      <p>Almost every prayer-times application is a phone app, a website, or a web page wrapped in a window — and nearly all of them ask the network for something they could work out themselves. On a Linux desktop the options thin out to almost nothing.</p>
+      <p>Al-Minbar is a native desktop application. Prayer times are <strong>computed locally</strong> from your coordinates rather than fetched, the Quran text and athkar are bundled with the application, and nothing requires a connection at any point.</p>
+      <p>It covers athan audio with desktop notifications, a Quran reader with recitation audio, translation and tafsir, athkar, Qibla direction, and a Hijri calendar. It starts with your session and sits in the taskbar.</p>
+      <p>Built with <strong>Tauri</strong> and React so it stays small and starts fast, targeting Ubuntu, Debian and Mint — including current GNOME under Wayland. The interface is deliberately calm and rounded rather than utilitarian, and Arabic fonts can be swapped in-app to whichever face you prefer to read.</p>
+      </div>
+      <div class="stack rv d2"><span>Tauri</span><span>React</span><span>TypeScript</span><span>Rust</span><span>Offline</span><span>Wayland · GNOME</span></div>
+      <div class="cta rv">
+        <div><h4>Open source</h4><p>Follow the build or run it yourself.</p></div>
+        <a class="ghbtn" href="https://github.com/Anmartiger/Al-Minbar" target="_blank" rel="noopener">View repository</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="psec">
+    <div class="wrap">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Applications</span></div>
+      <h2 class="xw rv d1">Where it fits</h2>
+      <div class="uses">
+      <div class="use rv"><b>01</b><h4>Linux desktops</h4><p>A category with almost no native option, served properly rather than as a browser tab.</p></div>
+      <div class="use rv"><b>02</b><h4>Offline environments</h4><p>Machines that are air-gapped, on poor connections, or simply not online when the time comes.</p></div>
+      <div class="use rv"><b>03</b><h4>Focused work</h4><p>Prayer notifications on the machine you are already working at, without reaching for a phone.</p></div>
+      <div class="use rv"><b>04</b><h4>Reading and study</h4><p>Recitation, translation and tafsir together in one reader rather than three tabs.</p></div>
+      <div class="use rv"><b>05</b><h4>Privacy</h4><p>No location sent to a server to get a time that basic astronomy already determines.</p></div>
+      <div class="use rv"><b>06</b><h4>Shared machines</h4><p>A lightweight install that starts with the session and stays out of the way.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="psec">
+    <div class="wrap">
+      <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">Gallery</span></div>
+      <h2 class="xw rv d1">1 images</h2>
+      <div class="gal">
+      <figure class="rv"><img src="../assets/alminbar/01-app.jpg" loading="lazy" alt="Al-Minbar · prayer times and reader"><figcaption>Al-Minbar · prayer times and reader</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="pnav">
+    <a href="waraqvault.html"><span class="k">← Previous</span><span class="t">WaraqVault</span></a>
+    <a href="skywell.html"><span class="k">Next →</span><span class="t">Skywell</span></a>
+  </div>
+
+  <div class="wrap">
+    <footer>
+      <span style="color:var(--acc)"><a href="../index.html">anmar-almomani.dev</a></span>
+      <span>Ajloun · Jordan</span>
+      <span>© 2026</span>
+    </footer>
+  </div>
+</main>
+<script src="../assets/site.js"></script>
+</body>
+</html>

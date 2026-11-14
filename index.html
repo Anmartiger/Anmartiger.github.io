@@ -4,42 +4,55 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Anmar Momani — AI &amp; Robotics Specialist</title>
-<meta name="description" content="Anmar Momani builds autonomous ground robotics and Arabic-language AI systems in Ajloun, Jordan. Field robotics, computer vision, ROS 2, offline Arabic NLP.">
-<meta name="theme-color" content="#06090C">
+<meta name="description" content="Anmar Momani builds autonomous ground robots, applied computer vision and Arabic-language AI — ROS 2 rovers, Jetson Orin autonomy, edge sensing. Amman, Jordan.">
+<meta name="theme-color" content="#070809">
 <link rel="canonical" href="https://anmar-almomani.dev/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://anmar-almomani.dev/">
 <meta property="og:title" content="Anmar Momani — AI &amp; Robotics Specialist">
-<meta property="og:description" content="Autonomous ground robotics and Arabic-language AI systems. Ajloun, Jordan.">
+<meta property="og:description" content="Autonomous ground robots, computer vision and Arabic-language AI systems. Built to run in the field. Amman, Jordan.">
 <meta property="og:image" content="https://anmar-almomani.dev/assets/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Anmar Momani — AI &amp; Robotics Specialist">
-<meta name="twitter:description" content="Autonomous ground robotics and Arabic-language AI systems. Ajloun, Jordan.">
+<meta name="twitter:description" content="Autonomous ground robots, computer vision and Arabic-language AI systems. Amman, Jordan.">
 <meta name="twitter:image" content="https://anmar-almomani.dev/assets/og-card.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Saira:wght@400;500;600&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
 <div class="scan" aria-hidden="true"></div>
 <div class="vig" aria-hidden="true"></div>
+<div class="hud-corners" aria-hidden="true"><i class="c-tl"></i><i class="c-tr"></i><i class="c-bl"></i><i class="c-br"></i></div>
+
+<!-- boot sequence -->
+<div class="boot" id="boot" aria-hidden="true">
+  <div class="boot-in">
+    <div class="boot-line">GROUND CONTROL STATION</div>
+    <div class="boot-bar"><i></i></div>
+    <div class="boot-log" id="bootlog"></div>
+  </div>
+</div>
 
 <header id="hdr">
   <div class="wrap hdr">
     <a class="brand" href="#top" aria-label="Anmar Momani — home">
       <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
-      <span class="xn">Anmar Momani</span>
+      <span class="bk">
+        <span class="xn">Anmar Momani</span>
+        <span class="call">CALLSIGN // ANMAR&#8209;01</span>
+      </span>
     </a>
     <nav id="nav">
       <a href="#platform">Platform</a>
       <a href="#work">Work</a>
       <a href="#repos">Repos</a>
       <a href="#fikrbot">Fikr Bot</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact" class="on">Contact ↗</a>
+      <a href="#experience">Record</a>
+      <a href="#contact" class="on">Contact</a>
     </nav>
     <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
   </div>
@@ -53,58 +66,80 @@
   <div class="glow g2" aria-hidden="true"></div>
   <div class="wrap">
     <div class="hero-grid">
-      <div class="rail" aria-hidden="true"><div class="ln"></div><div class="vt">32.4° N / 35.8° E</div></div>
-      <div>
+      <div class="rail" aria-hidden="true">
+        <div class="ln"></div>
+        <div class="vt">31.95&deg; N / 35.91&deg; E · AMMAN</div>
+        <div class="ln short"></div>
+      </div>
+      <div class="hero-main">
         <div class="eb rv" style="gap:14px">
           <span class="chip"><span class="dot"></span><span class="eyebrow" style="color:var(--grn)">Available for work</span></span>
-          <span style="width:40px;height:1px;background:#24313E"></span>
-          <span class="eyebrow" style="color:var(--mut2)">Ajloun · Jordan · UTC+3</span>
+          <span class="eyebrow" style="color:var(--mut2)">Amman · Jordan · UTC+3</span>
         </div>
-        <h1 class="xw rv d1">Robots that<br><span style="color:var(--acc)">work outdoors.</span><br>Software that<br>works anywhere.</h1>
-        <p class="lede rv d2">I build autonomous ground platforms and Arabic-language AI systems — usually offline, usually on hardware I can carry to a field and switch on. Currently architecting AI, computer vision and robotics programmes at FB Group.</p>
+        <h1 class="xw rv d1">Autonomous<br>ground robots<br><span class="hl">built for the field.</span></h1>
+        <p class="lede rv d2">I build autonomous rovers, applied computer vision and Arabic&#8209;language AI — from ROS&nbsp;2 stacks on Jetson Orin to RAG assistants and edge sensing. Hardware I can carry out, switch on, and trust off&#8209;grid. Currently architecting AI, vision and robotics programmes at FB Group.</p>
         <div class="btns rv d3">
           <a class="btn btn-p" href="#platform">Enter the platform
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a class="btn btn-s" href="mailto:amomnar@gmail.com">amomnar@gmail.com</a>
         </div>
-      </div>
-      <div class="rv d2">
-        <div class="frame">
-          <img src="assets/portrait.jpg" width="800" height="980" alt="Anmar Momani">
-          <div class="fade"></div><div class="sweep"></div>
-          <div class="brk tl"></div><div class="brk tr"></div><div class="brk bl"></div><div class="brk br"></div>
-          <div class="cap">Operator</div>
+        <div class="hstats rv d3">
+          <div class="hstat"><b class="num" data-count="4" data-pad="2">00</b><span>Platform builds</span></div>
+          <div class="hstat"><b class="num" data-count="12" data-pad="2">00</b><span>Field projects</span></div>
+          <div class="hstat"><b class="num" data-count="85.4" data-suffix="%">0</b><span>Model accuracy</span></div>
         </div>
-        <div class="meta2 one">
-          <div><div class="mlab">Discipline</div><div class="mval">Field robotics · Arabic NLP</div></div>
+      </div>
+      <div class="rv d2 hero-portrait">
+        <div class="frame" id="recticell">
+          <img src="assets/portrait.jpg" width="800" height="980" alt="Anmar Momani">
+          <div class="fade"></div>
+          <div class="sweep"></div>
+          <div class="reticle" aria-hidden="true">
+            <span class="r-h"></span><span class="r-v"></span>
+            <span class="r-ring"></span>
+            <span class="r-b tl"></span><span class="r-b tr"></span><span class="r-b bl"></span><span class="r-b br"></span>
+          </div>
+          <div class="brk tl"></div><div class="brk tr"></div><div class="brk bl"></div><div class="brk br"></div>
+          <div class="tgt" id="tgt">
+            <span class="k">TARGET</span><span class="v">OPERATOR</span>
+            <span class="lock">● LOCK</span>
+          </div>
+          <div class="cap">EO/IR · 31.95N 35.91E</div>
+        </div>
+        <div class="telem">
+          <div><span class="tk">STATUS</span><span class="tv on">ACTIVE</span></div>
+          <div><span class="tk">ROLE</span><span class="tv">Field robotics · Arabic NLP</span></div>
+          <div><span class="tk">ORG</span><span class="tv">FB Group</span></div>
         </div>
       </div>
     </div>
   </div>
   <div class="strip">
     <div class="marq" id="marq"><ul id="marqul">
-      <li>ROS 2</li><li class="s">/</li><li>Jetson · Edge AI</li><li class="s">/</li><li>Computer Vision</li><li class="s">/</li>
-      <li>Arabic NLP</li><li class="s">/</li><li>RAG &amp; LLM</li><li class="s">/</li><li>ESP32</li><li class="s">/</li>
-      <li>Raspberry Pi</li><li class="s">/</li><li>Tauri</li><li class="s">/</li><li>Solution Architecture</li><li class="s">/</li>
+      <li>ROS 2</li><li class="s">+</li><li>Jetson Orin</li><li class="s">+</li><li>SLAM</li><li class="s">+</li>
+      <li>Computer Vision</li><li class="s">+</li><li>Arabic NLP</li><li class="s">+</li><li>RAG &amp; LLM</li><li class="s">+</li>
+      <li>EfficientNetV2</li><li class="s">+</li><li>YOLOv8</li><li class="s">+</li><li>ESP32 · LoRa</li><li class="s">+</li>
+      <li>GNSS / RTK</li><li class="s">+</li><li>Sensor Fusion</li><li class="s">+</li><li>Tauri</li><li class="s">+</li>
+      <li>Rust</li><li class="s">+</li><li>FreeCAD</li><li class="s">+</li><li>Solution Architecture</li><li class="s">+</li>
     </ul></div>
   </div>
 </div>
 
-<!-- 01 PLATFORM -->
-<section id="platform" class="sect-pad" style="background:linear-gradient(180deg,#080C11 0%,#06090C 100%)">
-  <div class="ghost xw" data-par aria-hidden="true">01</div>
+<!-- SEC-01 PLATFORM -->
+<section id="platform" class="sect-pad">
+  <div class="ghost xw" data-par aria-hidden="true">PLATFORM</div>
   <div class="wrap">
     <div class="mp-head">
-      <div style="max-width:700px">
-        <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">01 — Flagship platform</span></div>
+      <div style="max-width:720px">
+        <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">SEC&#8209;01 · Flagship platform</span></div>
         <h2 class="xw rv d1" style="margin-bottom:20px">M.P.M.R</h2>
-        <p class="sub rv d2" style="margin-bottom:26px">Multi-Purpose Mobile Robot. One chassis, built four ways — each configuration re-tasking the same drive platform for a different job. Agriculture, then surveillance, then tracking. The evolution is the point.</p>
+        <p class="sub rv d2" style="margin-bottom:26px">Multi&#8209;Purpose Mobile Robot. One 4&times;4 chassis, rebuilt four ways — each configuration re&#8209;tasking the same drive platform for a different mission. Agriculture, then surveillance, then target tracking. The evolution is the point.</p>
         <a class="ghbtn rv d2" href="projects/mpmr.html">Full project · 16 images &amp; footage
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="spec rv d2">
         <div><b>CHASSIS</b>4×4 skid-steer</div>
-        <div><b>COMPUTE</b>Raspberry Pi 5</div>
+        <div><b>COMPUTE</b>Pi 5 · Jetson Orin</div>
         <div><b>STACK</b>ROS 2</div>
         <div><b>BUILDS</b>4 configurations</div>
         <div><b>STATUS</b><span style="color:var(--grn)">Active development</span></div>
@@ -117,28 +152,28 @@
         <div class="vnum"><b class="xw">01</b><span>First build</span></div>
         <div class="vimg"><img src="assets/rover-1.jpg" width="900" height="760" loading="lazy" alt="Stage 1 rover"><div class="fade"></div></div>
         <h3 class="xn">Stage 1</h3>
-        <p>Proof the drive platform worked. Kinect-based depth sensing for obstacle avoidance, teleoperation, onboard lighting.</p>
+        <p>Proof the drive platform worked. Kinect depth sensing for obstacle avoidance, teleoperation, onboard lighting.</p>
         <div class="blist"><div>› Xbox Kinect 360 depth</div><div>› Teleoperation</div><div>› Onboard lighting</div></div>
       </article>
       <article class="ver rv d1">
         <div class="vnum"><b class="xw">02</b><span>GHRS</span></div>
         <div class="vimg"><img src="assets/rover-2.jpg" width="900" height="760" loading="lazy" alt="GHRS greenhouse rover"><div class="fade"></div></div>
         <h3 class="xn">Greenhouse</h3>
-        <p>Autonomous navigation between crop rows with a 6-DOF arm and on-board plant disease classification.</p>
+        <p>Autonomous navigation between crop rows with a 6&#8209;DOF arm and on&#8209;board plant disease classification.</p>
         <div class="blist"><div>› Pi 5 · ROS 2 · 6-DOF arm</div><div>› EfficientNetV2-S</div><div>› <b>85.4%</b> @ 0.65 confidence</div></div>
       </article>
       <article class="ver rv d2">
         <div class="vnum"><b class="xw">03</b><span>Surveillance</span></div>
         <div class="vimg"><img src="assets/rover-3.jpg" width="900" height="760" loading="lazy" alt="Crowd control configuration"><div class="fade"></div></div>
         <h3 class="xn">Crowd Control</h3>
-        <p>SLAM-based autonomous patrol with camera tracking, fire detection, and a tracked non-lethal water nozzle.</p>
+        <p>SLAM&#8209;based autonomous patrol with camera tracking, fire detection, and a tracked non&#8209;lethal water nozzle.</p>
         <div class="blist"><div>› LIDAR · SLAM · GPS · IMU</div><div>› Person &amp; fire detection</div><div>› Tracked water nozzle</div></div>
       </article>
       <article class="ver rv d3">
         <div class="vnum"><b class="xw amb">04</b><span class="amb">Current</span></div>
-        <div class="vimg" style="border-color:#33404D"><img src="assets/rover-4.jpg" width="900" height="760" loading="lazy" alt="SCORP configuration"><div class="fade"></div></div>
+        <div class="vimg hot"><img src="assets/rover-4.jpg" width="900" height="760" loading="lazy" alt="SCORP configuration"><div class="fade"></div></div>
         <h3 class="xn">SCORP</h3>
-        <p>A stabilised pan-tilt turret that acquires and follows a moving target, mounted on the same chassis.</p>
+        <p>A stabilised pan&#8209;tilt turret that acquires and follows a moving target, mounted on the same chassis.</p>
         <div class="blist"><div>› Pan-tilt gimbal</div><div>› Vision-based tracking</div><div>› Non-lethal test platform</div></div>
       </article>
     </div>
@@ -147,11 +182,32 @@
       <div class="txt">
         <div class="eyebrow" style="color:var(--amb)">V04 · SCORP</div>
         <h3 class="xw">Turret<br>tracking</h3>
-        <p>The current configuration. Vision-based target acquisition driving a stabilised pan-tilt mount, tested with a non-lethal platform.</p>
+        <p>The current configuration. Vision&#8209;based target acquisition driving a stabilised pan&#8209;tilt mount, tested with a non&#8209;lethal platform.</p>
       </div>
       <div class="imgwrap">
         <img src="assets/scorp-wide.jpg" width="1080" height="1000" loading="lazy" alt="SCORP configuration with pan-tilt turret">
         <div class="msk"></div>
+        <div class="recoverlay" aria-hidden="true"><span class="rl-h"></span><span class="rl-v"></span><span class="rl-tag">TRK · 00.00.00</span></div>
+      </div>
+    </div>
+
+    <!-- field footage -->
+    <div class="field rv">
+      <div class="fbar">
+        <span class="eyebrow" style="color:var(--blue)"><span class="recdot"></span>REC · Field footage</span>
+        <span class="eyebrow" style="color:var(--mut2)">Live demonstration · Amman</span>
+      </div>
+      <div class="fvids">
+        <figure class="fvid">
+          <video src="assets/video/stage1-drive.mp4" poster="assets/video/stage1-drive.jpg" muted loop playsinline preload="none" data-field></video>
+          <div class="scn" aria-hidden="true"></div>
+          <figcaption>DRIVE TEST · STAGE 1 CHASSIS</figcaption>
+        </figure>
+        <figure class="fvid">
+          <video src="assets/video/crowd-patrol.mp4" poster="assets/video/crowd-patrol.jpg" muted loop playsinline preload="none" data-field></video>
+          <div class="scn" aria-hidden="true"></div>
+          <figcaption>PUBLIC DEMONSTRATION · PATROL UNIT</figcaption>
+        </figure>
       </div>
     </div>
 
@@ -159,7 +215,7 @@
       <div class="dbar">
         <div style="display:flex;align-items:center;gap:16px">
           <span class="leds" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="eyebrow" style="color:#93A6B4">Ground control · Telemetry</span>
+          <span class="eyebrow" style="color:var(--blue)">Ground control · Telemetry</span>
         </div>
         <div style="display:flex;align-items:center;gap:8px"><span class="dot"></span><span class="eyebrow" style="color:var(--grn)">Live</span></div>
       </div>
@@ -178,21 +234,21 @@
     <div class="duo">
       <div class="card rv" style="transform:none">
         <div class="cimg"><img src="assets/firedet.jpg" width="1200" height="660" loading="lazy" alt="Onboard fire detection" style="height:260px"></div>
-        <div class="cbody" style="padding:20px 24px"><div class="eyebrow" style="color:var(--mut);letter-spacing:.14em">Onboard fire detection</div></div>
+        <div class="cbody" style="padding:20px 24px"><div class="eyebrow" style="color:var(--blue);letter-spacing:.14em">Onboard fire detection</div></div>
       </div>
       <div class="note rv d1">
         <div class="eyebrow" style="color:var(--amb);margin-bottom:16px">Field record</div>
-        <p>Demonstrated to Jordanian defence and public-security bodies, who showed serious interest. Development is ongoing.</p>
+        <p>Demonstrated to Jordanian defence and public&#8209;security bodies, who showed serious interest. A 4&times;4 reconnaissance variant with Jetson Orin onboard autonomy and long&#8209;range teleoperation is in development.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 02 WORK -->
-<section id="work" class="sect-pad">
-  <div class="ghost xw" data-par aria-hidden="true">02</div>
+<!-- SEC-02 WORK -->
+<section id="work" class="sect-pad" style="background:var(--bg2)">
+  <div class="ghost xw" data-par aria-hidden="true">FIELD</div>
   <div class="wrap">
-    <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">02 — Selected work</span></div>
+    <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">SEC&#8209;02 · Selected work</span></div>
     <h2 class="xw rv d1" style="margin-bottom:52px">Things I have built</h2>
 
     <div class="g2c">
@@ -201,7 +257,7 @@
         <div class="cbody">
           <h3 class="xn">WaraqVault</h3>
           <p>An offline document vault for Arabic and English. Search that understands Arabic — normalising tashkil so a query matches text however it is vocalised. Everything stays on your machine.</p>
-          <div class="tags"><span>Tauri</span><span>SQLite FTS5</span><span>EasyOCR</span><span>RTL</span></div>
+          <div class="tags"><span>Tauri</span><span>SQLite FTS5</span><span>Tesseract OCR</span><span>RTL</span></div>
           <span class="more">View project <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
       </a>
@@ -221,7 +277,7 @@
         <div class="cimg"><img src="assets/skywell.jpg" width="900" height="760" loading="lazy" alt="Skywell water unit"></div>
         <div class="cbody">
           <h3 class="xn">Skywell</h3>
-          <p>A transportable water unit: a sun-tracking mirrored dish concentrates a beam to heat water for distillation, alongside an atmospheric water generator.</p>
+          <p>A transportable water unit: a sun&#8209;tracking mirrored dish concentrates a beam to heat water to ~90&deg;C for purification, alongside an atmospheric water generator.</p>
           <div class="tiny">ESP32 · Solar tracking · AWG</div>
           <span class="more">View project <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
@@ -230,32 +286,35 @@
         <div class="cimg"><img src="assets/comet.jpg" width="900" height="760" loading="lazy" alt="Comet feeding tracker"></div>
         <div class="cbody">
           <h3 class="xn">Comet</h3>
-          <p>A feeding tracker for a common kestrel, built around a ten-day cycle rather than a weekly one. One HTML file, no dependencies, no server.</p>
+          <p>A feeding tracker for a common kestrel, built around a ten&#8209;day cycle rather than a weekly one. One HTML file, no dependencies, no server.</p>
           <div class="tiny">Single-file HTML · Falconry</div>
           <span class="more">View project <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
       </a>
       <article class="card sm rv d2">
         <div class="also">
-          <div class="eyebrow" style="color:var(--mut3);margin-bottom:20px">Also in progress</div>
-          <h4>Content pipeline</h4>
-          <p>An agent that reads my project folders, works out what is worth publishing, and asks me for the assets — then generates them itself if I do not reply.</p>
+          <div class="eyebrow" style="color:var(--blue);margin-bottom:20px">Also in the shop</div>
+          <h4>Search-and-Rescue Rover</h4>
+          <p>Detects people through walls using WiFi CSI sensing on ESP32-S3 nodes, with depth-camera and drone integration.</p>
           <div class="hr"></div>
-          <h4>PMS</h4>
-          <p>Posture monitoring — several IMUs fused with a Kalman filter, haptic feedback, and a phone app over BLE.</p>
+          <h4>Vision-Guided Turret</h4>
+          <p>Pi 5 airsoft turret tracking targets with OpenCV and MediaPipe, with projectile trajectory compensation.</p>
+          <div class="hr"></div>
+          <h4>AI Trading Agent</h4>
+          <p>Autonomous Binance agent (ccxt) with a Claude-API orchestrator, trade journal and self-review loop.</p>
         </div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- 03 REPOS -->
-<section id="repos" class="sect-pad" style="background:var(--bg2)">
-  <div class="ghost xw" data-par aria-hidden="true">03</div>
+<!-- SEC-03 REPOS -->
+<section id="repos" class="sect-pad">
+  <div class="ghost xw" data-par aria-hidden="true">SOURCE</div>
   <div class="wrap">
     <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:48px;flex-wrap:wrap">
       <div>
-        <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">03 — Open source</span></div>
+        <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">SEC&#8209;03 · Open source</span></div>
         <h2 class="xw rv d1" style="margin-bottom:18px">Repositories</h2>
         <p class="sub rv d2" style="max-width:560px;font-size:16px">Everything below is public, buildable, and runs offline. Clone it and see.</p>
       </div>
@@ -269,7 +328,7 @@
       <article class="repo rv">
         <div class="rhead"><span class="lang"><i style="background:#DEA584"></i>Rust · TypeScript</span><span class="eyebrow" style="color:var(--grn)">Public</span></div>
         <div class="rbody">
-          <h3 class="xn"><a href="https://github.com/Anmartiger/Waraq-Vault" target="_blank" rel="noopener" style="color:inherit">waraqvault ↗</a></h3>
+          <h3 class="xn"><a href="https://github.com/Anmartiger/Waraq-Vault" target="_blank" rel="noopener" style="color:inherit">waraqvault</a></h3>
           <p>Offline Arabic/English document vault. RTL-aware full-text search with tashkil normalisation, OCR ingest, Windows and Linux installers.</p>
         </div>
         <div class="clone"><b>$</b>gh repo clone <em>Anmartiger/Waraq-Vault</em></div>
@@ -277,7 +336,7 @@
       <article class="repo rv d1">
         <div class="rhead"><span class="lang"><i style="background:#61DAFB"></i>Rust · React</span><span class="eyebrow" style="color:var(--grn)">Public</span></div>
         <div class="rbody">
-          <h3 class="xn"><a href="https://github.com/Anmartiger/Al-Minbar" target="_blank" rel="noopener" style="color:inherit">al-minbar ↗</a></h3>
+          <h3 class="xn"><a href="https://github.com/Anmartiger/Al-Minbar" target="_blank" rel="noopener" style="color:inherit">al-minbar</a></h3>
           <p>Prayer times, Quran reader and athkar for Linux desktops. Fully offline — bundled text, locally computed times, Qibla and Hijri calendar.</p>
         </div>
         <div class="clone"><b>$</b>gh repo clone <em>Anmartiger/Al-Minbar</em></div>
@@ -285,7 +344,7 @@
       <article class="repo rv d2">
         <div class="rhead"><span class="lang"><i style="background:#4B8BBE"></i>Python · ROS 2</span><span class="eyebrow" style="color:var(--grn)">Public</span></div>
         <div class="rbody">
-          <h3 class="xn"><a href="https://github.com/Anmartiger/GHRS-ROS2" target="_blank" rel="noopener" style="color:inherit">ghrs-ros2 ↗</a></h3>
+          <h3 class="xn"><a href="https://github.com/Anmartiger/GHRS-ROS2" target="_blank" rel="noopener" style="color:inherit">ghrs-ros2</a></h3>
           <p>Greenhouse rover — ROS 2 navigation stack, EfficientNetV2-S plant disease detection, arm control and the live telemetry dashboard.</p>
         </div>
         <div class="clone"><b>$</b>gh repo clone <em>Anmartiger/GHRS-ROS2</em></div>
@@ -294,16 +353,16 @@
   </div>
 </section>
 
-<!-- 04 FIKR BOT -->
-<section id="fikrbot" class="sect-pad">
-  <div class="ghost xw" data-par aria-hidden="true">04</div>
+<!-- SEC-04 FIKR BOT -->
+<section id="fikrbot" class="sect-pad" style="background:var(--bg2)">
+  <div class="ghost xw" data-par aria-hidden="true">TEACH</div>
   <div class="wrap">
     <div class="fk">
       <div class="fkglow" aria-hidden="true"></div>
       <div>
-        <div class="eb rv"><span class="ln" style="background:var(--teal)"></span><span class="eyebrow" style="color:var(--teal)">04 — Teaching</span></div>
+        <div class="eb rv"><span class="ln" style="background:var(--blue)"></span><span class="eyebrow" style="color:var(--blue)">SEC&#8209;04 · Teaching</span></div>
         <h2 class="xw rv d1" style="margin-bottom:22px">Fikr Bot</h2>
-        <p class="sub rv d2" style="max-width:520px;margin-bottom:26px">My robotics teaching centre — hands-on electronics and robotics taught in Arabic, where most of the good material only exists in English. Students work with real sensors and real microcontrollers rather than simulations.</p>
+        <p class="sub rv d2" style="max-width:520px;margin-bottom:26px">The robotics teaching centre I founded — hands&#8209;on electronics and robotics taught in Arabic, where most of the good material only exists in English. Students work with real sensors and real microcontrollers, from first circuit to working robot.</p>
         <a class="ghbtn rv d2" href="projects/fikr-bot.html" style="margin-bottom:30px">Full project
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <div class="tri rv d2">
@@ -317,52 +376,71 @@
   </div>
 </section>
 
-<!-- 05 EXPERIENCE -->
-<section id="experience" class="sect-pad" style="background:var(--bg2)">
-  <div class="ghost xw" data-par aria-hidden="true">05</div>
+<!-- SEC-05 EXPERIENCE -->
+<section id="experience" class="sect-pad">
+  <div class="ghost xw" data-par aria-hidden="true">RECORD</div>
   <div class="wrap">
-    <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">05 — Experience</span></div>
-    <h2 class="xw rv d1" style="margin-bottom:52px">Track record</h2>
+    <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">SEC&#8209;05 · Track record</span></div>
+    <h2 class="xw rv d1" style="margin-bottom:52px">Deployment history</h2>
     <div class="rv d2">
       <div class="xp">
-        <div class="when now">● CURRENT</div>
-        <div><h3 class="xn">AI &amp; Robotics Specialist</h3><div class="org">FB Group · Jabal Al-Hussein, Amman</div></div>
-        <p>Technical architecture and solution design for large-scale AI, computer vision and robotics programmes across government and enterprise. Requirements analysis, system and hardware architecture, AI/ML design, and the technical documentation behind competitive procurement submissions.</p>
+        <div class="when now">● CURRENT · 2025&ndash;26</div>
+        <div><h3 class="xn">AI &amp; Robotics Specialist</h3><div class="org">FB Group · Amman, Jordan</div></div>
+        <p>Led the design of a 4&times;4 reconnaissance rover with Jetson Orin autonomy and long&#8209;range teleoperation, and authored its full technical specification. Built ROS&nbsp;2 stacks (SLAM, sensor fusion, teleop) on Pi 5 and Jetson Orin, deployed the EfficientNetV2&#8209;S plant&#8209;disease model, and delivered Arabic RAG assistants and the solution architecture behind government and enterprise tenders.</p>
       </div>
       <div class="xp">
-        <div class="when">PREVIOUS</div>
-        <div><h3 class="xn">AI Engineer</h3><div class="org">Seagull AI Solutions</div></div>
-        <p>Retrieval-augmented AI agents — an AI tutor, plan generators, and speech-to-speech assistants.</p>
+        <div class="when">2025&ndash;now</div>
+        <div><h3 class="xn">Founder</h3><div class="org">Fikr&#8209;Bot · فكر بوت</div></div>
+        <p>Founded a robotics and programming education brand — hands&#8209;on courses in electronics, sensors, microcontrollers and coding, with a bilingual Arabic/English curriculum I designed. I coach students from first circuit to working robot.</p>
       </div>
       <div class="xp">
-        <div class="when">EDUCATION</div>
-        <div><h3 class="xn">BSc AI &amp; Data Science</h3><div class="org">Ajloun National University</div></div>
-        <p>Alongside the degree: Arduino and electronics, Python, and Raspberry Pi coursework.</p>
+        <div class="when">2024&ndash;now</div>
+        <div><h3 class="xn">AI Engineer</h3><div class="org">Seagull AI Solutions · Abu Dhabi (Remote)</div></div>
+        <p>Led AI development for the SMART&#8209;CLASS LMS — RAG agents for an AI tutor, automated plan generators and speech&#8209;to&#8209;speech bots: ingestion, vector search, prompt design, STT/TTS pipelines. Also delivered AI&#8209;tools training for teachers, lawyers and business professionals.</p>
+      </div>
+      <div class="xp">
+        <div class="when">2024&ndash;28</div>
+        <div><h3 class="xn">BSc AI &amp; Data Science</h3><div class="org">Ajloun National University, Jordan</div></div>
+        <p>Alongside the degree: Arduino and electronics, Python, and Raspberry Pi coursework. OSINT (Basel Institute on Governance, 2026); TensorFlow &amp; PyTorch for Deep Learning (freeCodeCamp).</p>
+      </div>
+    </div>
+
+    <!-- arsenal -->
+    <div class="arsenal rv d2">
+      <div class="eb"><span class="ln" style="background:var(--blue)"></span><span class="eyebrow" style="color:var(--blue)">Capability loadout</span></div>
+      <div class="arsgrid">
+        <div class="ars"><div class="al">Robotics &amp; embedded</div><div class="av">ROS 2 · SLAM · Gazebo · MuJoCo · Jetson Orin · Pi 5 · ESP32 · LoRa · GNSS/RTK · IMU &amp; depth</div></div>
+        <div class="ars"><div class="al">AI &amp; computer vision</div><div class="av">PyTorch · EfficientNetV2 · YOLOv8 · MediaPipe · OpenCV · RAG · Ollama · Llama 3.1 · ALLaM 7B · Arabic NLP</div></div>
+        <div class="ars"><div class="al">Backend &amp; data</div><div class="av">FastAPI · PostgreSQL/PostGIS · SQLite FTS5 · Docker · Tauri · Tesseract OCR · Leaflet</div></div>
+        <div class="ars"><div class="al">Languages</div><div class="av">Python · C++ · Rust · SQL · Bash</div></div>
+        <div class="ars"><div class="al">Fabrication</div><div class="av">FreeCAD · FDM 3D printing · rapid prototyping · mounts &amp; enclosures</div></div>
+        <div class="ars"><div class="al">Mission support</div><div class="av">Solution architecture · tender writing · Arabic RTL document generation · Linux · Git</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 06 CONTACT -->
-<section id="contact" style="padding-top:104px">
+<!-- SEC-06 CONTACT -->
+<section id="contact">
   <div class="cglow" aria-hidden="true"></div>
   <div class="wrap">
     <div class="cgrid">
       <div>
-        <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">06 — Contact</span></div>
-        <h2 class="xw rv d1" style="margin-bottom:34px">Building something<br>that has to work<br>outdoors?</h2>
+        <div class="eb rv"><span class="ln"></span><span class="eyebrow" style="color:var(--acc)">SEC&#8209;06 · Open channel</span></div>
+        <h2 class="xw rv d1" style="margin-bottom:34px">Building something<br>that has to work<br><span class="hl">outdoors?</span></h2>
         <a class="mailto rv d2" href="mailto:amomnar@gmail.com">amomnar@gmail.com</a>
+        <div class="phone rv d2">+962 77 624 7155</div>
       </div>
       <div class="links rv d2">
-        <a href="https://github.com/Anmartiger" target="_blank" rel="noopener"><span>GITHUB</span><em>github.com/Anmartiger ↗</em></a>
-        <a href="https://www.linkedin.com/in/anmar-momani-0a6974152/" target="_blank" rel="noopener"><span>LINKEDIN</span><em>in/anmar-momani ↗</em></a>
-        <a href="https://www.facebook.com/profile.php?id=61572696617159" target="_blank" rel="noopener"><span>FIKR BOT</span><em>Facebook page ↗</em></a>
+        <a href="https://github.com/Anmartiger" target="_blank" rel="noopener"><span>GITHUB</span><em>github.com/Anmartiger</em></a>
+        <a href="https://www.linkedin.com/in/anmar-momani-0a6974152/" target="_blank" rel="noopener"><span>LINKEDIN</span><em>in/anmar-momani</em></a>
+        <a href="https://www.facebook.com/profile.php?id=61572696617159" target="_blank" rel="noopener"><span>FIKR BOT</span><em>Facebook page</em></a>
       </div>
     </div>
     <div class="wordmark xw" aria-hidden="true">Anmar Momani</div>
     <footer>
       <span style="color:var(--acc)">anmar-almomani.dev</span>
-      <span>Ajloun · Jordan · 32.4° N 35.8° E</span>
+      <span>Amman · Jordan · 31.95° N 35.91° E</span>
       <span>© 2026</span>
     </footer>
   </div>
@@ -370,7 +448,13 @@
 
 </main>
 
+<!-- fixed GCS status bar -->
+<div class="statusbar" aria-hidden="true">
+  <div class="sb-l"><span class="recdot"></span>GCS ONLINE</div>
+  <div class="sb-c" id="sb-sec">SEC-00 · TOP</div>
+  <div class="sb-r"><span id="sb-coord">31.95N 35.91E</span><span class="sb-clock" id="sb-clock">--:--:-- UTC+3</span></div>
+</div>
+
 <script src="assets/site.js"></script>
-</body>
 </body>
 </html>

@@ -196,7 +196,7 @@ ol,ul{padding:0;list-style:none}
 /* operator */
 .op{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:26px;align-items:start}
 .pf{position:relative;border:1px solid var(--line2);background:var(--ink2);padding:8px}
-.pf img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 15%;filter:saturate(.9) contrast(1.04)}
+.pf img{width:100%;height:auto;aspect-ratio:800/980;object-fit:cover;filter:saturate(.9) contrast(1.04)}
 .pf i{position:absolute;width:14px;height:14px;border:0 solid var(--amber)}
 .pf .c1{top:0;left:0;border-width:2px 0 0 2px}.pf .c2{top:0;right:0;border-width:2px 2px 0 0}
 .pf .c3{bottom:0;left:0;border-width:0 0 2px 2px}.pf .c4{bottom:0;right:0;border-width:0 2px 2px 0}

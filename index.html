@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Anmar Momani — AI &amp; Robotics Specialist</title>
-<meta name="description" content="Anmar Momani builds autonomous ground robots, vision-guided tracking systems and Arabic-language AI in Amman, Jordan. Founder of Fikr-Bot.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Anmar Momani — Robotics Engineer &amp; AI Engineer</title>
+<meta name="description" content="Anmar Momani, Robotics Engineer and AI Engineer in Amman, Jordan. Autonomous ground robots, computer vision, vision-guided tracking and Arabic-language AI. Founder of Fikr-Bot.">
 <meta name="theme-color" content="#050607">
 <link rel="canonical" href="https://anmar-almomani.dev/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://anmar-almomani.dev/">
-<meta property="og:title" content="Anmar Momani — AI &amp; Robotics Specialist">
-<meta property="og:description" content="Autonomous ground robots, vision-guided tracking and Arabic-language AI. Built in Amman, tested outside.">
+<meta property="og:title" content="Anmar Momani — Robotics Engineer &amp; AI Engineer">
+<meta property="og:description" content="Autonomous ground robots, vision-guided tracking and Arabic-language AI. Amman, Jordan.">
 <meta property="og:image" content="https://anmar-almomani.dev/assets/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://anmar-almomani.dev/assets/og-card.jpg">
@@ -19,438 +19,355 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;900&family=Big+Shoulders+Display:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/main.css">
+<noscript><style>
+  .intro{display:none!important}
+  .os{position:static!important;height:auto!important}
+  .desk,.wall-bg,.crt{display:none!important}
+  .win[hidden]{display:block!important}
+  .win{position:static!important;width:auto!important;height:auto!important;max-width:1200px;margin:24px auto!important;resize:none!important}
+  .win-ctl{display:none!important}
+</style></noscript>
 </head>
 <body>
-<a class="skip" href="#operator">Skip to content</a>
 
-<header class="top" id="top-bar">
-  <a class="mark" href="#top" aria-label="Anmar Momani, back to top">
-    <span class="mark-box" aria-hidden="true">AM</span>
-    <span class="mark-name">Anmar Momani</span>
-  </a>
-  <nav class="nav" id="nav" aria-label="Sections">
-    <a href="#platform" data-f="433.920">Platform</a>
-    <a href="#tracking" data-f="915.000">Tracking</a>
-    <a href="#feeds" data-f="1280.00">Feeds</a>
-    <a href="#work" data-f="1575.42">Work</a>
-    <a href="#fikrbot" data-f="2412.00">Fikr Bot</a>
-    <a href="#experience" data-f="5180.00">Record</a>
-    <a href="#contact" data-f="5800.00">Contact</a>
-  </nav>
-  <button class="menu" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
-  <div class="tuner" aria-hidden="true">
-    <div class="tuner-scale"></div>
-    <div class="tuner-needle" id="needle"></div>
-    <div class="tuner-read"><span id="tune-f">091.700</span> MHz <b id="tune-n">Home</b></div>
-  </div>
-</header>
-
-<main id="top">
-
-<!-- ───────── HERO: waterfall ───────── -->
-<section class="hero" data-f="091.700" data-n="Home" aria-labelledby="h-name">
-  <div class="scope" aria-hidden="true">
-    <div class="scope-read">
-      <span>CF <b>91.700</b> MHz</span><span>SPAN 2.4 MHz</span><span>RBW 1.2 kHz</span><span class="hide-s">REF −20 dBm</span><span class="hide-s">MODE WFM</span><span class="scope-hint hide-s">Move across the waterfall to transmit</span>
-    </div>
-    <canvas class="spec" id="spec"></canvas>
-    <div class="axis"><span>90.50</span><span>91.10</span><span>91.70</span><span>92.30</span><span>92.90</span></div>
-    <canvas class="wf" id="wf"></canvas>
-  </div>
-  <div class="hero-copy">
-    <h1 id="h-name" class="hero-id">Anmar Momani <span lang="ar" dir="rtl">أنمار المومني</span></h1>
-    <p class="hero-line">Machines that see, track and decide in the field.</p>
-    <p class="hero-sub">I design autonomous ground robots, vision-guided tracking systems and Arabic-language AI in Amman, Jordan, and I teach robotics in Arabic at Fikr-Bot, the school I founded.</p>
-    <div class="hero-act">
-      <a class="btn btn-hot" href="#platform">See the rover</a>
-      <a class="btn" href="mailto:amomnar@gmail.com">amomnar@gmail.com</a>
-    </div>
-  </div>
-</section>
-
-<!-- ───────── OPERATOR ───────── -->
-<section class="sec operator" id="operator" data-f="144.800" data-n="Operator">
-  <div class="wrap op-grid">
-    <figure class="ir" id="ir">
-      <canvas id="ir-c" width="640" height="800" role="img" aria-label="Portrait of Anmar Momani, shown as a thermal image"></canvas>
-      <img id="ir-src" src="assets/portrait.jpg" alt="" hidden>
-      <div class="ir-hud" aria-hidden="true">
-        <span class="ir-tl" id="ir-mode">LWIR · IRONBOW</span>
-        <span class="ir-tr">OPERATOR</span>
-        <span class="ir-x"></span>
-        <span class="ir-scale"><i></i><em>cold</em><em>hot</em></span>
-      </div>
-      <figcaption class="ir-tog" role="group" aria-label="Image mode">
-        <button type="button" data-m="ir" aria-pressed="true">IR</button>
-        <button type="button" data-m="eo" aria-pressed="false">EO</button>
-      </figcaption>
-    </figure>
-    <div class="op-text">
-      <p class="ch"><span class="ch-f">144.800 MHz</span> Operator</p>
-      <h2 class="h2">I build hardware you can carry outside, switch on, and trust without a network.</h2>
-      <p class="lead">Most of my work starts where cloud tools stop: a greenhouse with no signal, a patrol route with no operator, a document archive that can't leave the building, a classroom where the good material is all in English. I design the robot, wire the sensors, train the model and write the software that holds it together.</p>
-      <dl class="facts">
-        <div><dt>Now</dt><dd>AI &amp; Robotics Specialist, FB Group, Amman</dd></div>
-        <div><dt>Also</dt><dd>AI Engineer, Seagull AI Solutions (remote, Abu Dhabi)</dd></div>
-        <div><dt>Founded</dt><dd>Fikr-Bot, robotics and programming school, 2025</dd></div>
-        <div><dt>Studying</dt><dd>BSc AI &amp; Data Science, Ajloun National University</dd></div>
-        <div><dt>Writes</dt><dd>Python, C++, Rust, SQL, Bash, in Arabic and English</dd></div>
-      </dl>
-    </div>
-  </div>
-</section>
-
-<!-- ───────── PLATFORM: scroll-scrubbed evolution ───────── -->
-<section class="sec plat" id="platform" data-f="433.920" data-n="Platform">
-  <div class="wrap plat-head">
-    <p class="ch"><span class="ch-f">433.920 MHz</span> Flagship platform</p>
-    <h2 class="h2 stencil">M.P.M.R</h2>
-    <p class="lead">One 4×4 skid-steer chassis, rebuilt four times. Everything below the deck stays the same: drive, power, sealed equipment case. Everything above it changes with the mission. Scroll to step through the builds.</p>
-  </div>
-
-  <div class="plat-track" id="plat">
-    <div class="plat-pin" data-stage="0">
-      <div class="wrap plat-grid">
-        <div class="plat-stage">
-          <div class="plat-imgs">
-            <img src="assets/rover-1.jpg" alt="Stage 1 rover with Kinect depth sensor" width="900" height="760" class="on">
-            <img src="assets/mpmr/05-ghrs-d.jpg" alt="GHRS greenhouse rover with 6-DOF arm" width="1200" height="900" loading="lazy">
-            <img src="assets/mpmr/09-crowd-b.jpg" alt="Crowd-control rover with LIDAR and water nozzle" width="1100" height="825" loading="lazy">
-            <img src="assets/mpmr/14-scorp-c.jpg" alt="SCORP rover with pan-tilt turret" width="1200" height="900" loading="lazy">
-          </div>
-          <div class="plat-hud" aria-hidden="true">
-            <span class="ph-tl">CONFIG <b id="cfg">01</b>/04</span>
-            <span class="ph-tr" id="cfg-name">STAGE 1</span>
-            <span class="ph-br">4×4 · SKID-STEER</span>
-            <i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i>
-          </div>
-          <div class="plat-prog" aria-hidden="true"><i id="plat-bar"></i><b></b><b></b><b></b></div>
+<!-- ═════════ INTRO: cyberdeck ═════════ -->
+<div class="intro" id="intro">
+  <div class="cam" id="cam">
+    <div class="rig" id="rig">
+      <div class="base" aria-hidden="true">
+        <div class="base-top">
+          <div class="b-strip"><span class="led on"></span><span class="led"></span><span class="led amb"></span><b>GCS-01</b><em>ANMAR-01 / 31.95N 35.91E</em></div>
+          <div class="kbd" id="kbd"></div>
+          <div class="ball"></div>
+          <div class="b-hz"></div>
+          <i class="latch l1"></i><i class="latch l2"></i>
         </div>
+      </div>
+      <div class="base-front" aria-hidden="true"><span class="port"></span><span class="port"></span><b>ROBOTICS · AI · FIELD UNIT</b><span class="vent"></span></div>
+      <div class="antenna" aria-hidden="true"><i></i></div>
+      <div class="lid" id="lid">
+        <div class="lid-in">
+          <div class="bezel">
+            <span class="screw s1"></span><span class="screw s2"></span><span class="screw s3"></span><span class="screw s4"></span>
+            <div class="screen" id="dscreen"><pre class="boot-log" id="bootlog" aria-live="polite"></pre></div>
+            <span class="bz-lbl">CRT-9 · 640×480</span>
+          </div>
+        </div>
+        <div class="lid-out" aria-hidden="true">
+          <div class="hz"></div>
+          <p class="shell-a">ANMAR MOMANI</p>
+          <p class="shell-b">ROBOTICS ENGINEER · AI ENGINEER</p>
+          <p class="shell-c">GCS-01 // HANDLE WITH CARE</p>
+          <div class="hz"></div>
+          <i class="rib r1"></i><i class="rib r2"></i><i class="rib r3"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="intro-ui" id="intro-ui">
+    <div class="intro-top">
+      <p class="intro-k">Ground control station · ANMAR-01</p>
+      <h1 class="intro-h">Anmar Momani</h1>
+      <p class="intro-role">Robotics Engineer &amp; AI Engineer</p>
+    </div>
+    <div class="intro-bot">
+      <button type="button" class="power" id="power"><span class="power-i" aria-hidden="true"></span>Power on</button>
+      <button type="button" class="skip" id="skip">Skip intro</button>
+    </div>
+  </div>
+</div>
 
-        <ol class="plat-list">
-          <li class="on">
-            <h3><span>01</span> Stage 1</h3>
-            <p>Proof the drive platform could carry compute and sensors over rough ground. Xbox Kinect 360 depth for obstacle avoidance, teleoperation, onboard lighting.</p>
-            <div class="thumbs">
-              <button type="button" data-full="assets/mpmr/01-stage1.jpg"><img src="assets/mpmr/01-stage1.jpg" alt="Stage 1 chassis, top view" loading="lazy"></button>
-              <button type="button" data-full="assets/video/stage1-drive.jpg"><img src="assets/video/stage1-drive.jpg" alt="Stage 1 driving at a public exhibition" loading="lazy"></button>
-              <button type="button" data-full="assets/rover-1.jpg"><img src="assets/rover-1.jpg" alt="Stage 1 rover" loading="lazy"></button>
-            </div>
-          </li>
-          <li>
-            <h3><span>02</span> GHRS greenhouse</h3>
-            <p>Autonomous navigation between crop rows, a 6-DOF arm, and an EfficientNetV2-S disease classifier running on the robot: <b>85.4%</b> accuracy at 0.65 confidence. Diagnosis happens on board, because greenhouses rarely have signal.</p>
-            <div class="thumbs">
-              <button type="button" data-full="assets/mpmr/02-ghrs-a.jpg"><img src="assets/mpmr/02-ghrs-a.jpg" alt="GHRS rover, front three-quarter view" loading="lazy"></button>
-              <button type="button" data-full="assets/mpmr/03-ghrs-b.jpg"><img src="assets/mpmr/03-ghrs-b.jpg" alt="GHRS rover, side view" loading="lazy"></button>
-              <button type="button" data-full="assets/mpmr/06-ghrs-e.jpg"><img src="assets/mpmr/06-ghrs-e.jpg" alt="GHRS arm detail" loading="lazy"></button>
-              <button type="button" data-full="assets/mpmr/07-ghrs-f.jpg"><img src="assets/mpmr/07-ghrs-f.jpg" alt="GHRS rover with arm raised" loading="lazy"></button>
-            </div>
-          </li>
-          <li>
-            <h3><span>03</span> Crowd control</h3>
-            <p>LIDAR and SLAM for mapping, depth, IMU and GPS fused for autonomous patrol with teleop fallback. Person detection, fire detection, and a tracked non-lethal water nozzle. Shown to Jordanian defence and public-security bodies.</p>
-            <div class="thumbs">
-              <button type="button" data-full="assets/mpmr/08-crowd-a.jpg"><img src="assets/mpmr/08-crowd-a.jpg" alt="Crowd-control rover, front view" loading="lazy"></button>
-              <button type="button" data-full="assets/mpmr/10-crowd-c.jpg"><img src="assets/mpmr/10-crowd-c.jpg" alt="Crowd-control rover with water tank" loading="lazy"></button>
-              <button type="button" data-full="assets/mpmr/11-crowd-d.jpg"><img src="assets/mpmr/11-crowd-d.jpg" alt="Crowd-control rover, rear view" loading="lazy"></button>
-              <button type="button" data-full="assets/mpmr/16-firedet.jpg"><img src="assets/mpmr/16-firedet.jpg" alt="Onboard fire detection alert" loading="lazy"></button>
-            </div>
-          </li>
-          <li>
-            <h3><span>04</span> SCORP turret</h3>
-            <p>The current build. A stabilised pan-tilt turret that acquires a moving target and holds it, tested with a non-lethal platform. A 4×4 reconnaissance variant with Jetson Orin autonomy and long-range teleop is in development.</p>
-            <div class="thumbs">
-              <button type="button" data-full="assets/mpmr/12-scorp-a.jpg"><img src="assets/mpmr/12-scorp-a.jpg" alt="SCORP, three-quarter view" loading="lazy"></button>
-              <button type="button" data-full="assets/mpmr/13-scorp-b.jpg"><img src="assets/mpmr/13-scorp-b.jpg" alt="SCORP turret close-up" loading="lazy"></button>
-              <button type="button" data-full="assets/scorp-wide.jpg"><img src="assets/scorp-wide.jpg" alt="SCORP on grass" loading="lazy"></button>
-              <button type="button" data-full="assets/rover-4.jpg"><img src="assets/rover-4.jpg" alt="SCORP configuration" loading="lazy"></button>
-            </div>
-          </li>
+<!-- ═════════ OS ═════════ -->
+<div class="os" id="os">
+  <canvas class="wall-bg" id="wf" aria-hidden="true"></canvas>
+
+  <header class="sysbar">
+    <span class="sb-brand"><b>GCS-01</b> Anmar Momani</span>
+    <span class="sb-item hide-m"><i class="dot ok"></i>Link</span>
+    <span class="sb-item hide-m">RSSI −62 dBm</span>
+    <span class="sb-item hide-m">GNSS 3D fix · 31.95 N 35.91 E</span>
+    <span class="sb-item sb-r" id="clock">--:--</span>
+  </header>
+
+  <div class="desk" id="desk">
+    <nav class="icons" aria-label="Applications">
+      <button type="button" class="ico" data-open="operator"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 11V4h7M29 4h7v7M36 29v7h-7M11 36H4v-7"/><circle cx="20" cy="16" r="5"/><path d="M11 31c1.5-5 5-7 9-7s7.5 2 9 7"/></svg><span>Operator</span></button>
+      <button type="button" class="ico" data-open="platform"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="13" width="26" height="12" rx="1"/><path d="M12 13v-4h9v4M27 9v4"/><circle cx="11" cy="29" r="4"/><circle cx="29" cy="29" r="4"/><circle cx="20" cy="29" r="4"/></svg><span>M.P.M.R</span></button>
+      <button type="button" class="ico" data-open="tracking"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="11"/><circle cx="20" cy="20" r="3"/><path d="M20 3v8M20 29v8M3 20h8M29 20h8"/></svg><span>Tracker</span></button>
+      <button type="button" class="ico" data-open="feeds"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="4" y="7" width="15" height="11"/><rect x="21" y="7" width="15" height="11"/><rect x="4" y="22" width="15" height="11"/><rect x="21" y="22" width="15" height="11"/><circle cx="8" cy="11" r="1" class="fill"/></svg><span>Feeds</span></button>
+      <button type="button" class="ico" data-open="work"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="5" width="28" height="30"/><path d="M11 12h4M18 12h11M11 19h4M18 19h11M11 26h4M18 26h11"/></svg><span>Register</span></button>
+      <button type="button" class="ico" data-open="fikrbot"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="8" y="12" width="24" height="18" rx="2"/><path d="M20 12V6M17 5h6M4 19v6M36 19v6"/><circle cx="15" cy="20" r="2"/><circle cx="25" cy="20" r="2"/><path d="M15 26h10"/></svg><span>Fikr-Bot</span></button>
+      <button type="button" class="ico" data-open="bench"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M24 6a7 7 0 0 0-6 10L6 28l6 6 12-12a7 7 0 0 0 10-6l-4 1-3-3 1-4z"/></svg><span>Bench</span></button>
+      <button type="button" class="ico" data-open="comet"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M3 14c6 0 11 2 15 6 1-4 4-7 8-7 3 0 5 2 6 4l5 1-5 2c0 6-5 11-12 11l-3 5-1-5c-6-2-10-7-13-17z"/><circle cx="27" cy="16" r="1" class="fill"/></svg><span>Comet</span></button>
+      <button type="button" class="ico" data-open="experience"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M9 4h16l7 7v25H9z"/><path d="M25 4v7h7M14 18h12M14 24h12M14 30h8"/></svg><span>Record</span></button>
+      <button type="button" class="ico" data-open="contact"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 22v14M14 36h12M20 22l-6-16M20 22l6-16M16 12h8"/><path d="M9 9a15 15 0 0 0 0 20M31 9a15 15 0 0 1 0 20"/></svg><span>Comms</span></button>
+      <button type="button" class="ico" data-open="terminal"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="4" y="7" width="32" height="26"/><path d="M10 15l5 4-5 4M18 25h9"/></svg><span>Terminal</span></button>
+    </nav>
+
+    <aside class="widgets" aria-label="Operator card">
+      <div class="wdg idcard">
+        <img src="assets/portrait.jpg" alt="Anmar Momani" width="800" height="980">
+        <div>
+          <p class="id-n">Anmar Momani <span lang="ar" dir="rtl">أنمار المومني</span></p>
+          <p class="id-r">Robotics Engineer &amp; AI Engineer</p>
+          <p class="id-s"><i class="dot ok"></i>Available for work</p>
+        </div>
+      </div>
+      <div class="wdg spec-w" aria-hidden="true">
+        <p class="wdg-h"><span>Spectrum</span><b>91.700 MHz</b></p>
+        <canvas id="spec"></canvas>
+        <p class="wdg-f">Move across the wallpaper to transmit</p>
+      </div>
+    </aside>
+
+    <!-- ───── windows ───── -->
+
+    <section class="win" id="operator" data-f="144.800" data-w="920" data-h="610" role="dialog" aria-labelledby="t-operator" hidden>
+      <header class="win-bar"><h2 class="win-t" id="t-operator">Operator</h2><span class="win-f">144.800 MHz</span><div class="win-ctl"><button type="button" data-act="min" aria-label="Minimise">–</button><button type="button" data-act="max" aria-label="Maximise">▢</button><button type="button" data-act="close" aria-label="Close">✕</button></div></header>
+      <div class="win-body">
+        <div class="op">
+          <figure class="ir" id="ir">
+            <canvas id="ir-c" width="640" height="800" role="img" aria-label="Portrait of Anmar Momani, shown as a thermal image"></canvas>
+            <img id="ir-src" src="assets/portrait.jpg" alt="" hidden>
+            <div class="ir-hud" aria-hidden="true"><span class="ir-tl" id="ir-mode">LWIR · IRONBOW</span><span class="ir-x"></span><span class="ir-scale"><i></i></span></div>
+            <figcaption class="ir-tog" role="group" aria-label="Image mode"><button type="button" data-m="ir" aria-pressed="true">IR</button><button type="button" data-m="eo" aria-pressed="false">EO</button></figcaption>
+          </figure>
+          <div class="op-t">
+            <p class="kicker">Anmar Momani <span lang="ar" dir="rtl">أنمار المومني</span></p>
+            <h3 class="big">Robotics Engineer &amp; AI Engineer</h3>
+            <p class="lead">Autonomous ground robots, computer vision and Arabic-language AI, for places without a network: a greenhouse with no signal, a patrol route with no operator, an archive that can't leave the building, a classroom where the good material is all in English.</p>
+            <dl class="facts">
+              <div><dt>Based</dt><dd>Amman, Jordan</dd></div>
+              <div><dt>AI Engineer</dt><dd>Seagull AI Solutions, remote · 2024 – now</dd></div>
+              <div><dt>Previously</dt><dd>AI &amp; Robotics Specialist, FB Group · 2025 – 2026</dd></div>
+              <div><dt>Founder</dt><dd>Fikr-Bot robotics school · 2025</dd></div>
+              <div><dt>Studying</dt><dd>BSc AI &amp; Data Science, Ajloun National University</dd></div>
+              <div><dt>Status</dt><dd class="ok">Available for work</dd></div>
+            </dl>
+            <div class="acts"><button type="button" class="btn btn-hot" data-open="platform">Open M.P.M.R</button><button type="button" class="btn" data-open="contact">Open comms</button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="win" id="platform" data-f="433.920" data-w="1100" data-h="700" role="dialog" aria-labelledby="t-platform" hidden>
+      <header class="win-bar"><h2 class="win-t" id="t-platform">M.P.M.R</h2><span class="win-f">433.920 MHz</span><div class="win-ctl"><button type="button" data-act="min" aria-label="Minimise">–</button><button type="button" data-act="max" aria-label="Maximise">▢</button><button type="button" data-act="close" aria-label="Close">✕</button></div></header>
+      <div class="win-body">
+        <p class="lead">Multi-Purpose Mobile Robot. One 4×4 skid-steer chassis, rebuilt four times. Everything below the deck stays the same: drive, power, sealed equipment case. Everything above it changes with the mission.</p>
+        <div class="tabs" role="tablist" aria-label="Builds">
+          <button type="button" role="tab" aria-selected="true" aria-controls="st-0" id="tb-0"><b>01</b> Stage 1</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="st-1" id="tb-1" tabindex="-1"><b>02</b> GHRS</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="st-2" id="tb-2" tabindex="-1"><b>03</b> Crowd control</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="st-3" id="tb-3" tabindex="-1"><b>04</b> SCORP</button>
+        </div>
+        <div class="stage" role="tabpanel" id="st-0" aria-labelledby="tb-0">
+          <figure class="st-img"><button type="button" data-full="assets/rover-1.jpg"><img src="assets/rover-1.jpg" alt="Stage 1 rover with Kinect depth sensor" loading="lazy"></button><span class="hud-c">CONFIG 01/04</span></figure>
+          <div class="st-t"><h3>Stage 1</h3><p>Proof the drive platform could carry compute and sensors over rough ground. Xbox Kinect 360 depth for obstacle avoidance, teleoperation, onboard lighting.</p>
+            <div class="thumbs"><button type="button" data-full="assets/mpmr/01-stage1.jpg"><img src="assets/mpmr/01-stage1.jpg" alt="Stage 1 chassis, top view" loading="lazy"></button><button type="button" data-full="assets/video/stage1-drive.jpg"><img src="assets/video/stage1-drive.jpg" alt="Stage 1 at a public exhibition" loading="lazy"></button></div></div>
+        </div>
+        <div class="stage" role="tabpanel" id="st-1" aria-labelledby="tb-1" hidden>
+          <figure class="st-img"><button type="button" data-full="assets/mpmr/05-ghrs-d.jpg"><img src="assets/mpmr/05-ghrs-d.jpg" alt="GHRS greenhouse rover with 6-DOF arm" loading="lazy"></button><span class="hud-c">CONFIG 02/04</span></figure>
+          <div class="st-t"><h3>GHRS greenhouse</h3><p>Autonomous navigation between crop rows, a 6-DOF arm, and an EfficientNetV2-S disease classifier running on the robot: <b>85.4%</b> accuracy at 0.65 confidence. Diagnosis happens on board, because greenhouses rarely have signal.</p>
+            <div class="thumbs"><button type="button" data-full="assets/mpmr/02-ghrs-a.jpg"><img src="assets/mpmr/02-ghrs-a.jpg" alt="GHRS rover, front view" loading="lazy"></button><button type="button" data-full="assets/mpmr/03-ghrs-b.jpg"><img src="assets/mpmr/03-ghrs-b.jpg" alt="GHRS rover, side view" loading="lazy"></button><button type="button" data-full="assets/mpmr/04-ghrs-c.jpg"><img src="assets/mpmr/04-ghrs-c.jpg" alt="GHRS rover, rear view" loading="lazy"></button><button type="button" data-full="assets/mpmr/06-ghrs-e.jpg"><img src="assets/mpmr/06-ghrs-e.jpg" alt="GHRS arm detail" loading="lazy"></button><button type="button" data-full="assets/mpmr/07-ghrs-f.jpg"><img src="assets/mpmr/07-ghrs-f.jpg" alt="GHRS with arm raised" loading="lazy"></button><button type="button" data-full="assets/rover-2.jpg"><img src="assets/rover-2.jpg" alt="GHRS configuration" loading="lazy"></button></div></div>
+        </div>
+        <div class="stage" role="tabpanel" id="st-2" aria-labelledby="tb-2" hidden>
+          <figure class="st-img"><button type="button" data-full="assets/mpmr/09-crowd-b.jpg"><img src="assets/mpmr/09-crowd-b.jpg" alt="Crowd-control rover with LIDAR and water nozzle" loading="lazy"></button><span class="hud-c">CONFIG 03/04</span></figure>
+          <div class="st-t"><h3>Crowd control</h3><p>LIDAR and SLAM for mapping, with depth, IMU and GPS fused for autonomous patrol and teleop fallback. Person detection, fire detection, and a tracked non-lethal water nozzle. Shown to Jordanian defence and public-security bodies.</p>
+            <div class="thumbs"><button type="button" data-full="assets/mpmr/08-crowd-a.jpg"><img src="assets/mpmr/08-crowd-a.jpg" alt="Crowd-control rover, front" loading="lazy"></button><button type="button" data-full="assets/mpmr/10-crowd-c.jpg"><img src="assets/mpmr/10-crowd-c.jpg" alt="Crowd-control rover with tank" loading="lazy"></button><button type="button" data-full="assets/mpmr/11-crowd-d.jpg"><img src="assets/mpmr/11-crowd-d.jpg" alt="Crowd-control rover, rear" loading="lazy"></button><button type="button" data-full="assets/mpmr/16-firedet.jpg"><img src="assets/mpmr/16-firedet.jpg" alt="Onboard fire detection" loading="lazy"></button><button type="button" data-full="assets/firedet.jpg"><img src="assets/firedet.jpg" alt="Fire detection on the operator screen" loading="lazy"></button><button type="button" data-full="assets/rover-3.jpg"><img src="assets/rover-3.jpg" alt="Crowd-control configuration" loading="lazy"></button></div></div>
+        </div>
+        <div class="stage" role="tabpanel" id="st-3" aria-labelledby="tb-3" hidden>
+          <figure class="st-img"><button type="button" data-full="assets/mpmr/14-scorp-c.jpg"><img src="assets/mpmr/14-scorp-c.jpg" alt="SCORP rover with pan-tilt turret" loading="lazy"></button><span class="hud-c">CONFIG 04/04</span></figure>
+          <div class="st-t"><h3>SCORP turret</h3><p>The current build. A stabilised pan-tilt turret that acquires a moving target and holds it, tested with a non-lethal platform. At FB Group I also led the design of a 4×4 reconnaissance rover with Jetson Orin autonomy and long-range teleop.</p>
+            <div class="thumbs"><button type="button" data-full="assets/mpmr/12-scorp-a.jpg"><img src="assets/mpmr/12-scorp-a.jpg" alt="SCORP, three-quarter view" loading="lazy"></button><button type="button" data-full="assets/mpmr/13-scorp-b.jpg"><img src="assets/mpmr/13-scorp-b.jpg" alt="SCORP turret close-up" loading="lazy"></button><button type="button" data-full="assets/scorp-wide.jpg"><img src="assets/scorp-wide.jpg" alt="SCORP on grass" loading="lazy"></button><button type="button" data-full="assets/rover-4.jpg"><img src="assets/rover-4.jpg" alt="SCORP configuration" loading="lazy"></button></div></div>
+        </div>
+        <div class="gcs">
+          <button type="button" class="gcs-img" data-full="assets/dashboard.jpg"><img src="assets/dashboard.jpg" alt="Ground control dashboard: LIDAR polar map, camera feed, IMU and GPS readouts, drive controls" loading="lazy"></button>
+          <div>
+            <p class="cap"><b>Ground control.</b> The operator dashboard for the rover: RPLIDAR C1 polar map, camera feed, heading, pitch and roll, GPS fix and track log, live drive control over GPIO.</p>
+            <dl class="spec"><div><dt>Chassis</dt><dd>4×4 skid-steer, brushless</dd></div><div><dt>Compute</dt><dd>Raspberry Pi 5 · Jetson Orin</dd></div><div><dt>Middleware</dt><dd>ROS 2</dd></div><div><dt>Sensing</dt><dd>LIDAR · depth · IMU · GNSS</dd></div></dl>
+            <p class="links"><a href="projects/mpmr.html">Full write-up and gallery</a><a href="https://github.com/Anmartiger/GHRS-ROS2" target="_blank" rel="noopener">GHRS source</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="win" id="tracking" data-f="915.000" data-w="1000" data-h="600" role="dialog" aria-labelledby="t-tracking" hidden>
+      <header class="win-bar"><h2 class="win-t" id="t-tracking">Tracker</h2><span class="win-f">915.000 MHz</span><div class="win-ctl"><button type="button" data-act="min" aria-label="Minimise">–</button><button type="button" data-act="max" aria-label="Maximise">▢</button><button type="button" data-act="close" aria-label="Close">✕</button></div></header>
+      <div class="win-body">
+        <div class="trk">
+          <div class="cam-v" id="camv" role="img" aria-label="Interactive tracking demo. Move the pointer inside this panel to act as the target.">
+            <img src="assets/mpmr/13-scorp-b.jpg" alt="" class="camv-bg" loading="lazy">
+            <div class="camv-grid" aria-hidden="true"></div>
+            <div class="camv-tgt" id="tgt" aria-hidden="true"></div>
+            <div class="camv-ret" id="ret" aria-hidden="true"><i></i><i></i><i></i><i></i><span id="ret-lbl">TRK</span></div>
+            <div class="camv-read" aria-hidden="true"><span>PAN <b id="r-pan">+00.0°</b></span><span>TILT <b id="r-tilt">+00.0°</b></span><span>ERR <b id="r-err">000 px</b></span></div>
+            <div class="camv-mode" aria-hidden="true"><span id="r-mode">AUTO</span> · <b id="r-state">SEARCH</b></div>
+          </div>
+          <div class="trk-t">
+            <h3>Acquire, follow, hold.</h3>
+            <p>SCORP and the vision-guided turret solve the same loop: find the target in the frame, measure how far off-centre it is, drive pan and tilt to close the gap without overshooting into oscillation.</p>
+            <p class="dim">This panel runs a damped-spring version of that loop. Your pointer is the target. Hold still and it locks. Leave it alone and it tracks a simulated contact.</p>
+            <ul class="mono-list"><li>OpenCV and MediaPipe detection</li><li>Pan-tilt servo control on a Pi 5</li><li>Projectile trajectory compensation</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="win" id="feeds" data-f="1280.00" data-w="1100" data-h="700" role="dialog" aria-labelledby="t-feeds" hidden>
+      <header class="win-bar"><h2 class="win-t" id="t-feeds">Feeds</h2><span class="win-f">1280.000 MHz</span><div class="win-ctl"><button type="button" data-act="min" aria-label="Minimise">–</button><button type="button" data-act="max" aria-label="Maximise">▢</button><button type="button" data-act="close" aria-label="Close">✕</button></div></header>
+      <div class="win-body">
+        <div class="wall">
+          <button type="button" class="feed f-a" data-v="assets/video/crowd-patrol.mp4" data-t="Patrol unit, public demonstration"><video src="assets/video/crowd-patrol.mp4" poster="assets/video/crowd-patrol.jpg" muted loop playsinline preload="none"></video><span class="feed-l"><b>CAM 01</b> Patrol unit · demonstration</span><span class="feed-tc">00:00:00</span></button>
+          <button type="button" class="feed f-b" data-v="assets/video/stage1-drive.mp4" data-t="Stage 1 drive test"><video src="assets/video/stage1-drive.mp4" poster="assets/video/stage1-drive.jpg" muted loop playsinline preload="none"></video><span class="feed-l"><b>CAM 02</b> Stage 1 drive</span><span class="feed-tc">00:00:00</span></button>
+          <button type="button" class="feed f-c" data-v="assets/video/skywell-a.mp4" data-t="Skywell dish tracking the sun"><video src="assets/video/skywell-a.mp4" poster="assets/video/skywell-a.jpg" muted loop playsinline preload="none"></video><span class="feed-l"><b>CAM 03</b> Skywell · sun tracking</span><span class="feed-tc">00:00:00</span></button>
+          <button type="button" class="feed f-d" data-v="assets/general/document_6037220728082801278.mp4" data-t="RTL-SDR capture at 91.7 MHz"><video src="assets/general/document_6037220728082801278.mp4" poster="assets/general/sdr.jpg" muted loop playsinline preload="none"></video><span class="feed-l"><b>RX 01</b> RTL-SDR · 91.7 MHz</span><span class="feed-tc">00:00:00</span></button>
+          <button type="button" class="feed f-e" data-v="assets/video/skywell-b.mp4" data-t="Skywell receiver close-up"><video src="assets/video/skywell-b.mp4" poster="assets/video/skywell-b.jpg" muted loop playsinline preload="none"></video><span class="feed-l"><b>CAM 04</b> Skywell · receiver</span><span class="feed-tc">00:00:00</span></button>
+          <button type="button" class="feed f-f" data-v="assets/general/cad.mp4" data-t="Fixed-wing airframe in CAD"><video src="assets/general/cad.mp4" poster="assets/general/cad.jpg" muted loop playsinline preload="none"></video><span class="feed-l"><b>CAD 01</b> Fixed-wing airframe</span><span class="feed-tc">00:00:00</span></button>
+        </div>
+        <p class="dim small">Select a feed to open it with sound and controls.</p>
+      </div>
+    </section>
+
+    <section class="win" id="work" data-f="1575.42" data-w="1100" data-h="700" role="dialog" aria-labelledby="t-work" hidden>
+      <header class="win-bar"><h2 class="win-t" id="t-work">Register</h2><span class="win-f">1575.420 MHz</span><div class="win-ctl"><button type="button" data-act="min" aria-label="Minimise">–</button><button type="button" data-act="max" aria-label="Maximise">▢</button><button type="button" data-act="close" aria-label="Close">✕</button></div></header>
+      <div class="win-body">
+        <p class="lead">Every system on record, from robots to desktop software. Linked entries open a full write-up.</p>
+        <div class="reg" role="table" aria-label="Projects">
+          <div class="reg-h" role="row"><span role="columnheader">Ref</span><span role="columnheader">System</span><span role="columnheader">What it does</span><span role="columnheader">Built with</span><span role="columnheader">Status</span></div>
+          <a class="reg-r" role="row" href="projects/mpmr.html" data-img="assets/mpmr/14-scorp-c.jpg"><span role="cell">R-01</span><span role="cell">M.P.M.R</span><span role="cell">Modular 4×4 rover, rebuilt for agriculture, patrol and tracking</span><span role="cell">ROS 2 · Pi 5 · LIDAR</span><span role="cell"><i class="st st-a">Active</i></span></a>
+          <div class="reg-r" role="row"><span role="cell">R-02</span><span role="cell">Recon rover</span><span role="cell">4×4 reconnaissance rover with onboard autonomy and long-range teleop. Full spec authored at FB Group</span><span role="cell">Jetson Orin · ROS 2</span><span role="cell"><i class="st st-s">Designed</i></span></div>
+          <a class="reg-r" role="row" href="projects/mpmr.html" data-img="assets/mpmr/05-ghrs-d.jpg"><span role="cell">R-03</span><span role="cell">GHRS</span><span role="cell">Greenhouse rover: row navigation, 6-DOF arm, on-board plant disease detection</span><span role="cell">EfficientNetV2-S · ROS 2</span><span role="cell"><i class="st st-s">Built</i></span></a>
+          <div class="reg-r" role="row" data-img="assets/general/gen.jpg"><span role="cell">R-04</span><span role="cell">Search &amp; rescue rover</span><span role="cell">Detects people through obstructions with WiFi CSI sensing, plus depth camera and drone link</span><span role="cell">ESP32-S3 · WiFi CSI</span><span role="cell"><i class="st st-p">Prototype</i></span></div>
+          <div class="reg-r" role="row" data-img="assets/mpmr/13-scorp-b.jpg"><span role="cell">T-01</span><span role="cell">Vision-guided turret</span><span role="cell">Tracks targets and compensates for projectile trajectory</span><span role="cell">Pi 5 · OpenCV · MediaPipe</span><span role="cell"><i class="st st-s">Built</i></span></div>
+          <div class="reg-r" role="row" data-img="assets/general/cad.jpg"><span role="cell">A-01</span><span role="cell">Self-levelling wing UAV</span><span role="cell">Fixed-wing airframe with automatic wing-levelling stabilisation</span><span role="cell">FreeCAD · flight control</span><span role="cell"><i class="st st-p">Prototype</i></span></div>
+          <div class="reg-r" role="row" data-img="assets/general/sdr.jpg"><span role="cell">S-01</span><span role="cell">Airspace monitor</span><span role="cell">Watches nearby airspace and pulls wireless sensor data off the air</span><span role="cell">RTL-SDR</span><span role="cell"><i class="st st-p">Prototype</i></span></div>
+          <a class="reg-r" role="row" href="projects/skywell.html" data-img="assets/skywell/02-dish.jpg"><span role="cell">W-01</span><span role="cell">Skywell</span><span role="cell">Transportable water unit: sun-tracking solar distillation at ~90 °C plus atmospheric water generation</span><span role="cell">ESP32 · servo tracking</span><span role="cell"><i class="st st-a">In build</i></span></a>
+          <a class="reg-r" role="row" href="projects/waraqvault.html" data-img="assets/waraqvault/03-search.jpg"><span role="cell">D-01</span><span role="cell">WaraqVault</span><span role="cell">Offline Arabic/English document vault with tashkil-aware search. JOSA Reclaim Hackathon entry</span><span role="cell">Tauri · SQLite FTS5 · OCR</span><span role="cell"><i class="st st-g">Shipping</i></span></a>
+          <a class="reg-r" role="row" href="projects/al-minbar.html" data-img="assets/alminbar.jpg"><span role="cell">D-02</span><span role="cell">Al-Minbar</span><span role="cell">Prayer times, Quran and athkar as a native Linux desktop app, fully offline</span><span role="cell">Tauri · React · Rust</span><span role="cell"><i class="st st-a">In build</i></span></a>
+          <div class="reg-r" role="row"><span role="cell">L-01</span><span role="cell">Arabic RAG assistants</span><span role="cell">Retrieval assistants for education and enterprise, plus Arabic RTL document generation</span><span role="cell">FastAPI · Llama 3.1 · ALLaM 7B</span><span role="cell"><i class="st st-g">Delivered</i></span></div>
+          <div class="reg-r" role="row"><span role="cell">L-02</span><span role="cell">SMART-CLASS agents</span><span role="cell">AI tutor, plan generators and speech-to-speech bots for an LMS</span><span role="cell">RAG · STT/TTS · faster-whisper</span><span role="cell"><i class="st st-g">Delivered</i></span></div>
+          <div class="reg-r" role="row"><span role="cell">H-01</span><span role="cell">PMS</span><span role="cell">Wearable posture monitor fusing several IMUs with a Kalman filter, haptic feedback and an app</span><span role="cell">ESP32 · BLE</span><span role="cell"><i class="st st-p">Prototype</i></span></div>
+          <div class="reg-r" role="row"><span role="cell">X-01</span><span role="cell">Trading agent</span><span role="cell">Autonomous Binance agent with an LLM orchestrator, trade journal and self-review loop</span><span role="cell">Python · ccxt · Claude API</span><span role="cell"><i class="st st-p">Running</i></span></div>
+          <a class="reg-r" role="row" href="projects/comet.html" data-img="assets/comet.jpg"><span role="cell">C-01</span><span role="cell">Comet</span><span role="cell">Feeding tracker for my kestrel, built on a ten-day cycle. One HTML file</span><span role="cell">HTML · offline</span><span role="cell"><i class="st st-a">Rebuild</i></span></a>
+          <div class="reg-r" role="row"><span role="cell">G-01</span><span role="cell">Smart greenhouse</span><span role="cell">Remote greenhouse controller with soil-disease monitoring over the internet</span><span role="cell">Raspberry Pi 3</span><span role="cell"><i class="st st-s">Built</i></span></div>
+          <div class="reg-r" role="row"><span role="cell">G-02</span><span role="cell">Distancing device</span><span role="cell">Laser-diode device that alerts when people break social-distancing range</span><span role="cell">Arduino · laser</span><span role="cell"><i class="st st-s">Built</i></span></div>
+        </div>
+        <div class="repos" id="repos">
+          <p class="repos-h">Open source <a href="https://github.com/Anmartiger" target="_blank" rel="noopener">github.com/Anmartiger</a></p>
+          <a class="repo" href="https://github.com/Anmartiger/Waraq-Vault" target="_blank" rel="noopener"><b>waraq-vault</b><span>Rust · TypeScript</span><code>gh repo clone Anmartiger/Waraq-Vault</code></a>
+          <a class="repo" href="https://github.com/Anmartiger/Al-Minbar" target="_blank" rel="noopener"><b>al-minbar</b><span>Rust · React</span><code>gh repo clone Anmartiger/Al-Minbar</code></a>
+          <a class="repo" href="https://github.com/Anmartiger/GHRS-ROS2" target="_blank" rel="noopener"><b>ghrs-ros2</b><span>Python · ROS 2</span><code>gh repo clone Anmartiger/GHRS-ROS2</code></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="win" id="fikrbot" data-f="2412.00" data-w="980" data-h="640" role="dialog" aria-labelledby="t-fikrbot" hidden>
+      <header class="win-bar"><h2 class="win-t" id="t-fikrbot">Fikr-Bot</h2><span class="win-f">2412.000 MHz</span><div class="win-ctl"><button type="button" data-act="min" aria-label="Minimise">–</button><button type="button" data-act="max" aria-label="Maximise">▢</button><button type="button" data-act="close" aria-label="Close">✕</button></div></header>
+      <div class="win-body">
+        <div class="fk-h">
+          <h3 class="big">Fikr-Bot <span lang="ar" dir="rtl" class="ar">فكر بوت</span></h3>
+          <p class="lead">The good robotics material is in English, and it reaches students at exactly the age when curiosity is highest and language confidence is lowest. Fikr-Bot teaches electronics, sensors, microcontrollers and AI in Arabic, on real hardware, from first circuit to working robot.</p>
+        </div>
+        <div class="posters" dir="rtl" tabindex="0" aria-label="Lesson posters, scrollable">
+          <button type="button" data-full="assets/fikrbot/00-cover.jpg"><img src="assets/fikrbot/00-cover.jpg" alt="Fikr-Bot: robotics and AI classes for school and university students" loading="lazy" width="940" height="788"></button>
+          <button type="button" data-full="assets/fikrbot/01-lesson.jpg"><img src="assets/fikrbot/01-lesson.jpg" alt="Lesson: DHT22 temperature and humidity sensor" loading="lazy" width="888" height="758"></button>
+          <button type="button" data-full="assets/fikrbot/02-lesson.jpg"><img src="assets/fikrbot/02-lesson.jpg" alt="Lesson: the breadboard" loading="lazy" width="888" height="758"></button>
+          <button type="button" data-full="assets/fikrbot/03-lesson.jpg"><img src="assets/fikrbot/03-lesson.jpg" alt="Lesson: LCD display" loading="lazy" width="888" height="758"></button>
+          <button type="button" data-full="assets/fikrbot/04-lesson.jpg"><img src="assets/fikrbot/04-lesson.jpg" alt="Lesson: what robotics means" loading="lazy" width="888" height="758"></button>
+          <button type="button" data-full="assets/fikrbot/05-lesson.jpg"><img src="assets/fikrbot/05-lesson.jpg" alt="Lesson: ultrasonic distance sensor" loading="lazy" width="888" height="758"></button>
+          <button type="button" data-full="assets/fikrbot/06-lesson.jpg"><img src="assets/fikrbot/06-lesson.jpg" alt="Lesson: LCD display with DHT11" loading="lazy" width="888" height="758"></button>
+        </div>
+        <p class="links"><a href="projects/fikr-bot.html">About Fikr-Bot</a><a href="https://www.facebook.com/profile.php?id=61572696617159" target="_blank" rel="noopener">Fikr-Bot on Facebook</a></p>
+      </div>
+    </section>
+
+    <section class="win" id="bench" data-f="2450.00" data-w="1040" data-h="680" role="dialog" aria-labelledby="t-bench" hidden>
+      <header class="win-bar"><h2 class="win-t" id="t-bench">Bench</h2><span class="win-f">2450.000 MHz</span><div class="win-ctl"><button type="button" data-act="min" aria-label="Minimise">–</button><button type="button" data-act="max" aria-label="Maximise">▢</button><button type="button" data-act="close" aria-label="Close">✕</button></div></header>
+      <div class="win-body">
+        <div class="log">
+          <figure class="lg-a"><button type="button" data-full="assets/skywell/photo_6037220728542794288_y.jpg"><img src="assets/skywell/photo_6037220728542794288_y.jpg" alt="Workbench with rover drive base, Raspberry Pi, breadboard and laptop" loading="lazy"></button><figcaption>Drive base on the bench: Pi, motor drivers, breadboard, too many jumper wires.</figcaption></figure>
+          <figure class="lg-b"><button type="button" data-full="assets/general/portrait.jpg"><img src="assets/general/portrait.jpg" alt="FDM 3D printer" loading="lazy"></button><figcaption>Mounts, brackets and enclosures, designed in FreeCAD.</figcaption></figure>
+          <figure class="lg-c"><button type="button" data-full="assets/general/gen.jpg"><img src="assets/general/gen.jpg" alt="Desk at night with a WiFi sensing script and a drone being stripped" loading="lazy"></button><figcaption>WiFi sensing scripts, a drone mid-teardown.</figcaption></figure>
+          <figure class="lg-d"><button type="button" data-full="assets/skywell/rotatry design.jpg"><img src="assets/skywell/rotatry%20design.jpg" alt="Rotary mount prototype on grass" loading="lazy"></button><figcaption>Rotary mount for Skywell's dish.</figcaption></figure>
+          <figure class="lg-e"><button type="button" data-full="assets/skywell/cyber.jpg"><img src="assets/skywell/cyber.jpg" alt="Desk with monitor, keyboard and equipment case" loading="lazy"></button><figcaption>The night desk.</figcaption></figure>
+          <figure class="lg-f"><button type="button" data-full="assets/skywell/01-unit.jpg"><img src="assets/skywell/01-unit.jpg" alt="Skywell unit with mirrored dish and solar panel" loading="lazy"></button><figcaption>Skywell, field-assembled.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="win" id="comet" data-f="Off the clock" data-w="940" data-h="620" role="dialog" aria-labelledby="t-comet" hidden>
+      <header class="win-bar"><h2 class="win-t" id="t-comet">Comet</h2><span class="win-f">Off the clock</span><div class="win-ctl"><button type="button" data-act="min" aria-label="Minimise">–</button><button type="button" data-act="max" aria-label="Maximise">▢</button><button type="button" data-act="close" aria-label="Close">✕</button></div></header>
+      <div class="win-body">
+        <div class="cmt">
+          <button type="button" class="cmt-img" data-full="assets/comet/01-kestrel-a.jpg"><img src="assets/comet/01-kestrel-a.jpg" alt="Anmar with Comet, a common kestrel, on his shoulder" loading="lazy"></button>
+          <div>
+            <h3 class="big">The original tracking system weighs under two hundred grams.</h3>
+            <p class="lead">Comet is my kestrel. A kestrel can hang dead still in a headwind and lock onto a mouse moving in the grass below, with no LIDAR, no Jetson and no training set. Every tracker on this deck is chasing what he does without thinking.</p>
+            <p class="dim">His feeding log runs on a ten-day cycle rather than a week, so the same days don't keep drawing on the same wild prey. It's one HTML file and works on a phone in the garden with no signal.</p>
+            <div class="thumbs"><button type="button" data-full="assets/comet/02-kestrel-b.jpg"><img src="assets/comet/02-kestrel-b.jpg" alt="Comet perched" loading="lazy"></button><button type="button" data-full="assets/comet/04-app-b.jpg"><img src="assets/comet/04-app-b.jpg" alt="Comet app: ten-day cycle dial" loading="lazy"></button><button type="button" data-full="assets/comet/05-app-c.jpg"><img src="assets/comet/05-app-c.jpg" alt="Comet app: entry screen" loading="lazy"></button><button type="button" data-full="assets/comet/06-app-d.jpg"><img src="assets/comet/06-app-d.jpg" alt="Comet app: feeding log" loading="lazy"></button></div>
+            <p class="links"><a href="projects/comet.html">Read about Comet</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="win" id="experience" data-f="5180.00" data-w="1000" data-h="700" role="dialog" aria-labelledby="t-experience" hidden>
+      <header class="win-bar"><h2 class="win-t" id="t-experience">Record</h2><span class="win-f">5180.000 MHz</span><div class="win-ctl"><button type="button" data-act="min" aria-label="Minimise">–</button><button type="button" data-act="max" aria-label="Maximise">▢</button><button type="button" data-act="close" aria-label="Close">✕</button></div></header>
+      <div class="win-body">
+        <ol class="tl">
+          <li><p class="tl-d">2024 – now</p><div><h3>AI Engineer</h3><p class="tl-o">Seagull AI Solutions · Abu Dhabi, remote</p></div>
+            <ul><li>Led AI development for the SMART-CLASS LMS: agents, assistants and planners that raised platform autonomy and engagement.</li><li>RAG agents for an AI tutor, plan generators and speech-to-speech bots, from ingestion and vector search to STT/TTS.</li><li>Taught AI tools to teachers, lawyers and business professionals.</li></ul></li>
+          <li><p class="tl-d">2025 – now</p><div><h3>Founder</h3><p class="tl-o">Fikr-Bot <span lang="ar" dir="rtl">فكر بوت</span></p></div>
+            <ul><li>Robotics and programming school with hands-on courses in electronics, sensors, microcontrollers and code.</li><li>Bilingual Arabic/English curriculum; students coached from first circuit to working robot.</li></ul></li>
+          <li><p class="tl-d">2025 – 2026</p><div><h3>AI &amp; Robotics Specialist</h3><p class="tl-o">FB Group, Firas Balasmeh Corporation for Control Systems · Amman</p></div>
+            <ul><li>Led the design of a 4×4 reconnaissance rover with Jetson Orin onboard autonomy and long-range teleoperation, and wrote its full technical specification.</li><li>ROS 2 stacks on Pi 5 and Jetson Orin: SLAM, sensor fusion, teleop. Trained and deployed the GHRS plant-disease model.</li><li>Arabic RAG assistants (FastAPI, Llama 3.1, ALLaM 7B, DeepSeek) and Arabic RTL document pipelines.</li><li>Technical proposals and solution architecture for government, public safety, education, agriculture and healthcare tenders.</li></ul></li>
+          <li><p class="tl-d">2024 – 2028</p><div><h3>BSc AI &amp; Data Science</h3><p class="tl-o">Ajloun National University, Jordan</p></div>
+            <ul><li>Coursework in calculus, C++ and object-oriented programming.</li></ul></li>
         </ol>
+        <div class="rec-cols">
+          <div><h3 class="h3">Certifications</h3>
+            <ul class="certs"><li><span>2026</span>Open-Source Intelligence (OSINT), Basel Institute on Governance</li><li><span>2022</span>TensorFlow for Deep Learning, freeCodeCamp</li><li><span>2022</span>PyTorch for Deep Learning, freeCodeCamp</li><li><span>2020</span>Ultimate Guide to Raspberry Pi, Udemy</li><li><span>2019</span>Complete Python Bootcamp, Udemy</li><li><span>2018</span>The Arduino and Electronics Bootcamp, Udemy</li></ul></div>
+          <div><h3 class="h3">Loadout</h3>
+            <dl class="kit"><div><dt>Robotics</dt><dd>ROS 2, SLAM, Gazebo, MuJoCo, Jetson Orin, Raspberry Pi 5, ESP32, LoRa, GNSS/RTK, IMU and depth cameras</dd></div><div><dt>Vision &amp; AI</dt><dd>PyTorch, EfficientNetV2, YOLOv8, MediaPipe, OpenCV, RAG, Ollama, Llama 3.1, ALLaM 7B, faster-whisper, Arabic NLP</dd></div><div><dt>Backend</dt><dd>FastAPI, PostgreSQL/PostGIS, SQLite FTS5, Docker Compose, Tauri, Prophet/ARIMA, Leaflet, Tesseract</dd></div><div><dt>Languages</dt><dd>Python, C++, Rust, SQL, Bash</dd></div><div><dt>Fabrication</dt><dd>FreeCAD, FDM printing, rapid prototyping of mounts and enclosures</dd></div><div><dt>Mission</dt><dd>Solution architecture, tender writing, Arabic RTL documents, Linux, Git</dd></div></dl></div>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="wrap gcs">
-    <figure class="gcs-shot">
-      <button type="button" class="zoom" data-full="assets/dashboard.jpg"><img src="assets/dashboard.jpg" alt="Ground control dashboard: LIDAR polar map, camera feed, IMU and GPS readouts, drive controls" width="1600" height="922" loading="lazy"></button>
-      <figcaption><b>Ground control.</b> The operator dashboard I wrote for the rover: RPLIDAR C1 polar map, camera feed, heading, pitch and roll, GPS fix and track log, and live drive control over GPIO.</figcaption>
-    </figure>
-    <div class="gcs-side">
-      <dl class="spec">
-        <div><dt>Chassis</dt><dd>4×4 skid-steer, brushless</dd></div>
-        <div><dt>Compute</dt><dd>Raspberry Pi 5 · Jetson Orin</dd></div>
-        <div><dt>Middleware</dt><dd>ROS 2</dd></div>
-        <div><dt>Sensing</dt><dd>LIDAR · depth · IMU · GNSS</dd></div>
-        <div><dt>Status</dt><dd class="ok">Active development</dd></div>
-      </dl>
-      <a class="link" href="projects/mpmr.html">Full M.P.M.R write-up and gallery</a>
-      <a class="link" href="https://github.com/Anmartiger/GHRS-ROS2" target="_blank" rel="noopener">GHRS source on GitHub</a>
-    </div>
-  </div>
-</section>
-
-<!-- ───────── TRACKING: interactive lock ───────── -->
-<section class="sec track" id="tracking" data-f="915.000" data-n="Tracking">
-  <div class="wrap track-grid">
-    <div class="track-text">
-      <p class="ch"><span class="ch-f">915.000 MHz</span> Tracking</p>
-      <h2 class="h2">Acquire, follow, hold.</h2>
-      <p class="lead">SCORP and my vision-guided turret both solve the same loop: find the target in the frame, measure how far off-centre it is, and drive pan and tilt to close the gap without overshooting into oscillation.</p>
-      <p class="body">The panel on the right runs a damped spring version of that loop. Your pointer is the target. Hold still and it locks. Leave it alone and it tracks a simulated contact.</p>
-      <ul class="stack-list">
-        <li>OpenCV and MediaPipe detection</li>
-        <li>Pan-tilt servo control on a Pi 5</li>
-        <li>Trajectory compensation on the vision turret</li>
-      </ul>
-    </div>
-    <div class="cam" id="cam" aria-label="Interactive tracking demo. Move the pointer inside this panel to act as the target." role="img">
-      <img src="assets/mpmr/13-scorp-b.jpg" alt="" class="cam-bg" loading="lazy">
-      <div class="cam-grid" aria-hidden="true"></div>
-      <div class="cam-tgt" id="tgt" aria-hidden="true"></div>
-      <div class="cam-ret" id="ret" aria-hidden="true"><i></i><i></i><i></i><i></i><span id="ret-lbl">TRK</span></div>
-      <div class="cam-read" aria-hidden="true">
-        <span>PAN <b id="r-pan">+00.0°</b></span>
-        <span>TILT <b id="r-tilt">+00.0°</b></span>
-        <span>ERR <b id="r-err">000 px</b></span>
+    <section class="win" id="contact" data-f="5800.00" data-w="760" data-h="520" role="dialog" aria-labelledby="t-contact" hidden>
+      <header class="win-bar"><h2 class="win-t" id="t-contact">Comms</h2><span class="win-f">5800.000 MHz</span><div class="win-ctl"><button type="button" data-act="min" aria-label="Minimise">–</button><button type="button" data-act="max" aria-label="Maximise">▢</button><button type="button" data-act="close" aria-label="Close">✕</button></div></header>
+      <div class="win-body">
+        <p class="contact-h">Open a channel.</p>
+        <p class="lead">Robotics, computer vision or AI that has to work outdoors, offline, or in Arabic. Send the details.</p>
+        <a class="mail" href="mailto:amomnar@gmail.com">amomnar@gmail.com</a>
+        <div class="contact-row">
+          <a href="tel:+962776247155">+962 77 624 7155</a>
+          <a href="https://github.com/Anmartiger" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/anmar-momani-0a6974152/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.facebook.com/profile.php?id=61572696617159" target="_blank" rel="noopener">Fikr-Bot</a>
+        </div>
       </div>
-      <div class="cam-mode" aria-hidden="true"><span id="r-mode">AUTO</span> · <b id="r-state">SEARCH</b></div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ───────── FEEDS: monitor wall ───────── -->
-<section class="sec feeds" id="feeds" data-f="1280.00" data-n="Feeds">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="ch"><span class="ch-f">1280.000 MHz</span> Feeds</p>
-      <h2 class="h2">Footage from the field and the bench.</h2>
-      <p class="lead">Six feeds: the patrol unit at a public demonstration, the first drive test, Skywell tracking the sun, an airframe in CAD, and an RTL-SDR capture. Select any feed to open it with sound and controls.</p>
-    </div>
-    <div class="wall">
-      <button type="button" class="feed f-a" data-v="assets/video/crowd-patrol.mp4" data-t="Patrol unit, public demonstration">
-        <video src="assets/video/crowd-patrol.mp4" poster="assets/video/crowd-patrol.jpg" muted loop playsinline preload="none"></video>
-        <span class="feed-l"><b>CAM 01</b> Patrol unit · demonstration</span><span class="feed-tc">00:00:00</span>
-      </button>
-      <button type="button" class="feed f-b" data-v="assets/video/stage1-drive.mp4" data-t="Stage 1 drive test">
-        <video src="assets/video/stage1-drive.mp4" poster="assets/video/stage1-drive.jpg" muted loop playsinline preload="none"></video>
-        <span class="feed-l"><b>CAM 02</b> Stage 1 drive</span><span class="feed-tc">00:00:00</span>
-      </button>
-      <button type="button" class="feed f-c" data-v="assets/video/skywell-a.mp4" data-t="Skywell dish tracking">
-        <video src="assets/video/skywell-a.mp4" poster="assets/video/skywell-a.jpg" muted loop playsinline preload="none"></video>
-        <span class="feed-l"><b>CAM 03</b> Skywell · sun tracking</span><span class="feed-tc">00:00:00</span>
-      </button>
-      <button type="button" class="feed f-d" data-v="assets/general/document_6037220728082801278.mp4" data-t="RTL-SDR capture at 91.7 MHz">
-        <video src="assets/general/document_6037220728082801278.mp4" poster="assets/general/sdr.jpg" muted loop playsinline preload="none"></video>
-        <span class="feed-l"><b>RX 01</b> RTL-SDR · 91.7 MHz</span><span class="feed-tc">00:00:00</span>
-      </button>
-      <button type="button" class="feed f-e" data-v="assets/video/skywell-b.mp4" data-t="Skywell receiver close-up">
-        <video src="assets/video/skywell-b.mp4" poster="assets/video/skywell-b.jpg" muted loop playsinline preload="none"></video>
-        <span class="feed-l"><b>CAM 04</b> Skywell · receiver</span><span class="feed-tc">00:00:00</span>
-      </button>
-      <button type="button" class="feed f-f" data-v="assets/general/cad.mp4" data-t="Fixed-wing airframe in CAD">
-        <video src="assets/general/cad.mp4" poster="assets/general/cad.jpg" muted loop playsinline preload="none"></video>
-        <span class="feed-l"><b>CAD 01</b> Fixed-wing airframe</span><span class="feed-tc">00:00:00</span>
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- ───────── WORK: equipment register ───────── -->
-<section class="sec work" id="work" data-f="1575.42" data-n="Work">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="ch"><span class="ch-f">1575.420 MHz</span> Work</p>
-      <h2 class="h2">Equipment register.</h2>
-      <p class="lead">Everything I've built or am building, robots to desktop software. Linked entries have a full write-up.</p>
-    </div>
-    <div class="reg" role="table" aria-label="Projects">
-      <div class="reg-h" role="row"><span role="columnheader">Ref</span><span role="columnheader">System</span><span role="columnheader">What it does</span><span role="columnheader">Built with</span><span role="columnheader">Status</span></div>
-      <a class="reg-r" role="row" href="projects/mpmr.html" data-img="assets/mpmr/14-scorp-c.jpg"><span role="cell">R-01</span><span role="cell">M.P.M.R</span><span role="cell">Modular 4×4 rover, rebuilt for agriculture, patrol and tracking</span><span role="cell">ROS 2 · Pi 5 · LIDAR</span><span role="cell"><i class="st st-a">Active</i></span></a>
-      <div class="reg-r" role="row" data-img="assets/scorp-wide.jpg"><span role="cell">R-02</span><span role="cell">Recon rover</span><span role="cell">4×4 reconnaissance rover with onboard autonomy and long-range teleop, full spec authored</span><span role="cell">Jetson Orin · ROS 2</span><span role="cell"><i class="st st-a">In build</i></span></div>
-      <a class="reg-r" role="row" href="projects/mpmr.html" data-img="assets/mpmr/05-ghrs-d.jpg"><span role="cell">R-03</span><span role="cell">GHRS</span><span role="cell">Greenhouse rover: row navigation, 6-DOF arm, on-board plant disease detection</span><span role="cell">EfficientNetV2-S · ROS 2</span><span role="cell"><i class="st st-s">Built</i></span></a>
-      <div class="reg-r" role="row" data-img="assets/general/gen.jpg"><span role="cell">R-04</span><span role="cell">Search &amp; rescue rover</span><span role="cell">Detects people through obstructions with WiFi CSI sensing, plus depth camera and drone link</span><span role="cell">ESP32-S3 · WiFi CSI</span><span role="cell"><i class="st st-p">Prototype</i></span></div>
-      <div class="reg-r" role="row" data-img="assets/mpmr/13-scorp-b.jpg"><span role="cell">T-01</span><span role="cell">Vision-guided turret</span><span role="cell">Tracks targets and compensates for projectile trajectory</span><span role="cell">Pi 5 · OpenCV · MediaPipe</span><span role="cell"><i class="st st-s">Built</i></span></div>
-      <div class="reg-r" role="row" data-img="assets/general/cad.jpg"><span role="cell">A-01</span><span role="cell">Self-levelling wing UAV</span><span role="cell">Fixed-wing airframe with automatic wing-levelling stabilisation</span><span role="cell">FreeCAD · flight control</span><span role="cell"><i class="st st-p">Prototype</i></span></div>
-      <div class="reg-r" role="row" data-img="assets/general/sdr.jpg"><span role="cell">S-01</span><span role="cell">Airspace monitor</span><span role="cell">Watches nearby airspace and pulls wireless sensor data off the air</span><span role="cell">RTL-SDR</span><span role="cell"><i class="st st-p">Prototype</i></span></div>
-      <a class="reg-r" role="row" href="projects/skywell.html" data-img="assets/skywell/02-dish.jpg"><span role="cell">W-01</span><span role="cell">Skywell</span><span role="cell">Transportable water unit: sun-tracking solar distillation at ~90 °C plus atmospheric water generation</span><span role="cell">ESP32 · servo tracking</span><span role="cell"><i class="st st-a">In build</i></span></a>
-      <a class="reg-r" role="row" href="projects/waraqvault.html" data-img="assets/waraqvault/03-search.jpg"><span role="cell">D-01</span><span role="cell">WaraqVault</span><span role="cell">Offline Arabic/English document vault with tashkil-aware search. JOSA Reclaim Hackathon entry</span><span role="cell">Tauri · SQLite FTS5 · OCR</span><span role="cell"><i class="st st-g">Shipping</i></span></a>
-      <a class="reg-r" role="row" href="projects/al-minbar.html" data-img="assets/alminbar.jpg"><span role="cell">D-02</span><span role="cell">Al-Minbar</span><span role="cell">Prayer times, Quran and athkar as a native Linux desktop app, fully offline</span><span role="cell">Tauri · React · Rust</span><span role="cell"><i class="st st-a">In build</i></span></a>
-      <div class="reg-r" role="row"><span role="cell">L-01</span><span role="cell">Arabic RAG assistants</span><span role="cell">Retrieval assistants for education and enterprise, plus Arabic RTL document generation</span><span role="cell">FastAPI · Llama 3.1 · ALLaM 7B</span><span role="cell"><i class="st st-g">Delivered</i></span></div>
-      <div class="reg-r" role="row"><span role="cell">L-02</span><span role="cell">SMART-CLASS agents</span><span role="cell">AI tutor, plan generators and speech-to-speech bots for an LMS</span><span role="cell">RAG · STT/TTS · faster-whisper</span><span role="cell"><i class="st st-g">Delivered</i></span></div>
-      <div class="reg-r" role="row"><span role="cell">H-01</span><span role="cell">PMS</span><span role="cell">Wearable posture monitor fusing several IMUs with a Kalman filter, haptic feedback and an app</span><span role="cell">ESP32 · BLE</span><span role="cell"><i class="st st-p">Prototype</i></span></div>
-      <div class="reg-r" role="row"><span role="cell">X-01</span><span role="cell">Trading agent</span><span role="cell">Autonomous Binance agent with an LLM orchestrator, trade journal and self-review loop</span><span role="cell">Python · ccxt · Claude API</span><span role="cell"><i class="st st-p">Running</i></span></div>
-      <a class="reg-r" role="row" href="projects/comet.html" data-img="assets/comet.jpg"><span role="cell">C-01</span><span role="cell">Comet</span><span role="cell">Feeding tracker for my kestrel, built on a ten-day cycle. One HTML file</span><span role="cell">HTML · offline</span><span role="cell"><i class="st st-a">Rebuild</i></span></a>
-      <div class="reg-r" role="row"><span role="cell">G-01</span><span role="cell">Smart greenhouse</span><span role="cell">Remote greenhouse controller with soil-disease monitoring over the internet</span><span role="cell">Raspberry Pi 3</span><span role="cell"><i class="st st-s">Built</i></span></div>
-      <div class="reg-r" role="row"><span role="cell">G-02</span><span role="cell">Distancing device</span><span role="cell">Laser-diode device that alerts when people break social-distancing range</span><span role="cell">Arduino · laser</span><span role="cell"><i class="st st-s">Built</i></span></div>
-    </div>
-    <div class="hover-img" id="hover-img" aria-hidden="true"><img alt=""></div>
-
-    <div class="repos" id="repos">
-      <p class="repos-h">Open source <a href="https://github.com/Anmartiger" target="_blank" rel="noopener">github.com/Anmartiger</a></p>
-      <a class="repo" href="https://github.com/Anmartiger/Waraq-Vault" target="_blank" rel="noopener"><b>waraq-vault</b><span>Rust · TypeScript</span><code>gh repo clone Anmartiger/Waraq-Vault</code></a>
-      <a class="repo" href="https://github.com/Anmartiger/Al-Minbar" target="_blank" rel="noopener"><b>al-minbar</b><span>Rust · React</span><code>gh repo clone Anmartiger/Al-Minbar</code></a>
-      <a class="repo" href="https://github.com/Anmartiger/GHRS-ROS2" target="_blank" rel="noopener"><b>ghrs-ros2</b><span>Python · ROS 2</span><code>gh repo clone Anmartiger/GHRS-ROS2</code></a>
-    </div>
-  </div>
-</section>
-
-<!-- ───────── FIKR BOT ───────── -->
-<section class="sec fikr" id="fikrbot" data-f="2412.00" data-n="Fikr Bot">
-  <div class="wrap fikr-head">
-    <div>
-      <p class="ch"><span class="ch-f">2412.000 MHz</span> Teaching</p>
-      <h2 class="h2">Fikr-Bot <span lang="ar" dir="rtl" class="ar">فكر بوت</span></h2>
-    </div>
-    <div>
-      <p class="lead">The good robotics material is in English, and it hits students at exactly the age when curiosity is highest and language confidence is lowest. Fikr-Bot teaches electronics, sensors, microcontrollers and AI in Arabic, on real hardware, from first circuit to working robot.</p>
-      <a class="link" href="projects/fikr-bot.html">About Fikr-Bot</a>
-    </div>
-  </div>
-  <div class="posters-wrap">
-    <div class="posters" id="posters" dir="rtl" tabindex="0" aria-label="Fikr-Bot lesson posters, scrollable">
-      <button type="button" data-full="assets/fikrbot/00-cover.jpg"><img src="assets/fikrbot/00-cover.jpg" alt="Fikr-Bot: robotics and AI classes for school and university students" loading="lazy" width="940" height="788"></button>
-      <button type="button" data-full="assets/fikrbot/01-lesson.jpg"><img src="assets/fikrbot/01-lesson.jpg" alt="Lesson: DHT22 temperature and humidity sensor" loading="lazy" width="888" height="758"></button>
-      <button type="button" data-full="assets/fikrbot/02-lesson.jpg"><img src="assets/fikrbot/02-lesson.jpg" alt="Lesson: the breadboard" loading="lazy" width="888" height="758"></button>
-      <button type="button" data-full="assets/fikrbot/03-lesson.jpg"><img src="assets/fikrbot/03-lesson.jpg" alt="Lesson: LCD display" loading="lazy" width="888" height="758"></button>
-      <button type="button" data-full="assets/fikrbot/04-lesson.jpg"><img src="assets/fikrbot/04-lesson.jpg" alt="Lesson: what robotics means" loading="lazy" width="888" height="758"></button>
-      <button type="button" data-full="assets/fikrbot/05-lesson.jpg"><img src="assets/fikrbot/05-lesson.jpg" alt="Lesson: ultrasonic distance sensor" loading="lazy" width="888" height="758"></button>
-      <button type="button" data-full="assets/fikrbot/06-lesson.jpg"><img src="assets/fikrbot/06-lesson.jpg" alt="Lesson: LCD display with DHT11" loading="lazy" width="888" height="758"></button>
-    </div>
-    <div class="posters-nav">
-      <button type="button" data-dir="1" aria-label="Previous posters">Previous</button>
-      <button type="button" data-dir="-1" aria-label="Next posters">Next</button>
-    </div>
-  </div>
-</section>
-
-<!-- ───────── BENCH + COMET ───────── -->
-<section class="sec bench" id="bench" data-f="2450.00" data-n="Bench">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="ch"><span class="ch-f">2450.000 MHz</span> Bench</p>
-      <h2 class="h2">Where it gets made.</h2>
-    </div>
-    <div class="log">
-      <figure class="lg-a"><button type="button" data-full="assets/skywell/photo_6037220728542794288_y.jpg"><img src="assets/skywell/photo_6037220728542794288_y.jpg" alt="Workbench with rover drive base, Raspberry Pi, breadboard and laptop" loading="lazy"></button><figcaption>Drive base on the bench: Pi, motor drivers, breadboard, too many jumper wires.</figcaption></figure>
-      <figure class="lg-b"><button type="button" data-full="assets/general/portrait.jpg"><img src="assets/general/portrait.jpg" alt="FDM 3D printer" loading="lazy"></button><figcaption>Mounts, brackets and enclosures come off this printer, designed in FreeCAD.</figcaption></figure>
-      <figure class="lg-c"><button type="button" data-full="assets/general/gen.jpg"><img src="assets/general/gen.jpg" alt="Desk at night with a terminal running a WiFi sensing script and a drone being stripped" loading="lazy"></button><figcaption>WiFi sensing scripts on the monitor, a drone mid-teardown beside it.</figcaption></figure>
-      <figure class="lg-d"><button type="button" data-full="assets/skywell/rotatry design.jpg"><img src="assets/skywell/rotatry%20design.jpg" alt="Rotary mount prototype on grass" loading="lazy"></button><figcaption>Rotary mount prototype for Skywell's tracking dish.</figcaption></figure>
-      <figure class="lg-e"><button type="button" data-full="assets/skywell/cyber.jpg"><img src="assets/skywell/cyber.jpg" alt="Desk with monitor, keyboard and equipment case" loading="lazy"></button><figcaption>The night desk.</figcaption></figure>
-      <figure class="lg-f"><button type="button" data-full="assets/skywell/01-unit.jpg"><img src="assets/skywell/01-unit.jpg" alt="Skywell unit with mirrored dish and solar panel" loading="lazy"></button><figcaption>Skywell, field-assembled.</figcaption></figure>
-    </div>
-  </div>
-
-  <div class="wrap comet" id="comet">
-    <figure class="comet-main"><button type="button" data-full="assets/comet/01-kestrel-a.jpg"><img src="assets/comet/01-kestrel-a.jpg" alt="Anmar with Comet, a common kestrel, on his shoulder" loading="lazy"></button></figure>
-    <div class="comet-text">
-      <p class="ch"><span class="ch-f">Off the clock</span> Comet</p>
-      <h2 class="h2">The original tracking system weighs under two hundred grams.</h2>
-      <p class="lead">Comet is my kestrel. A kestrel can hang dead still in a headwind and lock onto a mouse moving in the grass below. It has no LIDAR, no Jetson and no training set. Every tracker I build is chasing what he does without thinking.</p>
-      <p class="body">I also wrote the app that records what he eats. It runs on a ten-day feeding cycle rather than a week, so the same days don't keep drawing on the same wild prey. It's one HTML file and works on a phone in the garden with no signal.</p>
-      <a class="link" href="projects/comet.html">Read about Comet</a>
-      <div class="comet-sub">
-        <button type="button" data-full="assets/comet/02-kestrel-b.jpg"><img src="assets/comet/02-kestrel-b.jpg" alt="Comet perched" loading="lazy"></button>
-        <button type="button" data-full="assets/comet/04-app-b.jpg"><img src="assets/comet/04-app-b.jpg" alt="Comet app: ten-day cycle dial" loading="lazy"></button>
-        <button type="button" data-full="assets/comet/06-app-d.jpg"><img src="assets/comet/06-app-d.jpg" alt="Comet app: feeding log" loading="lazy"></button>
+    <section class="win" id="terminal" data-f="TTY0" data-w="700" data-h="440" role="dialog" aria-labelledby="t-terminal" hidden>
+      <header class="win-bar"><h2 class="win-t" id="t-terminal">Terminal</h2><span class="win-f">tty0</span><div class="win-ctl"><button type="button" data-act="min" aria-label="Minimise">–</button><button type="button" data-act="max" aria-label="Maximise">▢</button><button type="button" data-act="close" aria-label="Close">✕</button></div></header>
+      <div class="win-body term" id="term">
+        <pre class="term-out" id="term-out" aria-live="polite">GCS-01 shell. Type help for commands.
+</pre>
+        <form class="term-in" id="term-form" autocomplete="off"><label for="term-cmd">anmar@gcs-01:~$</label><input id="term-cmd" spellcheck="false" autocapitalize="off" enterkeyhint="send"></form>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ───────── RECORD ───────── -->
-<section class="sec record" id="experience" data-f="5180.00" data-n="Record">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="ch"><span class="ch-f">5180.000 MHz</span> Record</p>
-      <h2 class="h2">Service record.</h2>
-    </div>
-    <ol class="tl">
-      <li>
-        <p class="tl-d">2025 – 2026</p>
-        <div><h3>AI &amp; Robotics Specialist</h3><p class="tl-o">FB Group, Firas Balasmeh Corporation for Control Systems · Amman</p></div>
-        <ul>
-          <li>Led the design of a 4×4 reconnaissance rover with Jetson Orin onboard autonomy and long-range teleoperation, and wrote its full technical specification.</li>
-          <li>Built ROS 2 stacks on Pi 5 and Jetson Orin: SLAM, sensor fusion, teleop. Trained and deployed the GHRS plant-disease model.</li>
-          <li>Delivered Arabic RAG assistants (FastAPI, Llama 3.1, ALLaM 7B, DeepSeek) and Arabic RTL document pipelines.</li>
-          <li>Wrote technical proposals and solution architecture for government, public safety, education, agriculture and healthcare tenders.</li>
-        </ul>
-      </li>
-      <li>
-        <p class="tl-d">2025 – now</p>
-        <div><h3>Founder</h3><p class="tl-o">Fikr-Bot <span lang="ar" dir="rtl">فكر بوت</span></p></div>
-        <ul>
-          <li>Founded a robotics and programming school with hands-on courses in electronics, sensors, microcontrollers and code.</li>
-          <li>Design the bilingual Arabic/English curriculum and coach students from first circuit to working robot.</li>
-        </ul>
-      </li>
-      <li>
-        <p class="tl-d">2024 – now</p>
-        <div><h3>AI Engineer</h3><p class="tl-o">Seagull AI Solutions · Abu Dhabi, remote</p></div>
-        <ul>
-          <li>Led AI development for the SMART-CLASS LMS: agents, assistants and planners that raised platform autonomy and engagement.</li>
-          <li>Built RAG agents for an AI tutor, plan generators and speech-to-speech bots, from ingestion and vector search to STT/TTS.</li>
-          <li>Taught AI tools to teachers, lawyers and business professionals.</li>
-        </ul>
-      </li>
-      <li>
-        <p class="tl-d">2024 – 2028</p>
-        <div><h3>BSc AI &amp; Data Science</h3><p class="tl-o">Ajloun National University, Jordan</p></div>
-        <ul>
-          <li>Coursework in calculus, C++ and object-oriented programming.</li>
-        </ul>
-      </li>
-    </ol>
-
-    <div class="rec-cols">
-      <div>
-        <h3 class="h3">Certifications</h3>
-        <ul class="certs">
-          <li><span>2026</span>Open-Source Intelligence (OSINT), Basel Institute on Governance</li>
-          <li><span>2022</span>TensorFlow for Deep Learning, freeCodeCamp</li>
-          <li><span>2022</span>PyTorch for Deep Learning, freeCodeCamp</li>
-          <li><span>2020</span>Ultimate Guide to Raspberry Pi, Udemy</li>
-          <li><span>2019</span>Complete Python Bootcamp, Udemy</li>
-          <li><span>2018</span>The Arduino and Electronics Bootcamp, Udemy</li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="h3">Loadout</h3>
-        <dl class="kit">
-          <div><dt>Robotics</dt><dd>ROS 2, SLAM, Gazebo, MuJoCo, Jetson Orin, Raspberry Pi 5, ESP32, LoRa, GNSS/RTK, IMU and depth cameras</dd></div>
-          <div><dt>Vision &amp; AI</dt><dd>PyTorch, EfficientNetV2, YOLOv8, MediaPipe, OpenCV, RAG, Ollama, Llama 3.1, ALLaM 7B, faster-whisper, Arabic NLP</dd></div>
-          <div><dt>Backend</dt><dd>FastAPI, PostgreSQL/PostGIS, SQLite FTS5, Docker Compose, Tauri, Prophet/ARIMA, Leaflet, Tesseract</dd></div>
-          <div><dt>Fabrication</dt><dd>FreeCAD, FDM printing, rapid prototyping of mounts and enclosures</dd></div>
-          <div><dt>Mission</dt><dd>Solution architecture, tender writing, Arabic RTL documents, Linux, Git</dd></div>
-        </dl>
-      </div>
-    </div>
   </div>
-</section>
 
-<!-- ───────── CONTACT ───────── -->
-<section class="sec contact" id="contact" data-f="5800.00" data-n="Contact">
-  <div class="wrap">
-    <p class="ch"><span class="ch-f">5800.000 MHz</span> Contact</p>
-    <h2 class="contact-h stencil">Open a channel.</h2>
-    <p class="lead">Building something that has to work outdoors, offline, or in Arabic? Tell me about it.</p>
-    <a class="mail" href="mailto:amomnar@gmail.com">amomnar@gmail.com</a>
-    <div class="contact-row">
-      <a href="tel:+962776247155">+962 77 624 7155</a>
-      <a href="https://github.com/Anmartiger" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/in/anmar-momani-0a6974152/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://www.facebook.com/profile.php?id=61572696617159" target="_blank" rel="noopener">Fikr-Bot on Facebook</a>
-    </div>
-  </div>
-  <footer class="wrap foot">
-    <span>Anmar Momani <span lang="ar" dir="rtl">أنمار المومني</span></span>
-    <span>Amman, Jordan · 31.95 N 35.91 E</span>
-    <span>© 2026</span>
+  <footer class="taskbar">
+    <button type="button" class="tb-start" data-open="terminal" aria-label="Open terminal"><b>GCS</b></button>
+    <div class="tb-apps" id="tb-apps" aria-label="Open windows"></div>
+    <span class="tb-r hide-m">Amman · <span id="clock2">--:--</span></span>
   </footer>
-</section>
+  <div class="crt" aria-hidden="true"></div>
+</div>
 
-</main>
+<div class="hover-img" id="hover-img" aria-hidden="true"><img alt=""></div>
 
 <dialog class="lb" id="lb" aria-label="Expanded view">
   <form method="dialog"><button class="lb-x" aria-label="Close">Close</button></form>

@@ -19,9 +19,10 @@ let z = 20, cascade = 0;
 function place(w) {
   const dw = desk.clientWidth, dh = desk.clientHeight;
   const W = Math.min(+w.dataset.w, dw - 24), H = Math.min(+w.dataset.h, dh - 24);
-  const left = dw > 1100 ? 116 : 12;                       // clear the icon column
+  const icons = $('.icons');
+  const left = MOBILE.matches ? 12 : icons.offsetLeft + icons.offsetWidth + 12;   // clear the icon column
   const room = dw - (dw > 1100 ? 320 : 0) - left;          // and the widgets
-  const x = clamp(left + (room - W) / 2 + (cascade - 2) * 28, 8, dw - W - 8);
+  const x = Math.max(8, Math.min(left + Math.max(0, (room - W) / 2) + cascade * 28, dw - W - 8));
   const y = clamp((dh - H) / 2 + (cascade - 2) * 24, 8, dh - H - 8);
   cascade = (cascade + 1) % 5;
   Object.assign(w.style, { left: x + 'px', top: y + 'px', width: W + 'px', height: H + 'px' });
@@ -122,15 +123,16 @@ document.addEventListener('keydown', e => {
   const w = topWin();
   if (w && w.classList.contains('act')) closeWin(w);
 });
-function openFromHash() {
-  const id = decodeURIComponent(location.hash.slice(1));
-  if (!id) return false;
-  const el = document.getElementById(id);
+function openTarget(id) {
+  const el = id && document.getElementById(id);
   const w = el && el.closest('.win');
   if (!w) return false;
+  const panel = el.closest('[role="tabpanel"]');
+  if (panel) selectTab(panel.id);
   openWin(w.id, null, el);
   return true;
 }
+function openFromHash() { return openTarget(decodeURIComponent(location.hash.slice(1))); }
 addEventListener('hashchange', openFromHash);
 $$('.ico').forEach((b, i) => b.style.setProperty('--i', i));
 
@@ -139,7 +141,7 @@ let desktopStarted = false;
 function startDesktop() {
   if (desktopStarted) return;
   desktopStarted = true;
-  waterfall();
+  tacmap();
 }
 
 /* ═════════ intro: cyberdeck power-on ═════════ */
@@ -228,220 +230,219 @@ else {
   tick(); setInterval(tick, 1000);
 })();
 
-/* wallpaper: SDR waterfall that paints the name into the spectrum */
-function waterfall() {
-  const wf = $('#wf'), sp = $('#spec');
-  const ctx = wf.getContext('2d', { alpha: false }), sctx = sp.getContext('2d');
-  let cols, rows, row, level, peak, queue, items, itemIx, t = 0, chirp = null, mouseCol = -1;
-  const carriers = [{ c: .17, a: .40, w: 1 }, { c: .52, a: .55, w: 2, drift: 1 }, { c: .84, a: .30, w: 1 }];
+/* wallpaper: tactical map with terrain, radar sweep and SCORP on patrol */
+function tacmap() {
+  const cv = $('#map'), ctx = cv.getContext('2d');
+  const base = document.createElement('canvas'), bx = base.getContext('2d');
+  const tPos = $('#t-pos'), tHdg = $('#t-hdg'), tSpd = $('#t-spd'), tWpt = $('#t-wpt');
+  const LAT0 = 31.95, LON0 = 35.91, DEG = 0.000022, MPX = 2.44; // degrees and metres per pixel
+  const FONT = '10px "IBM Plex Mono", monospace';
+  let W = 0, H = 0, dpr = 1, home, wps = [], segs = [], total = 0, dist = 0, trail = [], blips = [], sweep = 0, mouse = null, lastT = 0, lastTele = 0;
 
-  // Text rows as intensity masks, bottom row first so it scrolls in upright.
-  function mask(text, family, weight) {
-    const c = document.createElement('canvas');
-    const h = Math.round(Math.min(rows * 0.5, cols * 0.18));
-    c.width = cols; c.height = h;
-    const x = c.getContext('2d');
-    let fs = Math.round(h * 0.8);
-    const font = () => `${weight} ${fs}px ${family}`;
-    x.font = font();
-    while (x.measureText(text).width > cols * 0.8 && fs > 8) { fs--; x.font = font(); }
-    x.fillStyle = '#fff'; x.textAlign = 'center'; x.textBaseline = 'middle';
-    x.fillText(text, cols / 2, h / 2);
-    const d = x.getImageData(0, 0, cols, h).data, out = [];
-    for (let y = 0; y < h; y++) {
-      const m = new Float32Array(cols); let any = false;
-      for (let i = 0; i < cols; i++) { const a = d[(y * cols + i) * 4 + 3] / 255; m[i] = a; if (a > .05) any = true; }
-      if (any) out.push(m);
-    }
-    return out.reverse();
-  }
-  const gap = n => Array(Math.max(0, Math.round(n))).fill(null);
+  // Fixed seed so the terrain is the same on every visit.
+  let seed = 20251114;
+  const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
+  const R = new Float32Array(65536);
+  for (let i = 0; i < R.length; i++) R[i] = rnd();
+  const sm = t => t * t * (3 - 2 * t);
+  const vn = (x, y) => {
+    const xi = Math.floor(x), yi = Math.floor(y), u = sm(x - xi), v = sm(y - yi);
+    const h = (a, b) => R[((a & 255) << 8) | (b & 255)];
+    const a = h(xi, yi), b = h(xi + 1, yi), c = h(xi, yi + 1), d = h(xi + 1, yi + 1);
+    return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
+  };
+  const fbm = (x, y) => vn(x, y) * .55 + vn(x * 2.03 + 17, y * 2.03 + 5) * .28 + vn(x * 4.1 + 3, y * 4.1 + 11) * .17;
+  const ll = (x, y) => [LAT0 - (y - home.y) * DEG, LON0 + (x - home.x) * DEG * 1.18];
 
-  function emit() {
-    const m = queue.length ? queue.shift() : null;
-    if (!queue.length) { itemIx = (itemIx + 1) % items.length; queue.push(...gap(rows * 0.45), ...items[itemIx]); }
-    t++;
-    if (!chirp && Math.random() < 0.006) chirp = { c0: cols * (.25 + Math.random() * .5), i: 0, len: 18 + Math.random() * 26, s: (Math.random() < .5 ? -1 : 1) * (.8 + Math.random() * 1.2) };
-    const d = row.data;
-    for (let c = 0; c < cols; c++) {
-      const r = Math.random();
-      const b = (0.07 + r * r * r * 0.45 + (r > 0.993 ? 0.5 : 0)) * (0.5 + 0.5 * Math.sin(Math.PI * c / cols));
-      let h = m ? m[c] * (0.72 + 0.28 * Math.random()) : 0;
-      for (const k of carriers) {
-        const cc = k.c * cols + (k.drift ? Math.sin(t * 0.018) * cols * 0.025 : 0);
-        if (Math.abs(c - cc) < k.w) h = Math.max(h, k.a * (0.7 + 0.3 * Math.random()));
+  function drawBase() {
+    base.width = Math.round(W * dpr); base.height = Math.round(H * dpr);
+    bx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    bx.fillStyle = '#05070a'; bx.fillRect(0, 0, W, H);
+    // terrain contours by marching squares; every fifth line is an amber index contour
+    const g = 9, nx = Math.ceil(W / g) + 1, ny = Math.ceil(H / g) + 1, f = new Float32Array(nx * ny), S = 1 / 300;
+    for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) f[j * nx + i] = fbm(i * g * S, j * g * S);
+    const T = 0, Rt = 1, B = 2, L = 3;
+    const TAB = [null, [[L, B]], [[B, Rt]], [[L, Rt]], [[T, Rt]], [[L, T], [B, Rt]], [[T, B]], [[L, T]], [[L, T]], [[T, B]], [[T, Rt], [L, B]], [[T, Rt]], [[L, Rt]], [[B, Rt]], [[L, B]], null];
+    let k = 0;
+    for (let lv = 0.2; lv < 0.85; lv += 0.035, k++) {
+      bx.beginPath();
+      for (let j = 0; j < ny - 1; j++) for (let i = 0; i < nx - 1; i++) {
+        const a = f[j * nx + i], b = f[j * nx + i + 1], c = f[(j + 1) * nx + i + 1], d = f[(j + 1) * nx + i];
+        const segsHere = TAB[(a > lv) << 3 | (b > lv) << 2 | (c > lv) << 1 | (d > lv)];
+        if (!segsHere) continue;
+        const x0 = i * g, y0 = j * g;
+        const P = e => e === T ? [x0 + g * (lv - a) / (b - a), y0] : e === Rt ? [x0 + g, y0 + g * (lv - b) / (c - b)] : e === B ? [x0 + g * (lv - d) / (c - d), y0 + g] : [x0, y0 + g * (lv - a) / (d - a)];
+        for (const [e1, e2] of segsHere) { const p = P(e1), q = P(e2); bx.moveTo(p[0], p[1]); bx.lineTo(q[0], q[1]); }
       }
-      if (chirp && Math.abs(c - (chirp.c0 + chirp.i * chirp.s)) < 1) h = Math.max(h, 0.7);
-      if (mouseCol >= 0) { const dm = Math.abs(c - mouseCol); if (dm <= 1) h = Math.max(h, 0.98 - dm * 0.3); }
-      const w = Math.max(0, h - 0.82) * 4, i = c * 4;
-      d[i] = 255 * Math.min(1, b * 0.17 + h);
-      d[i + 1] = 255 * Math.min(1, b * 0.42 + h * 0.69 + w * 0.3);
-      d[i + 2] = 255 * Math.min(1, b + w * 0.75);
-      d[i + 3] = 255;
-      level[c] = b * 0.55 + h;
+      const index = k % 5 === 0;
+      bx.strokeStyle = index ? 'rgba(255,176,0,.17)' : 'rgba(84,130,230,.14)';
+      bx.lineWidth = index ? 1.2 : 1;
+      bx.stroke();
     }
-    if (chirp && ++chirp.i > chirp.len) chirp = null;
-    ctx.drawImage(wf, 0, 0, cols, rows - 1, 0, 1, cols, rows - 1);
-    ctx.putImageData(row, 0, 0);
+    // map grid with coordinates
+    const step = 120;
+    bx.strokeStyle = 'rgba(143,180,255,.07)'; bx.lineWidth = 1; bx.beginPath();
+    for (let x = home.x % step; x < W; x += step) { bx.moveTo(Math.round(x) + .5, 0); bx.lineTo(Math.round(x) + .5, H); }
+    for (let y = home.y % step; y < H; y += step) { bx.moveTo(0, Math.round(y) + .5); bx.lineTo(W, Math.round(y) + .5); }
+    bx.stroke();
+    bx.font = FONT; bx.fillStyle = 'rgba(143,180,255,.4)';
+    for (let x = home.x % step; x < W - 70; x += step) bx.fillText(ll(x, 0)[1].toFixed(3) + 'E', x + 4, H - 8);
+    for (let y = home.y % step; y < H - 24; y += step) if (y > 16) bx.fillText(ll(0, y)[0].toFixed(3) + 'N', W - 66, y - 4);
+    // scale bar
+    const sb = Math.round(250 / MPX), sx = home.x - 260, sy = H - 30;
+    bx.strokeStyle = 'rgba(236,230,216,.5)'; bx.beginPath();
+    bx.moveTo(sx, sy - 4); bx.lineTo(sx, sy); bx.lineTo(sx + sb, sy); bx.lineTo(sx + sb, sy - 4); bx.stroke();
+    bx.fillStyle = 'rgba(236,230,216,.6)'; bx.fillText('250 m', sx + sb + 6, sy + 3);
   }
 
-  function drawSpec() {
-    const W = sp.width, H = sp.height;
-    if (!W || !H) return;
-    sctx.clearRect(0, 0, W, H);
-    const v = c => (level[Math.max(0, c - 1)] + level[c] * 2 + level[Math.min(cols - 1, c + 1)]) / 4;
-    const y = c => H - 2 - Math.min(1, v(c)) * (H - 6);
-    for (let c = 0; c < cols; c++) peak[c] = Math.max(v(c), peak[c] * 0.985);
-    const sx = W / (cols - 1);
-    sctx.beginPath(); sctx.moveTo(0, H);
-    for (let c = 0; c < cols; c++) sctx.lineTo(c * sx, y(c));
-    sctx.lineTo(W, H); sctx.closePath();
-    const gr = sctx.createLinearGradient(0, 0, 0, H);
-    gr.addColorStop(0, 'rgba(255,176,0,.3)'); gr.addColorStop(1, 'rgba(47,107,255,.05)');
-    sctx.fillStyle = gr; sctx.fill();
-    sctx.beginPath();
-    for (let c = 0; c < cols; c++) { const yy = H - 2 - Math.min(1, peak[c]) * (H - 6); c ? sctx.lineTo(c * sx, yy) : sctx.moveTo(0, yy); }
-    sctx.strokeStyle = 'rgba(143,180,255,.35)'; sctx.lineWidth = 1; sctx.stroke();
-    sctx.beginPath();
-    for (let c = 0; c < cols; c++) c ? sctx.lineTo(c * sx, y(c)) : sctx.moveTo(0, y(c));
-    sctx.strokeStyle = '#FFB000'; sctx.lineWidth = 1.5; sctx.stroke();
-  }
-
-  function build() {
-    const r = wf.getBoundingClientRect();
-    if (!r.width || !r.height) return false;
-    cols = clamp(Math.round(r.width / 4.2), 90, 360);
-    rows = Math.max(40, Math.round(cols * r.height / r.width));
-    wf.width = cols; wf.height = rows;
-    row = ctx.createImageData(cols, 1);
-    level = new Float32Array(cols); peak = new Float32Array(cols);
-    const dpr = Math.min(2, devicePixelRatio || 1), sr = sp.getBoundingClientRect();
-    sp.width = Math.round(sr.width * dpr); sp.height = Math.round(sr.height * dpr);
-    items = [
-      mask('ANMAR MOMANI', '"Big Shoulders Stencil Display", Impact, sans-serif', 900),
-      mask('أنمار المومني', '"IBM Plex Sans Arabic", sans-serif', 700),
-      mask('ROBOTICS / AI', '"Big Shoulders Stencil Display", Impact, sans-serif', 900)
-    ];
-    itemIx = 0;
-    const top = Math.round(rows * 0.18);
-    queue = [...gap(rows - items[0].length - top), ...items[0], ...gap(top)];
-    for (let i = 0; i < rows; i++) emit();
-    drawSpec();
+  function setup() {
+    const r = cv.getBoundingClientRect();
+    W = r.width; H = r.height;
+    if (!W || !H) return false;
+    dpr = Math.min(2, devicePixelRatio || 1);
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    home = { x: Math.round(W * (W > 1100 ? .55 : .5)), y: Math.round(H * .55) };
+    const m = Math.min(W, H);
+    wps = [[-.36, -.14], [-.05, -.34], [.3, -.24], [.42, .06], [.16, .3], [-.22, .26]].map(([a, b]) => ({ x: home.x + a * m * 1.25, y: home.y + b * m }));
+    segs = []; total = 0;
+    wps.forEach((p, i) => { const q = wps[(i + 1) % wps.length], l = Math.hypot(q.x - p.x, q.y - p.y); segs.push({ p, q, l, s: total, i }); total += l; });
+    blips = Array.from({ length: 6 }, () => {
+      const a = rnd() * Math.PI * 2, d = (.2 + rnd() * .75) * m * .6;
+      return { x: home.x + Math.cos(a) * d, y: home.y + Math.sin(a) * d, a, v: 0, id: 'C-' + (10 + Math.floor(rnd() * 89)) };
+    });
+    trail = [];
+    drawBase();
     return true;
   }
-
-  let on = false, last = 0, acc = 0;
-  function loop(ts) {
-    if (!on) return;
-    const dt = Math.min(0.1, (ts - (last || ts)) / 1000); last = ts;
-    acc += dt * 30;
-    let n = 0;
-    while (acc >= 1 && n < 3) { emit(); acc--; n++; }
-    if (n) drawSpec();
-    requestAnimationFrame(loop);
+  function roverAt(d) {
+    d = ((d % total) + total) % total;
+    const s = segs.find(s => d < s.s + s.l) || segs[0], t = (d - s.s) / s.l;
+    return { x: s.p.x + (s.q.x - s.p.x) * t, y: s.p.y + (s.q.y - s.p.y) * t, h: Math.atan2(s.q.y - s.p.y, s.q.x - s.p.x), w: s.i };
   }
-  const start = () => { if (on || RM) return; on = true; last = 0; requestAnimationFrame(loop); };
 
-  Promise.race([
-    Promise.all([document.fonts.load('900 60px "Big Shoulders Stencil Display"'), document.fonts.load('700 60px "IBM Plex Sans Arabic"', 'أنمار')]),
-    sleep(1800)
-  ]).then(() => {
-    if (!build()) return;
+  function frame(ts) {
+    const dt = lastT ? Math.min(.1, (ts - lastT) / 1000) : 0; lastT = ts;
+    dist += 34 * dt;
+    sweep = (sweep + dt * Math.PI * 2 / 6) % (Math.PI * 2);
+    const rv = roverAt(dist), last = trail[trail.length - 1];
+    if (!last || Math.hypot(rv.x - last.x, rv.y - last.y) > 3) { trail.push({ x: rv.x, y: rv.y }); if (trail.length > 170) trail.shift(); }
+
+    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.drawImage(base, 0, 0);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.font = FONT; ctx.lineWidth = 1;
+    const RR = Math.min(W, H) * .62;
+    // range rings
+    ctx.setLineDash([2, 6]); ctx.strokeStyle = 'rgba(255,176,0,.22)';
+    for (const k of [1 / 3, 2 / 3, 1]) { ctx.beginPath(); ctx.arc(home.x, home.y, RR * k, 0, Math.PI * 2); ctx.stroke(); }
+    ctx.setLineDash([]);
+    ctx.fillStyle = 'rgba(255,176,0,.5)';
+    for (const k of [1 / 3, 2 / 3, 1]) ctx.fillText((RR * k * MPX / 1000).toFixed(1) + ' km', home.x + 5, home.y - RR * k - 5);
+    // radar sweep
+    if (ctx.createConicGradient) {
+      const wedge = .9, gr = ctx.createConicGradient(sweep - wedge, home.x, home.y), f = wedge / (Math.PI * 2);
+      gr.addColorStop(0, 'rgba(255,176,0,0)'); gr.addColorStop(f, 'rgba(255,176,0,.15)');
+      gr.addColorStop(Math.min(1, f + .001), 'rgba(255,176,0,0)'); gr.addColorStop(1, 'rgba(255,176,0,0)');
+      ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(home.x, home.y, RR, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.strokeStyle = 'rgba(255,176,0,.6)'; ctx.beginPath();
+    ctx.moveTo(home.x, home.y); ctx.lineTo(home.x + Math.cos(sweep) * RR, home.y + Math.sin(sweep) * RR); ctx.stroke();
+    // contacts flare as the sweep passes, then fade
+    for (const b of blips) {
+      const d = (sweep - b.a + Math.PI * 4) % (Math.PI * 2);
+      if (d < .09) b.v = 1; else b.v *= .985;
+      if (b.v < .03) continue;
+      ctx.fillStyle = `rgba(255,90,31,${b.v})`; ctx.beginPath(); ctx.arc(b.x, b.y, 3, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = `rgba(255,90,31,${b.v * .5})`; ctx.beginPath(); ctx.arc(b.x, b.y, 7 + (1 - b.v) * 10, 0, Math.PI * 2); ctx.stroke();
+      ctx.fillStyle = `rgba(236,230,216,${b.v * .75})`; ctx.fillText(b.id, b.x + 9, b.y - 6);
+    }
+    // patrol route and waypoints
+    ctx.setLineDash([4, 5]); ctx.strokeStyle = 'rgba(143,180,255,.42)'; ctx.beginPath();
+    wps.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)); ctx.closePath(); ctx.stroke(); ctx.setLineDash([]);
+    const next = (rv.w + 1) % wps.length;
+    wps.forEach((p, i) => {
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(Math.PI / 4);
+      ctx.fillStyle = i === next ? '#FFB000' : 'rgba(143,180,255,.75)'; ctx.fillRect(-3.5, -3.5, 7, 7); ctx.restore();
+      ctx.fillStyle = 'rgba(143,180,255,.8)'; ctx.fillText('WP' + (i + 1), p.x + 8, p.y + 13);
+    });
+    // trail
+    ctx.lineWidth = 2;
+    for (let i = 1; i < trail.length; i++) {
+      ctx.strokeStyle = `rgba(255,176,0,${i / trail.length * .7})`;
+      ctx.beginPath(); ctx.moveTo(trail[i - 1].x, trail[i - 1].y); ctx.lineTo(trail[i].x, trail[i].y); ctx.stroke();
+    }
+    ctx.lineWidth = 1;
+    // ground station
+    ctx.strokeStyle = '#ECE6D8'; ctx.strokeRect(home.x - 5, home.y - 5, 10, 10);
+    ctx.fillStyle = '#ECE6D8'; ctx.fillText('GCS-01', home.x + 10, home.y + 4);
+    // rover
+    ctx.save(); ctx.translate(rv.x, rv.y); ctx.rotate(rv.h);
+    ctx.shadowColor = '#FFB000'; ctx.shadowBlur = 12; ctx.fillStyle = '#FFB000';
+    ctx.beginPath(); ctx.moveTo(10, 0); ctx.lineTo(-6, -7); ctx.lineTo(-2, 0); ctx.lineTo(-6, 7); ctx.closePath(); ctx.fill();
+    ctx.restore();
+    ctx.fillStyle = '#FFB000'; ctx.fillText('R-01 SCORP', rv.x + 13, rv.y - 10);
+    // cursor coordinates
+    if (mouse) {
+      ctx.strokeStyle = 'rgba(236,230,216,.18)'; ctx.setLineDash([3, 4]); ctx.beginPath();
+      ctx.moveTo(mouse.x, 0); ctx.lineTo(mouse.x, H); ctx.moveTo(0, mouse.y); ctx.lineTo(W, mouse.y); ctx.stroke(); ctx.setLineDash([]);
+      const [la, lo] = ll(mouse.x, mouse.y), txt = la.toFixed(4) + 'N ' + lo.toFixed(4) + 'E';
+      ctx.fillStyle = 'rgba(5,6,7,.85)'; ctx.fillRect(mouse.x + 10, mouse.y + 10, ctx.measureText(txt).width + 12, 18);
+      ctx.fillStyle = '#ECE6D8'; ctx.fillText(txt, mouse.x + 16, mouse.y + 23);
+    }
+    // telemetry widget, a few times a second
+    if (ts - lastTele > 220) {
+      lastTele = ts;
+      const [la, lo] = ll(rv.x, rv.y);
+      tPos.textContent = la.toFixed(4) + ' N ' + lo.toFixed(4) + ' E';
+      tHdg.textContent = String(Math.round((rv.h * 180 / Math.PI + 450) % 360)).padStart(3, '0') + '°';
+      tSpd.textContent = (1.6 + .35 * Math.sin(ts / 1700)).toFixed(1) + ' m/s';
+      tWpt.textContent = (next + 1) + ' / ' + wps.length;
+    }
+  }
+
+  let on = false;
+  const loop = ts => { if (!on) return; frame(ts); requestAnimationFrame(loop); };
+  const start = () => { if (on || RM) return; on = true; lastT = 0; requestAnimationFrame(loop); };
+  Promise.race([document.fonts.load(FONT), sleep(1500)]).then(() => {
+    if (!setup()) return;
+    dist = total * .18;
+    frame(performance.now());
     start();
     document.addEventListener('visibilitychange', () => { if (document.hidden) on = false; else start(); });
     desk.addEventListener('pointermove', e => {
-      if (e.target.closest('.win, .widgets, .ico')) { mouseCol = -1; return; }
-      const r = wf.getBoundingClientRect();
-      mouseCol = Math.floor((e.clientX - r.left) / r.width * cols);
+      if (e.target.closest('.win, .widgets, .ico')) mouse = null;
+      else { const r = cv.getBoundingClientRect(); mouse = { x: e.clientX - r.left, y: e.clientY - r.top }; }
+      if (RM) frame(performance.now());
     });
-    desk.addEventListener('pointerleave', () => { mouseCol = -1; });
+    desk.addEventListener('pointerleave', () => { mouse = null; if (RM) frame(performance.now()); });
     let rt;
-    addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(build, 200); });
+    addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { if (setup()) frame(performance.now()); }, 200); });
   });
 }
 
 /* ═════════ apps ═════════ */
 
-/* operator: thermal (IR) and visible (EO) portrait */
-(function thermal() {
-  const fig = $('#ir'), cv = $('#ir-c'), src = $('#ir-src');
-  const W = cv.width, H = cv.height, ctx = cv.getContext('2d');
-  const STOPS = [[0, 4, 6, 12], [.22, 13, 42, 122], [.40, 47, 107, 255], [.55, 74, 35, 80], [.70, 255, 90, 31], [.85, 255, 176, 0], [1, 255, 241, 207]];
-  const cmap = v => {
-    for (let i = 1; i < STOPS.length; i++) if (v <= STOPS[i][0]) {
-      const a = STOPS[i - 1], b = STOPS[i], f = (v - a[0]) / (b[0] - a[0]);
-      return [a[1] + (b[1] - a[1]) * f, a[2] + (b[2] - a[2]) * f, a[3] + (b[3] - a[3]) * f];
-    }
-    return STOPS[STOPS.length - 1].slice(1);
-  };
-  const layer = () => { const c = document.createElement('canvas'); c.width = W; c.height = H; return c; };
-  const eo = layer(), ir = layer();
-  let mode = 'ir';
-  function cover(x, img, w, h) {
-    const s = Math.max(w / img.naturalWidth, h / img.naturalHeight);
-    const dw = img.naturalWidth * s, dh = img.naturalHeight * s;
-    x.drawImage(img, (w - dw) / 2, (h - dh) * 0.15, dw, dh);
-  }
-  function prepare() {
-    cover(eo.getContext('2d'), src, W, H);
-    // Heat estimate: skin reads hot, everything else by brightness; computed small, upscaled soft.
-    const sw = 128, sh = 160, sm = document.createElement('canvas');
-    sm.width = sw; sm.height = sh;
-    const sx = sm.getContext('2d');
-    cover(sx, src, sw, sh);
-    const im = sx.getImageData(0, 0, sw, sh), d = im.data;
-    for (let i = 0; i < d.length; i += 4) {
-      const r = d[i], g = d[i + 1], b = d[i + 2];
-      const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-      const skin = r > 95 && g > 40 && b > 20 && r > g && r > b && r - Math.min(g, b) > 15 && r - g > 12;
-      const [R, G, B] = cmap(clamp((skin ? 0.66 + 0.34 * lum : lum * 0.3) + (Math.random() - 0.5) * 0.03, 0, 1));
-      d[i] = R; d[i + 1] = G; d[i + 2] = B;
-    }
-    sx.putImageData(im, 0, 0);
-    const ix = ir.getContext('2d');
-    ix.imageSmoothingQuality = 'high';
-    ix.drawImage(sm, 0, 0, W, H);
-    ctx.drawImage(mode === 'ir' ? ir : eo, 0, 0);
-  }
-  function swap(to) {
-    if (to === mode) return;
-    const from = mode === 'ir' ? ir : eo, next = to === 'ir' ? ir : eo;
-    mode = to;
-    fig.classList.toggle('eo', to === 'eo');
-    $('#ir-mode').textContent = to === 'ir' ? 'LWIR · IRONBOW' : 'EO · VISIBLE';
-    $$('.ir-tog button', fig).forEach(b => b.setAttribute('aria-pressed', b.dataset.m === to));
-    if (RM) { ctx.drawImage(next, 0, 0); return; }
-    const t0 = performance.now();
-    (function step(ts) {
-      const p = clamp((ts - t0) / 650, 0, 1), y = Math.round(H * (1 - Math.pow(1 - p, 3)));
-      ctx.drawImage(from, 0, 0);
-      if (y > 0) ctx.drawImage(next, 0, 0, W, y, 0, 0, W, y);
-      if (p < 1) { ctx.fillStyle = '#FFB000'; ctx.fillRect(0, y - 1, W, 2); requestAnimationFrame(step); }
-    })(t0);
-  }
-  $$('.ir-tog button', fig).forEach(b => b.addEventListener('click', () => swap(b.dataset.m)));
-  if (src.complete && src.naturalWidth) prepare(); else src.addEventListener('load', prepare, { once: true });
-})();
-
 /* M.P.M.R build tabs */
-(function tabs() {
-  const tabs = $$('#platform [role="tab"]');
-  const select = i => tabs.forEach((t, j) => {
-    const on = i === j;
+function selectTab(panelId, focus) {
+  $$('#platform [role="tab"]').forEach(t => {
+    const on = t.getAttribute('aria-controls') === panelId;
     t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1;
     document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
-    if (on) t.focus();
+    if (on && focus) t.focus();
   });
+}
+(function tabs() {
+  const tabs = $$('#platform [role="tab"]');
+  const go = i => selectTab(tabs[(i + tabs.length) % tabs.length].getAttribute('aria-controls'), true);
   tabs.forEach((t, i) => {
-    t.addEventListener('click', () => select(i));
+    t.addEventListener('click', () => go(i));
     t.addEventListener('keydown', e => {
       const d = { ArrowRight: 1, ArrowLeft: -1, Home: -i, End: tabs.length - 1 - i }[e.key];
-      if (d !== undefined) { e.preventDefault(); select((i + d + tabs.length) % tabs.length); }
+      if (d !== undefined) { e.preventDefault(); go(i + d); }
     });
   });
 })();
 
-/* tracker: damped pan-tilt loop chasing the pointer */
+/* SCORP turret view: damped pan-tilt loop chasing the pointer */
 (function tracker() {
   const cam = $('#camv'), tgt = $('#tgt'), ret = $('#ret'), lbl = $('#ret-lbl');
   const rPan = $('#r-pan'), rTilt = $('#r-tilt'), rErr = $('#r-err'), rMode = $('#r-mode'), rState = $('#r-state');
@@ -544,8 +545,8 @@ function waterfall() {
 /* terminal */
 (function terminal() {
   const out = $('#term-out'), form = $('#term-form'), inp = $('#term-cmd'), body = $('#term');
-  const APPS = { operator: 'Operator', platform: 'M.P.M.R', tracking: 'Tracker', feeds: 'Feeds', work: 'Register', fikrbot: 'Fikr-Bot', bench: 'Bench', comet: 'Comet', experience: 'Record', contact: 'Comms' };
-  const ALIAS = { mpmr: 'platform', rover: 'platform', tracker: 'tracking', register: 'work', projects: 'work', fikr: 'fikrbot', record: 'experience', cv: 'experience', comms: 'contact', about: 'operator', me: 'operator' };
+  const APPS = { operator: 'Operator', platform: 'M.P.M.R', feeds: 'Feeds', work: 'Register', fikrbot: 'Fikr-Bot', bench: 'Bench', comet: 'Comet', experience: 'Record', contact: 'Comms' };
+  const ALIAS = { mpmr: 'platform', rover: 'platform', scorp: 'tracking', turret: 'tracking', tracker: 'tracking', register: 'work', projects: 'work', fikr: 'fikrbot', record: 'experience', cv: 'experience', comms: 'contact', about: 'operator', me: 'operator' };
   const hist = []; let hi = 0;
   const print = (text, cls) => { const s = document.createElement('span'); if (cls) s.className = cls; s.textContent = text + '\n'; out.append(s); body.scrollTop = body.scrollHeight; };
   const CMDS = {
@@ -556,6 +557,7 @@ function waterfall() {
     open: a => {
       const id = ALIAS[a] || a;
       if (!a) return print('usage: open APP   (try: apps)', 'e');
+      if (id === 'tracking') { print('opening M.P.M.R › SCORP turret…', 'c'); return openTarget('tracking'); }
       if (!APPS[id]) return print(`open: no such application: ${a}`, 'e');
       print(`opening ${APPS[id]}…`, 'c'); openWin(id);
     },
@@ -573,7 +575,7 @@ function waterfall() {
     if (!raw) return;
     hist.push(raw); hi = hist.length;
     const [cmd, ...args] = raw.split(/\s+/);
-    const fn = CMDS[cmd.toLowerCase()] || (APPS[ALIAS[cmd.toLowerCase()] || cmd.toLowerCase()] && (() => CMDS.open(cmd.toLowerCase())));
+    const fn = CMDS[cmd.toLowerCase()] || ((APPS[ALIAS[cmd.toLowerCase()] || cmd.toLowerCase()] || ALIAS[cmd.toLowerCase()] === 'tracking') && (() => CMDS.open(cmd.toLowerCase())));
     fn ? fn(args.join(' ').toLowerCase()) : print(`${cmd}: command not found. Type help.`, 'e');
   });
   inp.addEventListener('keydown', e => {

@@ -22,7 +22,7 @@
 <noscript><style>
   .intro{display:none!important}
   .os{position:static!important;height:auto!important}
-  .desk,.wall-bg,.crt{display:none!important}
+  .desk,.map-bg,.crt{display:none!important}
   .win[hidden]{display:block!important}
   .win{position:static!important;width:auto!important;height:auto!important;max-width:1200px;margin:24px auto!important;resize:none!important}
   .win-ctl{display:none!important}
@@ -79,7 +79,7 @@
 
 <!-- ═════════ OS ═════════ -->
 <div class="os" id="os">
-  <canvas class="wall-bg" id="wf" aria-hidden="true"></canvas>
+  <canvas class="map-bg" id="map" aria-hidden="true"></canvas>
 
   <header class="sysbar">
     <span class="sb-brand"><b>GCS-01</b> Anmar Momani</span>
@@ -93,7 +93,6 @@
     <nav class="icons" aria-label="Applications">
       <button type="button" class="ico" data-open="operator"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 11V4h7M29 4h7v7M36 29v7h-7M11 36H4v-7"/><circle cx="20" cy="16" r="5"/><path d="M11 31c1.5-5 5-7 9-7s7.5 2 9 7"/></svg><span>Operator</span></button>
       <button type="button" class="ico" data-open="platform"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="13" width="26" height="12" rx="1"/><path d="M12 13v-4h9v4M27 9v4"/><circle cx="11" cy="29" r="4"/><circle cx="29" cy="29" r="4"/><circle cx="20" cy="29" r="4"/></svg><span>M.P.M.R</span></button>
-      <button type="button" class="ico" data-open="tracking"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="11"/><circle cx="20" cy="20" r="3"/><path d="M20 3v8M20 29v8M3 20h8M29 20h8"/></svg><span>Tracker</span></button>
       <button type="button" class="ico" data-open="feeds"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="4" y="7" width="15" height="11"/><rect x="21" y="7" width="15" height="11"/><rect x="4" y="22" width="15" height="11"/><rect x="21" y="22" width="15" height="11"/><circle cx="8" cy="11" r="1" class="fill"/></svg><span>Feeds</span></button>
       <button type="button" class="ico" data-open="work"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="5" width="28" height="30"/><path d="M11 12h4M18 12h11M11 19h4M18 19h11M11 26h4M18 26h11"/></svg><span>Register</span></button>
       <button type="button" class="ico" data-open="fikrbot"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="8" y="12" width="24" height="18" rx="2"/><path d="M20 12V6M17 5h6M4 19v6M36 19v6"/><circle cx="15" cy="20" r="2"/><circle cx="25" cy="20" r="2"/><path d="M15 26h10"/></svg><span>Fikr-Bot</span></button>
@@ -113,10 +112,15 @@
           <p class="id-s"><i class="dot ok"></i>Available for work</p>
         </div>
       </div>
-      <div class="wdg spec-w" aria-hidden="true">
-        <p class="wdg-h"><span>Spectrum</span><b>91.700 MHz</b></p>
-        <canvas id="spec"></canvas>
-        <p class="wdg-f">Move across the wallpaper to transmit</p>
+      <div class="wdg tele" aria-hidden="true">
+        <p class="wdg-h"><span>R-01 · SCORP</span><b id="t-mode">Patrol</b></p>
+        <dl class="tele-g">
+          <div><dt>POS</dt><dd id="t-pos">31.9500 N 35.9100 E</dd></div>
+          <div><dt>HDG</dt><dd id="t-hdg">000°</dd></div>
+          <div><dt>SPD</dt><dd id="t-spd">0.0 m/s</dd></div>
+          <div><dt>WPT</dt><dd id="t-wpt">1 / 6</dd></div>
+          <div><dt>LINK</dt><dd>433.920 MHz</dd></div>
+        </dl>
       </div>
     </aside>
 
@@ -126,11 +130,10 @@
       <header class="win-bar"><h2 class="win-t" id="t-operator">Operator</h2><span class="win-f">144.800 MHz</span><div class="win-ctl"><button type="button" data-act="min" aria-label="Minimise">–</button><button type="button" data-act="max" aria-label="Maximise">▢</button><button type="button" data-act="close" aria-label="Close">✕</button></div></header>
       <div class="win-body">
         <div class="op">
-          <figure class="ir" id="ir">
-            <canvas id="ir-c" width="640" height="800" role="img" aria-label="Portrait of Anmar Momani, shown as a thermal image"></canvas>
-            <img id="ir-src" src="assets/portrait.jpg" alt="" hidden>
-            <div class="ir-hud" aria-hidden="true"><span class="ir-tl" id="ir-mode">LWIR · IRONBOW</span><span class="ir-x"></span><span class="ir-scale"><i></i></span></div>
-            <figcaption class="ir-tog" role="group" aria-label="Image mode"><button type="button" data-m="ir" aria-pressed="true">IR</button><button type="button" data-m="eo" aria-pressed="false">EO</button></figcaption>
+          <figure class="pf">
+            <img src="assets/portrait.jpg" alt="Anmar Momani" width="800" height="980">
+            <i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i>
+            <figcaption>Anmar Momani · Amman</figcaption>
           </figure>
           <div class="op-t">
             <p class="kicker">Anmar Momani <span lang="ar" dir="rtl">أنمار المومني</span></p>
@@ -176,9 +179,22 @@
             <div class="thumbs"><button type="button" data-full="assets/mpmr/08-crowd-a.jpg"><img src="assets/mpmr/08-crowd-a.jpg" alt="Crowd-control rover, front" loading="lazy"></button><button type="button" data-full="assets/mpmr/10-crowd-c.jpg"><img src="assets/mpmr/10-crowd-c.jpg" alt="Crowd-control rover with tank" loading="lazy"></button><button type="button" data-full="assets/mpmr/11-crowd-d.jpg"><img src="assets/mpmr/11-crowd-d.jpg" alt="Crowd-control rover, rear" loading="lazy"></button><button type="button" data-full="assets/mpmr/16-firedet.jpg"><img src="assets/mpmr/16-firedet.jpg" alt="Onboard fire detection" loading="lazy"></button><button type="button" data-full="assets/firedet.jpg"><img src="assets/firedet.jpg" alt="Fire detection on the operator screen" loading="lazy"></button><button type="button" data-full="assets/rover-3.jpg"><img src="assets/rover-3.jpg" alt="Crowd-control configuration" loading="lazy"></button></div></div>
         </div>
         <div class="stage" role="tabpanel" id="st-3" aria-labelledby="tb-3" hidden>
-          <figure class="st-img"><button type="button" data-full="assets/mpmr/14-scorp-c.jpg"><img src="assets/mpmr/14-scorp-c.jpg" alt="SCORP rover with pan-tilt turret" loading="lazy"></button><span class="hud-c">CONFIG 04/04</span></figure>
-          <div class="st-t"><h3>SCORP turret</h3><p>The current build. A stabilised pan-tilt turret that acquires a moving target and holds it, tested with a non-lethal platform. At FB Group I also led the design of a 4×4 reconnaissance rover with Jetson Orin autonomy and long-range teleop.</p>
-            <div class="thumbs"><button type="button" data-full="assets/mpmr/12-scorp-a.jpg"><img src="assets/mpmr/12-scorp-a.jpg" alt="SCORP, three-quarter view" loading="lazy"></button><button type="button" data-full="assets/mpmr/13-scorp-b.jpg"><img src="assets/mpmr/13-scorp-b.jpg" alt="SCORP turret close-up" loading="lazy"></button><button type="button" data-full="assets/scorp-wide.jpg"><img src="assets/scorp-wide.jpg" alt="SCORP on grass" loading="lazy"></button><button type="button" data-full="assets/rover-4.jpg"><img src="assets/rover-4.jpg" alt="SCORP configuration" loading="lazy"></button></div></div>
+          <div class="st-img" id="tracking">
+            <div class="cam-v" id="camv" role="img" aria-label="Interactive SCORP turret view. Move the pointer inside this panel to act as the target.">
+              <img src="assets/mpmr/13-scorp-b.jpg" alt="" class="camv-bg" loading="lazy">
+              <div class="camv-grid" aria-hidden="true"></div>
+              <div class="camv-tgt" id="tgt" aria-hidden="true"></div>
+              <div class="camv-ret" id="ret" aria-hidden="true"><i></i><i></i><i></i><i></i><span id="ret-lbl">TRK</span></div>
+              <div class="camv-read" aria-hidden="true"><span>PAN <b id="r-pan">+00.0°</b></span><span>TILT <b id="r-tilt">+00.0°</b></span><span>ERR <b id="r-err">000 px</b></span></div>
+              <div class="camv-mode" aria-hidden="true"><span id="r-mode">AUTO</span> · <b id="r-state">SEARCH</b></div>
+            </div>
+            <span class="hud-c">CONFIG 04/04 · TURRET VIEW</span>
+          </div>
+          <div class="st-t"><h3>SCORP turret</h3><p>The current build: a stabilised pan-tilt turret mounted on the M.P.M.R chassis. OpenCV and MediaPipe find the target in the frame, and the control loop drives pan and tilt to close the gap without overshooting, with projectile trajectory compensation. Tested with a non-lethal platform.</p>
+            <p class="dim">The turret view runs a damped-spring version of that loop. Your pointer is the target. Hold still and it locks; leave it and SCORP tracks a simulated contact.</p>
+            <ul class="mono-list"><li>Pi 5 · pan-tilt servo control</li><li>OpenCV and MediaPipe detection</li><li>Trajectory compensation</li></ul>
+            <div class="thumbs"><button type="button" data-full="assets/mpmr/14-scorp-c.jpg"><img src="assets/mpmr/14-scorp-c.jpg" alt="SCORP with pan-tilt turret" loading="lazy"></button><button type="button" data-full="assets/mpmr/12-scorp-a.jpg"><img src="assets/mpmr/12-scorp-a.jpg" alt="SCORP, three-quarter view" loading="lazy"></button><button type="button" data-full="assets/mpmr/13-scorp-b.jpg"><img src="assets/mpmr/13-scorp-b.jpg" alt="SCORP turret close-up" loading="lazy"></button><button type="button" data-full="assets/scorp-wide.jpg"><img src="assets/scorp-wide.jpg" alt="SCORP on grass" loading="lazy"></button><button type="button" data-full="assets/rover-4.jpg"><img src="assets/rover-4.jpg" alt="SCORP configuration" loading="lazy"></button></div>
+            <p class="dim small">At FB Group I also led the design of a 4×4 reconnaissance rover with Jetson Orin autonomy and long-range teleop.</p></div>
         </div>
         <div class="gcs">
           <button type="button" class="gcs-img" data-full="assets/dashboard.jpg"><img src="assets/dashboard.jpg" alt="Ground control dashboard: LIDAR polar map, camera feed, IMU and GPS readouts, drive controls" loading="lazy"></button>
@@ -191,40 +207,19 @@
       </div>
     </section>
 
-    <section class="win" id="tracking" data-f="915.000" data-w="1000" data-h="600" role="dialog" aria-labelledby="t-tracking" hidden>
-      <header class="win-bar"><h2 class="win-t" id="t-tracking">Tracker</h2><span class="win-f">915.000 MHz</span><div class="win-ctl"><button type="button" data-act="min" aria-label="Minimise">–</button><button type="button" data-act="max" aria-label="Maximise">▢</button><button type="button" data-act="close" aria-label="Close">✕</button></div></header>
-      <div class="win-body">
-        <div class="trk">
-          <div class="cam-v" id="camv" role="img" aria-label="Interactive tracking demo. Move the pointer inside this panel to act as the target.">
-            <img src="assets/mpmr/13-scorp-b.jpg" alt="" class="camv-bg" loading="lazy">
-            <div class="camv-grid" aria-hidden="true"></div>
-            <div class="camv-tgt" id="tgt" aria-hidden="true"></div>
-            <div class="camv-ret" id="ret" aria-hidden="true"><i></i><i></i><i></i><i></i><span id="ret-lbl">TRK</span></div>
-            <div class="camv-read" aria-hidden="true"><span>PAN <b id="r-pan">+00.0°</b></span><span>TILT <b id="r-tilt">+00.0°</b></span><span>ERR <b id="r-err">000 px</b></span></div>
-            <div class="camv-mode" aria-hidden="true"><span id="r-mode">AUTO</span> · <b id="r-state">SEARCH</b></div>
-          </div>
-          <div class="trk-t">
-            <h3>Acquire, follow, hold.</h3>
-            <p>SCORP and the vision-guided turret solve the same loop: find the target in the frame, measure how far off-centre it is, drive pan and tilt to close the gap without overshooting into oscillation.</p>
-            <p class="dim">This panel runs a damped-spring version of that loop. Your pointer is the target. Hold still and it locks. Leave it alone and it tracks a simulated contact.</p>
-            <ul class="mono-list"><li>OpenCV and MediaPipe detection</li><li>Pan-tilt servo control on a Pi 5</li><li>Projectile trajectory compensation</li></ul>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section class="win" id="feeds" data-f="1280.00" data-w="1100" data-h="700" role="dialog" aria-labelledby="t-feeds" hidden>
       <header class="win-bar"><h2 class="win-t" id="t-feeds">Feeds</h2><span class="win-f">1280.000 MHz</span><div class="win-ctl"><button type="button" data-act="min" aria-label="Minimise">–</button><button type="button" data-act="max" aria-label="Maximise">▢</button><button type="button" data-act="close" aria-label="Close">✕</button></div></header>
       <div class="win-body">
         <div class="wall">
-          <button type="button" class="feed f-a" data-v="assets/video/crowd-patrol.mp4" data-t="Patrol unit, public demonstration"><video src="assets/video/crowd-patrol.mp4" poster="assets/video/crowd-patrol.jpg" muted loop playsinline preload="none"></video><span class="feed-l"><b>CAM 01</b> Patrol unit · demonstration</span><span class="feed-tc">00:00:00</span></button>
-          <button type="button" class="feed f-b" data-v="assets/video/stage1-drive.mp4" data-t="Stage 1 drive test"><video src="assets/video/stage1-drive.mp4" poster="assets/video/stage1-drive.jpg" muted loop playsinline preload="none"></video><span class="feed-l"><b>CAM 02</b> Stage 1 drive</span><span class="feed-tc">00:00:00</span></button>
-          <button type="button" class="feed f-c" data-v="assets/video/skywell-a.mp4" data-t="Skywell dish tracking the sun"><video src="assets/video/skywell-a.mp4" poster="assets/video/skywell-a.jpg" muted loop playsinline preload="none"></video><span class="feed-l"><b>CAM 03</b> Skywell · sun tracking</span><span class="feed-tc">00:00:00</span></button>
-          <button type="button" class="feed f-d" data-v="assets/general/document_6037220728082801278.mp4" data-t="RTL-SDR capture at 91.7 MHz"><video src="assets/general/document_6037220728082801278.mp4" poster="assets/general/sdr.jpg" muted loop playsinline preload="none"></video><span class="feed-l"><b>RX 01</b> RTL-SDR · 91.7 MHz</span><span class="feed-tc">00:00:00</span></button>
-          <button type="button" class="feed f-e" data-v="assets/video/skywell-b.mp4" data-t="Skywell receiver close-up"><video src="assets/video/skywell-b.mp4" poster="assets/video/skywell-b.jpg" muted loop playsinline preload="none"></video><span class="feed-l"><b>CAM 04</b> Skywell · receiver</span><span class="feed-tc">00:00:00</span></button>
-          <button type="button" class="feed f-f" data-v="assets/general/cad.mp4" data-t="Fixed-wing airframe in CAD"><video src="assets/general/cad.mp4" poster="assets/general/cad.jpg" muted loop playsinline preload="none"></video><span class="feed-l"><b>CAD 01</b> Fixed-wing airframe</span><span class="feed-tc">00:00:00</span></button>
+          <button type="button" class="feed f-a" data-v="assets/video/crowd-patrol.mp4" data-t="Patrol unit, public demonstration"><video src="assets/video/crowd-patrol.mp4" poster="assets/video/crowd-patrol.jpg" muted loop playsinline preload="none"></video><span class="feed-l"><b>CAM 01</b><strong>Autonomy &amp; SLAM</strong><em>Patrol unit · ROS 2 · LIDAR · sensor fusion</em></span><span class="feed-tc">00:00:00</span></button>
+          <button type="button" class="feed f-b" data-v="assets/video/stage1-drive.mp4" data-t="Stage 1 drive test"><video src="assets/video/stage1-drive.mp4" poster="assets/video/stage1-drive.jpg" muted loop playsinline preload="none"></video><span class="feed-l"><b>CAM 02</b><strong>Drive &amp; teleop control</strong><em>Stage 1 drive · Pi · motor drivers</em></span><span class="feed-tc">00:00:00</span></button>
+          <button type="button" class="feed f-c" data-v="assets/video/skywell-a.mp4" data-t="Skywell dish tracking the sun"><video src="assets/video/skywell-a.mp4" poster="assets/video/skywell-a.jpg" muted loop playsinline preload="none"></video><span class="feed-l"><b>CAM 03</b><strong>Control systems</strong><em>Skywell · ESP32 · servo sun tracking</em></span><span class="feed-tc">00:00:00</span></button>
+          <button type="button" class="feed f-d" data-v="assets/general/document_6037220728082801278.mp4" data-t="RTL-SDR capture at 91.7 MHz"><video src="assets/general/document_6037220728082801278.mp4" poster="assets/general/sdr.jpg" muted loop playsinline preload="none"></video><span class="feed-l"><b>RX 01</b><strong>RF &amp; signals</strong><em>RTL-SDR · 91.7 MHz capture</em></span><span class="feed-tc">00:00:00</span></button>
+          <button type="button" class="feed f-e" data-v="assets/video/skywell-b.mp4" data-t="Skywell receiver close-up"><video src="assets/video/skywell-b.mp4" poster="assets/video/skywell-b.jpg" muted loop playsinline preload="none"></video><span class="feed-l"><b>CAM 04</b><strong>Solar-thermal design</strong><em>Skywell receiver · ~90 °C distillation</em></span><span class="feed-tc">00:00:00</span></button>
+          <button type="button" class="feed f-f" data-v="assets/general/cad.mp4" data-t="Fixed-wing airframe in CAD"><video src="assets/general/cad.mp4" poster="assets/general/cad.jpg" muted loop playsinline preload="none"></video><span class="feed-l"><b>CAD 01</b><strong>CAD &amp; airframe design</strong><em>FreeCAD · fixed-wing UAV</em></span><span class="feed-tc">00:00:00</span></button>
         </div>
-        <p class="dim small">Select a feed to open it with sound and controls.</p>
+        <p class="dim small">Each feed is tagged with the skill it shows. Select one to open it with sound and controls.</p>
       </div>
     </section>
 
@@ -238,7 +233,7 @@
           <div class="reg-r" role="row"><span role="cell">R-02</span><span role="cell">Recon rover</span><span role="cell">4×4 reconnaissance rover with onboard autonomy and long-range teleop. Full spec authored at FB Group</span><span role="cell">Jetson Orin · ROS 2</span><span role="cell"><i class="st st-s">Designed</i></span></div>
           <a class="reg-r" role="row" href="projects/mpmr.html" data-img="assets/mpmr/05-ghrs-d.jpg"><span role="cell">R-03</span><span role="cell">GHRS</span><span role="cell">Greenhouse rover: row navigation, 6-DOF arm, on-board plant disease detection</span><span role="cell">EfficientNetV2-S · ROS 2</span><span role="cell"><i class="st st-s">Built</i></span></a>
           <div class="reg-r" role="row" data-img="assets/general/gen.jpg"><span role="cell">R-04</span><span role="cell">Search &amp; rescue rover</span><span role="cell">Detects people through obstructions with WiFi CSI sensing, plus depth camera and drone link</span><span role="cell">ESP32-S3 · WiFi CSI</span><span role="cell"><i class="st st-p">Prototype</i></span></div>
-          <div class="reg-r" role="row" data-img="assets/mpmr/13-scorp-b.jpg"><span role="cell">T-01</span><span role="cell">Vision-guided turret</span><span role="cell">Tracks targets and compensates for projectile trajectory</span><span role="cell">Pi 5 · OpenCV · MediaPipe</span><span role="cell"><i class="st st-s">Built</i></span></div>
+          <a class="reg-r" role="row" href="projects/mpmr.html" data-img="assets/mpmr/13-scorp-b.jpg"><span role="cell">R-01T</span><span role="cell">SCORP turret</span><span role="cell">Pan-tilt turret module for M.P.M.R: vision tracking with projectile trajectory compensation</span><span role="cell">Pi 5 · OpenCV · MediaPipe</span><span role="cell"><i class="st st-a">Active</i></span></a>
           <div class="reg-r" role="row" data-img="assets/general/cad.jpg"><span role="cell">A-01</span><span role="cell">Self-levelling wing UAV</span><span role="cell">Fixed-wing airframe with automatic wing-levelling stabilisation</span><span role="cell">FreeCAD · flight control</span><span role="cell"><i class="st st-p">Prototype</i></span></div>
           <div class="reg-r" role="row" data-img="assets/general/sdr.jpg"><span role="cell">S-01</span><span role="cell">Airspace monitor</span><span role="cell">Watches nearby airspace and pulls wireless sensor data off the air</span><span role="cell">RTL-SDR</span><span role="cell"><i class="st st-p">Prototype</i></span></div>
           <a class="reg-r" role="row" href="projects/skywell.html" data-img="assets/skywell/02-dish.jpg"><span role="cell">W-01</span><span role="cell">Skywell</span><span role="cell">Transportable water unit: sun-tracking solar distillation at ~90 °C plus atmospheric water generation</span><span role="cell">ESP32 · servo tracking</span><span role="cell"><i class="st st-a">In build</i></span></a>
@@ -284,13 +279,14 @@
     <section class="win" id="bench" data-f="2450.00" data-w="1040" data-h="680" role="dialog" aria-labelledby="t-bench" hidden>
       <header class="win-bar"><h2 class="win-t" id="t-bench">Bench</h2><span class="win-f">2450.000 MHz</span><div class="win-ctl"><button type="button" data-act="min" aria-label="Minimise">–</button><button type="button" data-act="max" aria-label="Maximise">▢</button><button type="button" data-act="close" aria-label="Close">✕</button></div></header>
       <div class="win-body">
+        <p class="lead">The bench, by skill. Each frame is tagged with what it took.</p>
         <div class="log">
-          <figure class="lg-a"><button type="button" data-full="assets/skywell/photo_6037220728542794288_y.jpg"><img src="assets/skywell/photo_6037220728542794288_y.jpg" alt="Workbench with rover drive base, Raspberry Pi, breadboard and laptop" loading="lazy"></button><figcaption>Drive base on the bench: Pi, motor drivers, breadboard, too many jumper wires.</figcaption></figure>
-          <figure class="lg-b"><button type="button" data-full="assets/general/portrait.jpg"><img src="assets/general/portrait.jpg" alt="FDM 3D printer" loading="lazy"></button><figcaption>Mounts, brackets and enclosures, designed in FreeCAD.</figcaption></figure>
-          <figure class="lg-c"><button type="button" data-full="assets/general/gen.jpg"><img src="assets/general/gen.jpg" alt="Desk at night with a WiFi sensing script and a drone being stripped" loading="lazy"></button><figcaption>WiFi sensing scripts, a drone mid-teardown.</figcaption></figure>
-          <figure class="lg-d"><button type="button" data-full="assets/skywell/rotatry design.jpg"><img src="assets/skywell/rotatry%20design.jpg" alt="Rotary mount prototype on grass" loading="lazy"></button><figcaption>Rotary mount for Skywell's dish.</figcaption></figure>
-          <figure class="lg-e"><button type="button" data-full="assets/skywell/cyber.jpg"><img src="assets/skywell/cyber.jpg" alt="Desk with monitor, keyboard and equipment case" loading="lazy"></button><figcaption>The night desk.</figcaption></figure>
-          <figure class="lg-f"><button type="button" data-full="assets/skywell/01-unit.jpg"><img src="assets/skywell/01-unit.jpg" alt="Skywell unit with mirrored dish and solar panel" loading="lazy"></button><figcaption>Skywell, field-assembled.</figcaption></figure>
+          <figure class="lg-a"><button type="button" data-full="assets/skywell/photo_6037220728542794288_y.jpg"><img src="assets/skywell/photo_6037220728542794288_y.jpg" alt="Workbench with rover drive base, Raspberry Pi, breadboard and laptop" loading="lazy"></button><figcaption><b>Embedded systems</b><span>Drive base on the bench: Pi, motor drivers, breadboard.</span><i>Raspberry Pi · ESP32 · wiring</i></figcaption></figure>
+          <figure class="lg-b"><button type="button" data-full="assets/general/portrait.jpg"><img src="assets/general/portrait.jpg" alt="FDM 3D printer" loading="lazy"></button><figcaption><b>CAD &amp; fabrication</b><span>Mounts and enclosures, printed in-house.</span><i>FreeCAD · FDM printing</i></figcaption></figure>
+          <figure class="lg-c"><button type="button" data-full="assets/general/gen.jpg"><img src="assets/general/gen.jpg" alt="Desk at night with a WiFi sensing script and a drone being stripped" loading="lazy"></button><figcaption><b>RF sensing &amp; UAVs</b><span>WiFi sensing scripts, a drone mid-teardown.</span><i>Python · WiFi CSI</i></figcaption></figure>
+          <figure class="lg-d"><button type="button" data-full="assets/skywell/rotatry design.jpg"><img src="assets/skywell/rotatry%20design.jpg" alt="Rotary mount prototype on grass" loading="lazy"></button><figcaption><b>Mechanical design</b><span>Rotary mount for Skywell’s dish.</span><i>Servo tracking</i></figcaption></figure>
+          <figure class="lg-e"><button type="button" data-full="assets/skywell/cyber.jpg"><img src="assets/skywell/cyber.jpg" alt="Desk with monitor, keyboard and equipment case" loading="lazy"></button><figcaption><b>Software &amp; Linux</b><span>The night desk.</span><i>Python · Rust · Linux</i></figcaption></figure>
+          <figure class="lg-f"><button type="button" data-full="assets/skywell/01-unit.jpg"><img src="assets/skywell/01-unit.jpg" alt="Skywell unit with mirrored dish and solar panel" loading="lazy"></button><figcaption><b>Systems integration</b><span>Skywell, field-assembled.</span><i>ESP32 · solar · AWG</i></figcaption></figure>
         </div>
       </div>
     </section>

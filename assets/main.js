@@ -147,10 +147,10 @@ function startDesktop() {
 /* ═════════ intro: cyberdeck power-on ═════════ */
 (function deck() {
   const kbd = $('#kbd');
-  for (let i = 0; i < 61; i++) {
+  for (let i = 0; i < 63; i++) {
     const k = document.createElement('i');
-    if ([0, 13, 27, 41, 55, 60].includes(i)) k.className = 'k-a';
-    if (i === 57) k.className = 'k-s';
+    if (i === 0 || i === 41) k.className = 'k-a';
+    if (i === 59) k.className = 'k-s';
     kbd.append(k);
   }
 })();
